@@ -1,4 +1,9 @@
 [[inputs]]
+id = "hello-world"
+title = "Hello World!"
+description = "Your most basic greeting"
+
+[[inputs]]
 id = "integral-alignment"
 title = "Alignment of Integrals"
 description = "Compare the baseline alignment of integrals"
