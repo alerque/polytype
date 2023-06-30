@@ -31,6 +31,11 @@ jobs:
         run: |
           nix-shell --run 'make public'
 
+      - name: Inject CNAME
+        if: ${{ github.repository == 'alerque/polytype' }}
+        run: |
+          nix-shell --run 'make public/CNAME'
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/master' }}

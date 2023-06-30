@@ -52,3 +52,5 @@ public/index.html: $(MAKEFILE_LIST) | $(RESULTS)
 public: public/index.html $(RESULTS)
 	cp $(RESULTS) $@
 
+public/CNAME:
+	echo polytype.dev > $@
