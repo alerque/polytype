@@ -6,7 +6,6 @@ SHELL = zsh
 .SECONDEXPANSION:
 .DELETE_ON_ERROR:
 
-EXPERIMENTS = integral
 TYPESETTERS = latex typst sile
 
 LATEX = xelatex
@@ -21,8 +20,11 @@ SILE_ARGS = -q -o $@ $<
 .PHONY: default
 default: all
 
+EXPERIMENTS = integral
+RESULTS := $(foreach E,$(EXPERIMENTS),$(foreach T,$(TYPESETTERS),$(E)-$(T).pdf))
+
 .PHONY: all
-all: $(foreach E,$(EXPERIMENTS),$(foreach T,$(TYPESETTERS),$(E)-$(T).pdf))
+all: $(RESULTS)
 
 %-latex.pdf: %.tex
 	$(LATEX) $(LATEX_ARGS)
@@ -32,3 +34,21 @@ all: $(foreach E,$(EXPERIMENTS),$(foreach T,$(TYPESETTERS),$(E)-$(T).pdf))
 
 %-sile.pdf: %.sil
 	$(SILE) $(SILE_ARGS)
+
+public/index.html: $(MAKEFILE_LIST) | $(RESULTS)
+	mkdir -p $(@D)
+	cat <<- EOF > $@
+		<!DOCTYPE html>
+			<head>Polytypes</head>
+			<body>
+				<ul>
+					$(foreach R,$(RESULTS),
+					<li><a href="$(R)">$(R)</a></li>)
+				</ul>
+			</body>
+		</html>
+	EOF
+
+public: public/index.html $(RESULTS)
+	cp $(RESULTS) $@
+
