@@ -1,20 +1,10 @@
-{ nixpkgs ? import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz) {} }:
-with nixpkgs;
-let
-  fontsConf = pkgs.makeFontsConf {
-    fontDirectories = [ nixpkgs.libertinus ];
-  };
-in
-  mkShell {
-    buildInputs = [
-      gnumake
-      libertinus
-      texlive.combined.scheme-full
-      typst
-      sile
-      yq
-      zola
-      zsh
-    ];
-    FONTCONFIG_FILE = fontsConf;
-  }
+# https://nixos.wiki/wiki/Flakes#Using_flakes_project_from_a_legacy_Nix
+(import (
+  let
+    lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+  in fetchTarball {
+    url = "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
+    sha256 = lock.nodes.flake-compat.locked.narHash; }
+) {
+  src =  ./.;
+}).shellNix
