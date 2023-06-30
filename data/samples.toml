@@ -1,0 +1,4 @@
+[[inputs]]
+id = "integral-alignment"
+title = "Alignment of Integrals"
+description = "Compare the baseline alignment of integrals"
