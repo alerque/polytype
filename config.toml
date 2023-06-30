@@ -1,0 +1,20 @@
+base_url = "/"
+
+title = "Polytype"
+subtitel = "a Rosetta stone for modern typesetting engines"
+
+compile_sass = true
+build_search_index = false
+
+generate_feed = true
+feed_filename = "feed.xml"
+
+[slugify]
+paths = "safe"
+taxonomies = "safe"
+anchors = "safe"
+
+[markdown]
+highlight_code = true
+
+[extra]

@@ -40,8 +40,7 @@ all: $(RESULTS)
 %-sile.pdf: %.sil
 	$(SILE) $(SILE_ARGS)
 
-public/index.html: $(MAKEFILE_LIST) | $(RESULTS)
-	mkdir -p $(@D)
+index.html: $(MAKEFILE_LIST) | $(RESULTS)
 	cat <<- EOF > $@
 		<!DOCTYPE html>
 			<head>Polytypes</head>
@@ -54,8 +53,17 @@ public/index.html: $(MAKEFILE_LIST) | $(RESULTS)
 		</html>
 	EOF
 
-public: public/index.html $(RESULTS)
-	cp $(RESULTS) $@
+.PHONY: static
+static: $(foreach R,$(RESULTS),$(R)) index.html
+	mkdir -p $@
+	cp $^ static
+
+.PHONY: public
+public: zola
+
+.PHONY: zola
+zola: static
+	zola build
 
 public/CNAME:
 	echo polytype.dev > $@
