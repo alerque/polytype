@@ -40,6 +40,9 @@ all: $(RESULTS)
 %-sile.pdf: samples/%/sile.sil
 	$(SILE) $(SILE_ARGS)
 
+%-sile.pdf: samples/%/sile.xml
+	$(SILE) $(SILE_ARGS)
+
 index.html: $(MAKEFILE_LIST) | $(RESULTS)
 	cat <<- EOF > $@
 		<!DOCTYPE html>
