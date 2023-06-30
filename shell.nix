@@ -1,12 +1,19 @@
 { nixpkgs ? import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz) {} }:
 with nixpkgs;
-mkShell {
-  buildInputs = [
-    gnumake
-    texlive.combined.scheme-full
-    typst
-    sile
-    zola
-    zsh
-  ];
-}
+let
+  fontsConf = pkgs.makeFontsConf {
+    fontDirectories = [ nixpkgs.libertinus ];
+  };
+in
+  mkShell {
+    buildInputs = [
+      gnumake
+      libertinus
+      texlive.combined.scheme-full
+      typst
+      sile
+      zola
+      zsh
+    ];
+    FONTCONFIG_FILE = fontsConf;
+  }
