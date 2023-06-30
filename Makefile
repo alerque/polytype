@@ -8,11 +8,16 @@ SHELL = zsh
 
 TYPESETTERS = latex typst sile
 
+# Work around Typst not supporting FONTCONFIG_FILE
+# https://github.com/typst/typst/issues/100
+LIBERTINUSDIR := $(shell xq -r '.fontconfig.dir[] | select(type == "string")' ${FONTCONFIG_FILE} | grep libertinus)/share/fonts/opentype
+
 LATEX = xelatex
 LATEX_ARGS = -interaction=batchmode -halt-on-error -jobname $(*F)-latex $<
 
 TYPST = typst
-TYPST_ARGS = compile $< $@
+TYPST_ARGS = --font-path $(LIBERTINUSDIR)
+TYPST_ARGS += compile $< $@
 
 SILE = sile
 SILE_ARGS = -q -o $@ $<

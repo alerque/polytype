@@ -12,6 +12,7 @@ in
       texlive.combined.scheme-full
       typst
       sile
+      yq
       zola
       zsh
     ];
