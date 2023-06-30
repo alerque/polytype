@@ -1,17 +1,34 @@
+SHELL = zsh
+.SHELLFLAGS += -e
+
+.ONESHELL:
+.SECONDARY:
+.SECONDEXPANSION:
+.DELETE_ON_ERROR:
+
 EXPERIMENTS = integral
+TYPESETTERS = latex typst sile
+
+LATEX = xelatex
+LATEX_ARGS = -interaction=batchmode -halt-on-error -jobname $(*F)-latex $<
+
+TYPST = typst
+TYPST_ARGS = compile $< $@
+
+SILE = sile
+SILE_ARGS = -q -o $@ $<
+
+.PHONY: default
+default: all
 
 .PHONY: all
-all: $(foreach E,$(EXPERIMENTS),$(E)-latex.pdf $(E)-typst.pdf $(E)-sile.pdf)
+all: $(foreach E,$(EXPERIMENTS),$(foreach T,$(TYPESETTERS),$(E)-$(T).pdf))
 
 %-latex.pdf: %.tex
-	xelatex -jobname $(*F)-latex $<
+	$(LATEX) $(LATEX_ARGS)
 
 %-typst.pdf: %.typ
-	typst compile $< $@
+	$(TYPST) $(TYPST_ARGS)
 
 %-sile.pdf: %.sil
-	sile -o $@ $<
-
-.PHONY: watch
-watch:
-	git ls-files | entr -c make
+	$(SILE) $(SILE_ARGS)
