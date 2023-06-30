@@ -1,9 +1,11 @@
-[[inputs]]
+[[sample]]
 id = "hello-world"
 title = "Hello World!"
-description = "Your most basic greeting"
+description = "Your most basic greeting."
+typesetters = [ "typst", "sile", "xelatex" ]
 
-[[inputs]]
+[[sample]]
 id = "integral-alignment"
 title = "Alignment of Integrals"
-description = "Compare the baseline alignment of integrals"
+description = "Compare the baseline alignment of integrals."
+typesetters = [ "typst", "sile", "xelatex" ]

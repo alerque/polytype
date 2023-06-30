@@ -43,21 +43,8 @@ all: $(RESULTS)
 %-sile.pdf: samples/%/sile.xml
 	$(SILE) $(SILE_ARGS)
 
-index.html: $(MAKEFILE_LIST) | $(RESULTS)
-	cat <<- EOF > $@
-		<!DOCTYPE html>
-			<head>Polytypes</head>
-			<body>
-				<ul>
-					$(foreach R,$(RESULTS),
-					<li><a href="$(R)">$(R)</a></li>)
-				</ul>
-			</body>
-		</html>
-	EOF
-
 .PHONY: static
-static: $(foreach R,$(RESULTS),$(R)) index.html
+static: $(foreach R,$(RESULTS),$(R))
 	mkdir -p $@
 	cp $^ static
 
