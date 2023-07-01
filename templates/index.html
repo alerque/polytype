@@ -20,9 +20,8 @@
         {% for typesetter in sample.typesetters %}
         <li>
           {{ typesetter }} (<a href="{{ sample.id }}-{{ typesetter }}.pdf">pdf</a>)<br />
-          <pre>
-            include "samples/" ~ sample.id ~ "/" ~ typesetter ~ ".sil"
-          </pre>
+          {% set raw = load_data(path="/samples/" ~ sample.id ~ "/sile.sil") %}
+          <pre>{{ raw | safe }}</pre>
         </li>
         {% endfor %}
       </ul>

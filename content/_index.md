@@ -6,6 +6,8 @@ sort_by = "none"
 
 foo bar
 
+{% load_data(path="/samples/hello-world/sile.xml") | safe %}
+
 foo bar
 
 Some Tex:
