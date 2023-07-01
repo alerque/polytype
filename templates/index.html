@@ -18,10 +18,22 @@
       {{ sample.description }}
       <ul>
         {% for typesetter in sample.typesetters %}
-        <li>{{ typesetter }} (<a href="{{ sample.id }}-{{ typesetter }}.pdf">pdf</a>)</li>
+        <li>
+          {{ typesetter }} (<a href="{{ sample.id }}-{{ typesetter }}.pdf">pdf</a>)<br />
+          <pre>
+            include "samples/" ~ sample.id ~ "/" ~ typesetter ~ ".sil"
+          </pre>
+        </li>
         {% endfor %}
       </ul>
     </p>
     {% endfor %}
+    <hr />
+    <!--
+    <pre>{{ __tera_context }}</pre>
+    <hr />
+    -->
+    {{ section.content | safe }}
+    <hr />
   </body>
 </html>
