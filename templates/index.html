@@ -10,23 +10,6 @@
   </head>
   <body>
     <h1>Polytype</h1>
-    <h2>Samples</h2>
-    {% set samples = load_data(path="/data/samples.toml") -%}
-    {% for sample in samples["sample"] %}
-    <h3>{{ sample.title }}</h3>
-    <p>
-      {{ sample.description }}
-      <ul>
-        {% for typesetter in sample.typesetters %}
-        <li>
-          {{ typesetter }} (<a href="{{ sample.id }}-{{ typesetter }}.pdf">pdf</a>)<br />
-          {% set raw = load_data(path="/samples/" ~ sample.id ~ "/sile.sil") %}
-          <pre>{{ raw | safe }}</pre>
-        </li>
-        {% endfor %}
-      </ul>
-    </p>
-    {% endfor %}
     <hr />
     <!--
     <pre>{{ __tera_context }}</pre>

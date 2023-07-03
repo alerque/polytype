@@ -6,6 +6,8 @@ SHELL = zsh
 .SECONDEXPANSION:
 .DELETE_ON_ERROR:
 
+TERA = tera
+
 TYPESETTERS = xelatex typst sile
 
 # Work around Typst not supporting FONTCONFIG_FILE
