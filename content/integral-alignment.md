@@ -4,4 +4,6 @@ description = "Compare the baseline alignment of integrals."
 extra.typesetters = [ "typst", "sile", "xelatex" ]
 +++
 
-What's up must come down.
+Compare the baseline alignment of integrals.
+
+aka. What's up must come down.
