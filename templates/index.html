@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Polytype – {{ page.title | default(value="Home") }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block rss %}
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path=config.feed_filename, trailing_slash=false) }}">
-    {% endblock %}
-  </head>
-  <body>
-    <h1>Polytype</h1>
-    <hr />
-    <!--
-    <pre>{{ __tera_context }}</pre>
-    <hr />
-    -->
-    {{ section.content | safe }}
-    <hr />
-  </body>
-</html>
+{% extends "default.html" %}
+
+{% block content %}
+{{ section.content | safe }}
+{% endblock %}

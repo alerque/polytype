@@ -1,7 +1,7 @@
 +++
 title = "Hello World!"
 description = "Your most basic greeting."
-typesetters = [ "typst", "sile", "xelatex" ]
+extra.typesetters = [ "typst", "sile", "xelatex" ]
 +++
 
-Foo Bar.	
+Just the simplest way to get a phrase onto a page.

@@ -1,0 +1,17 @@
+{% extends "default.html" %}
+
+{% block content %}
+
+<h2>{{ page.title }}</h2>
+
+{{ page.content | safe }}
+
+{% for typesetter in page.extra.typesetters %}
+
+<h3>{{ typesetter }}</h3>
+
+(<a href="{{ page.slug }}-{{ typesetter }}.pdf">pdf</a>)
+
+{% endfor %}
+
+{% endblock %}
