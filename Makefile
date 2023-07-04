@@ -36,8 +36,8 @@ SILE_ARGS = -o $@ $<
 .PHONY: default
 default: public
 
-SAMPLES := $(basename $(notdir $(shell $(GIT) ls-files 'content/*.md' | xargs grep '^typesetters =' -l)))
-RESULTS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),content/$(S)-$(T).pdf))
+SAMPLES := $(notdir $(wildcard data/*))
+RESULTS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).pdf))
 
 .PHONY: all
 all: $(RESULTS)
