@@ -18,12 +18,16 @@ TYPESETTERS = xelatex typst sile
 
 # Work around Typst not supporting FONTCONFIG_FILE
 # https://github.com/typst/typst/issues/100
+ifneq ($(FONTCONFIG_FILE),)
 LIBERTINUSDIR := $(shell $(XQ) -r '.fontconfig.dir[] | select(type == "string")' ${FONTCONFIG_FILE} | grep libertinus)/share/fonts/opentype
+TYPST_ARGS += --font-path $(LIBERTINUSDIR)
+else
+TYPST_ARGS =
+endif
 
 XELATEX_ARGS  = -interaction=batchmode -halt-on-error
 XELATEX_ARGS += -jobname $(*F)-xelatex $<
 
-TYPST_ARGS  = --font-path $(LIBERTINUSDIR)
 TYPST_ARGS += compile $< $@
 
 SILE_ARGS = -o $@ $<
