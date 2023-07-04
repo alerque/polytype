@@ -6,6 +6,7 @@ SHELL = zsh
 .SECONDEXPANSION:
 .DELETE_ON_ERROR:
 
+GIT = git
 SILE = sile
 TERA = tera
 TOMLQ = tomlq
@@ -26,7 +27,7 @@ TYPST_ARGS =
 endif
 
 XELATEX_ARGS  = -interaction=batchmode -halt-on-error
-XELATEX_ARGS += -jobname $(*F)-xelatex $<
+XELATEX_ARGS += -jobname $*-xelatex $<
 
 TYPST_ARGS += compile $< $@
 
@@ -35,22 +36,22 @@ SILE_ARGS = -o $@ $<
 .PHONY: default
 default: public
 
-SAMPLES := $(shell $(TOMLQ) -r '.[][].id' data/samples.toml)
-RESULTS := $(foreach E,$(SAMPLES),$(foreach T,$(TYPESETTERS),$(E)-$(T).pdf))
+SAMPLES := $(basename $(notdir $(shell $(GIT) ls-files 'content/*.md' | xargs grep '^typesetters =' -l)))
+RESULTS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),content/$(S)-$(T).pdf))
 
 .PHONY: all
 all: $(RESULTS)
 
-%-xelatex.pdf: samples/%/xelatex.tex
+%-xelatex.pdf: %/xelatex.tex
 	$(XELATEX) $(XELATEX_ARGS)
 
-%-typst.pdf: samples/%/typst.typ
+%-typst.pdf: %/typst.typ
 	$(TYPST) $(TYPST_ARGS)
 
-%-sile.pdf: samples/%/sile.sil
+%-sile.pdf: %/sile.sil
 	$(SILE) $(SILE_ARGS)
 
-%-sile.pdf: samples/%/sile.xml
+%-sile.pdf: %/sile.xml
 	$(SILE) $(SILE_ARGS)
 
 .PHONY: static

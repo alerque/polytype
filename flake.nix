@@ -32,6 +32,7 @@
       {
         devShells.default = mkShell {
           buildInputs = [
+            git
             gnumake
             libertinus
             teracli.defaultPackage.${system}
