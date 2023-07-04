@@ -6,41 +6,52 @@ SHELL = zsh
 .SECONDEXPANSION:
 .DELETE_ON_ERROR:
 
+GIT = git
+SILE = sile
+TERA = tera
+TOMLQ = tomlq
+TYPST = typst
+XELATEX = xelatex
+XQ = xq
+ZOLA = zola
+
 TYPESETTERS = xelatex typst sile
 
 # Work around Typst not supporting FONTCONFIG_FILE
 # https://github.com/typst/typst/issues/100
-LIBERTINUSDIR := $(shell xq -r '.fontconfig.dir[] | select(type == "string")' ${FONTCONFIG_FILE} | grep libertinus)/share/fonts/opentype
+ifneq ($(FONTCONFIG_FILE),)
+LIBERTINUSDIR := $(shell $(XQ) -r '.fontconfig.dir[] | select(type == "string")' ${FONTCONFIG_FILE} | grep libertinus)/share/fonts/opentype
+TYPST_ARGS += --font-path $(LIBERTINUSDIR)
+else
+TYPST_ARGS =
+endif
 
-XELATEX = xelatex
-XELATEX_ARGS = -interaction=batchmode -halt-on-error -jobname $(*F)-xelatex $<
+XELATEX_ARGS  = -interaction=batchmode -halt-on-error
+XELATEX_ARGS += -jobname $*-xelatex $<
 
-TYPST = typst
-TYPST_ARGS = --font-path $(LIBERTINUSDIR)
 TYPST_ARGS += compile $< $@
 
-SILE = sile
-SILE_ARGS = -q -o $@ $<
+SILE_ARGS = -o $@ $<
 
 .PHONY: default
 default: public
 
-SAMPLES := $(shell tomlq -r '.[][].id' data/samples.toml)
-RESULTS := $(foreach E,$(SAMPLES),$(foreach T,$(TYPESETTERS),$(E)-$(T).pdf))
+SAMPLES := $(notdir $(wildcard data/*))
+RESULTS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).pdf))
 
 .PHONY: all
 all: $(RESULTS)
 
-%-xelatex.pdf: samples/%/xelatex.tex
+%-xelatex.pdf: %/xelatex.tex
 	$(XELATEX) $(XELATEX_ARGS)
 
-%-typst.pdf: samples/%/typst.typ
+%-typst.pdf: %/typst.typ
 	$(TYPST) $(TYPST_ARGS)
 
-%-sile.pdf: samples/%/sile.sil
+%-sile.pdf: %/sile.sil
 	$(SILE) $(SILE_ARGS)
 
-%-sile.pdf: samples/%/sile.xml
+%-sile.pdf: %/sile.xml
 	$(SILE) $(SILE_ARGS)
 
 .PHONY: static
@@ -53,7 +64,7 @@ public: zola
 
 .PHONY: zola
 zola: static
-	zola build
+	$(ZOLA) build
 
 public/CNAME:
 	echo polytype.dev > $@

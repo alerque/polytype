@@ -12,9 +12,10 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
+    teracli.url = "github:alerque/teracli/nix-flake";
   };
 
-  outputs = { self, nixpkgs, flake-utils, flake-compat, gitignore }:
+  outputs = { self, nixpkgs, flake-utils, flake-compat, gitignore, teracli }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
@@ -31,8 +32,10 @@
       {
         devShells.default = mkShell {
           buildInputs = [
+            git
             gnumake
             libertinus
+            teracli.defaultPackage.${system}
             texlive.combined.scheme-full
             typst
             sile
