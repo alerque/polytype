@@ -19,6 +19,7 @@ XQ = xq
 ZOLA = zola
 
 TYPESETTERS = xelatex typst sile
+BASE_URL = /
 
 # Work around Typst not supporting FONTCONFIG_FILE
 # https://github.com/typst/typst/issues/100
@@ -93,7 +94,7 @@ public: zola
 
 .PHONY: zola
 zola: static
-	$(ZOLA) build
+	$(ZOLA) build -u $(BASE_URL)
 
 public/CNAME:
 	echo polytype.dev > $@

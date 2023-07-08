@@ -32,7 +32,7 @@ jobs:
 
       - name: Generate static site pages
         run: |
-          nix-shell --pure --run 'make public'
+          nix-shell --pure --run 'make public BASE_URL="/${{ github.event.repository.name }}/"'
 
       # - name: Inject CNAME
       #   if: ${{ github.repository == 'alerque/polytype' }}
