@@ -36,6 +36,7 @@
             gnumake
             imagemagick
             libertinus
+            nodejs
             teracli.defaultPackage.${system}
             texlive.combined.scheme-full
             typst

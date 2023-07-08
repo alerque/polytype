@@ -1,0 +1,9 @@
+{
+  "name": "polytype",
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "bulma": "^0.9.3",
+    "postcss-cli": "^10.1.0",
+    "sass": "^1.51.0"
+  }
+}

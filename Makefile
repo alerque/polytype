@@ -8,6 +8,8 @@ SHELL = zsh
 
 GIT = git
 MAGICK = magick
+NPM = npm
+NPX = npx
 SILE = sile
 TERA = tera
 TOMLQ = tomlq
@@ -56,6 +58,9 @@ endef
 .PHONY: all
 all: $(PDFS)
 
+node_modules:
+	$(NPM) install
+
 %-xelatex.pdf %-xelatex.toml: %/xelatex.tex
 	$(call make_manifest,$(XELATEX) $(XELATEX_ARGS))
 
@@ -71,9 +76,13 @@ all: $(PDFS)
 %.avif: %.pdf
 	$(MAGICK) convert $< $@
 
+static/%.css: sass/%.scss | node_modules
+	$(NPX) sass --no-source-map $<:$@
+	$(NPX) postcss -u autoprefixer --no-map $@ -o $@
+
 .PHONY: static
-static: $(PDFS) $(PREVIEWS)
-	install -Dm0644 -t static $^
+static: $(PDFS) $(PREVIEWS) static/main.css
+	install -Dm0644 -t static $(filter-out static/%,$^)
 	for m in $(MANIFESTS); do
 		tomlq -r '[.src, .demosrc] | @tsv' $$m | read src demosrc
 		install -Dm0644 $$src static/$$demosrc

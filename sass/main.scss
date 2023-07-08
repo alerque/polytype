@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+$sepia: #ffeacb;
+$body-background-color: $sepia;
+
+@import "../node_modules/bulma/bulma";

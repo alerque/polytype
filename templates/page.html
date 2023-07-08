@@ -2,24 +2,38 @@
 
 {% block content %}
 
-<h2>{{ page.title }}</h2>
+<h2 class="title is-2">{{ page.title }}</h2>
 
 {{ page.content | safe }}
 
 {% for typesetter in page.extra.typesetters %}
 {% set manifest = load_data(path="/data/" ~ page.slug ~ "-" ~ typesetter ~ ".toml") %}
 
-<h3>{{ typesetter }}</h3>
+<h3 class="title is-3">{{ typesetter }}</h3>
 
-Download:
-( <a download href="{{ manifest.demosrc }}">source</a>
-| <a download href="{{ manifest.demoout }}">pdf</a>
-)
+<div class="columns">
+  <div class="card column is-one-third">
+    <div class="card-image">
+      <img src="{{ manifest.preview }}" />
+    </div>
+  </div>
+  <div class="column">
 
-<img src="{{ manifest.preview }}" />
+    <p>
+      Download:
+      ( <a download href="{{ manifest.demosrc }}">source</a>
+      | <a download href="{{ manifest.demoout }}">pdf</a>
+      )
+    </p>
 
-{% set source = load_data(path=manifest.src) %}
-<textarea>{{ source | safe }}</textarea>
+    <h4 class="title is-4">Input document</h4>
+    {% set source = load_data(path=manifest.src) %}
+    <pre>{{ source | safe }}</pre>
+
+    <h4 class="title is-4">Render command</h4>
+    <code>{{ manifest.cmd }}</code>
+  </div>
+</div>
 
 {% endfor %}
 
