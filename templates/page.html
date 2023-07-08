@@ -7,10 +7,14 @@
 {{ page.content | safe }}
 
 {% for typesetter in page.extra.typesetters %}
+{% set manifest = load_data(path="/data/" ~ page.slug ~ "-" ~ typesetter ~ ".toml") %}
 
 <h3>{{ typesetter }}</h3>
 
-(<a href="{{ page.slug }}-{{ typesetter }}.pdf">pdf</a>)
+Download:
+( <a download href="{{ manifest.demosrc }}">source</a>
+| <a download href="{{ manifest.demoout }}">pdf</a>
+)
 
 {% endfor %}
 

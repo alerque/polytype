@@ -66,15 +66,15 @@ all: $(RESULTS)
 	$(call make_manifest,$(SILE) $(SILE_ARGS))
 
 .PHONY: static
-static: $(RESULTS) static_sources
-	mkdir -p $@
-	cp $^ static
+static: $(RESULTS) | static_sources
+	install -Dm0644 -t static $^
 
 .PHONY: static_sources
 static_sources: $(RESULTS)
+	mkdir -p static
 	for m in $(MANIFESTS); do
-		tomlq -r '.src, .demosrc' $$m | read src demosrc
-		echo cp {} static
+		tomlq -r '[.src, .demosrc] | @tsv' $$m | read src demosrc
+		install -Dm0644 $$src static/$$demosrc
 	done
 
 .PHONY: public
