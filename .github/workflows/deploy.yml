@@ -21,9 +21,6 @@ jobs:
 
       - name: Cache Nix dependencies
         uses: DeterminateSystems/magic-nix-cache-action@v2
-        # cache things from cache.nixos.org by changing the default upstream
-        with:
-          upstream-cache: https://example.com
 
       - name: Install project dependencies
         run: |
