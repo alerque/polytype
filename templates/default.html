@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>Polytype – {{ page.title | default(value="Home") }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="main.css">
     {% block rss %}
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path=config.feed_filename, trailing_slash=false) }}">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ config.feed_filename }}">
     {% endblock %}
   </head>
   <body>
@@ -20,7 +20,7 @@
         <ul>
           {% if paginator %}
           {% for page in paginator.pages %}
-          <li><a href="/{{ page.slug }}">{{ page.title }}</a></li>
+          <li><a href="{{ page.slug }}">{{ page.title }}</a></li>
           {% endfor %}
           {% endif %}
         </ul>
