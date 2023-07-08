@@ -16,6 +16,8 @@ Download:
 | <a download href="{{ manifest.demoout }}">pdf</a>
 )
 
+<img src="{{ manifest.preview }}" />
+
 {% set source = load_data(path=manifest.src) %}
 <textarea>{{ source | safe }}</textarea>
 

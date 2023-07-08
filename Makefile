@@ -7,6 +7,7 @@ SHELL = zsh
 .DELETE_ON_ERROR:
 
 GIT = git
+MAGICK = magick
 SILE = sile
 TERA = tera
 TOMLQ = tomlq
@@ -38,20 +39,22 @@ default: public
 
 SAMPLES := $(notdir $(shell echo data/*(/)))
 MANIFESTS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).toml))
-RESULTS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).pdf))
+PDFS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).pdf))
+PREVIEWS := $(addsuffix .avif,$(basename $(PDFS)))
 
 define make_manifest ?=
 	cat <<- EOF > $(basename $@).toml
 		src = "$<"
 		demosrc = "$(notdir $(basename $@)$(suffix $<))"
 		demoout = "$(notdir $@)"
+		preview = "$(notdir $(basename $@)).avif"
 		cmd = "$(subst $<,$(notdir $(basename $@)$(suffix $<)),$(subst $@,$(notdir $@),$1))"
 	EOF
 	exec $1
 endef
 
 .PHONY: all
-all: $(RESULTS)
+all: $(PDFS)
 
 %-xelatex.pdf %-xelatex.toml: %/xelatex.tex
 	$(call make_manifest,$(XELATEX) $(XELATEX_ARGS))
@@ -65,13 +68,12 @@ all: $(RESULTS)
 %-sile.pdf %-sile.toml: %/sile.xml
 	$(call make_manifest,$(SILE) $(SILE_ARGS))
 
-.PHONY: static
-static: $(RESULTS) | static_sources
-	install -Dm0644 -t static $^
+%.avif: %.pdf
+	$(MAGICK) convert $< $@
 
-.PHONY: static_sources
-static_sources: $(RESULTS)
-	mkdir -p static
+.PHONY: static
+static: $(PDFS) $(PREVIEWS)
+	install -Dm0644 -t static $^
 	for m in $(MANIFESTS); do
 		tomlq -r '[.src, .demosrc] | @tsv' $$m | read src demosrc
 		install -Dm0644 $$src static/$$demosrc

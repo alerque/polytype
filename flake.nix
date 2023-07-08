@@ -34,6 +34,7 @@
           buildInputs = [
             git
             gnumake
+            imagemagick
             libertinus
             teracli.defaultPackage.${system}
             texlive.combined.scheme-full
