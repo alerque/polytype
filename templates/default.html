@@ -12,18 +12,15 @@
   <body>
     <!--
     <pre>{{ __tera_context }}</pre>
-    <hr />
     -->
-    <h1 class="title is-1"><a href="{{ config.base_url }}">Polytype</a></h1>
-    <section class="section">
-      <div class="container">
-        <ul>
-          {% if paginator %}
-          {% for page in paginator.pages %}
-          <li><a href="{{ get_url(path=page.slug) }}">{{ page.title }}</a></li>
-          {% endfor %}
-          {% endif %}
-        </ul>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <h1 class="title is-1 navbar-brand"><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
+    </nav>
+    <section class="section columns">
+      <aside class="menu column is-narrow">
+        {% include "menu.html" %}
+      </aside>
+      <div class="container column">
         {% block content -%}
         {%- endblock %}
       </div>

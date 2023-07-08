@@ -1,0 +1,18 @@
+{% if section %}
+{%   set slug = "" %}
+{% elif page %}
+{%   set slug = page.slug %}
+{% endif %}
+<aside class="menu">
+  <p class="menu-label">
+    Samples
+  </p>
+  <ul class="menu-list">
+    {% set samples = get_section(path="_index.md") %}
+    {% for sample in samples.pages %}
+    <li{% if sample.slug == slug %} class="is-active"{% endif %}>
+      <a href="{{ get_url(path=sample.slug) }}">{{ sample.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</aside>

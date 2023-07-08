@@ -3,7 +3,7 @@ base_url = "/"
 title = "Polytype"
 subtitel = "a Rosetta stone for modern typesetting engines"
 
-compile_sass = true
+compile_sass = false
 build_search_index = false
 
 generate_feed = true
