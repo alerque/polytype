@@ -36,28 +36,46 @@ SILE_ARGS = -o $@ $<
 .PHONY: default
 default: public
 
-SAMPLES := $(notdir $(wildcard data/*))
+SAMPLES := $(notdir $(shell echo data/*(/)))
+MANIFESTS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).toml))
 RESULTS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).pdf))
+
+define make_manifest ?=
+	cat <<- EOF > $(basename $@).toml
+		src = "$<"
+		demosrc = "$(notdir $(basename $@)$(suffix $<))"
+		demoout = "$(notdir $@)"
+		cmd = "$(subst $<,$(notdir $(basename $@)$(suffix $<)),$(subst $@,$(notdir $@),$1))"
+	EOF
+	exec $1
+endef
 
 .PHONY: all
 all: $(RESULTS)
 
-%-xelatex.pdf: %/xelatex.tex
-	$(XELATEX) $(XELATEX_ARGS)
+%-xelatex.pdf %-xelatex.toml: %/xelatex.tex
+	$(call make_manifest,$(XELATEX) $(XELATEX_ARGS))
 
-%-typst.pdf: %/typst.typ
-	$(TYPST) $(TYPST_ARGS)
+%-typst.pdf %-typst.toml: %/typst.typ
+	$(call make_manifest,$(TYPST) $(TYPST_ARGS))
 
-%-sile.pdf: %/sile.sil
-	$(SILE) $(SILE_ARGS)
+%-sile.pdf %-sile.toml: %/sile.sil
+	$(call make_manifest,$(SILE) $(SILE_ARGS))
 
-%-sile.pdf: %/sile.xml
-	$(SILE) $(SILE_ARGS)
+%-sile.pdf %-sile.toml: %/sile.xml
+	$(call make_manifest,$(SILE) $(SILE_ARGS))
 
 .PHONY: static
-static: $(foreach R,$(RESULTS),$(R))
+static: $(RESULTS) static_sources
 	mkdir -p $@
 	cp $^ static
+
+.PHONY: static_sources
+static_sources: $(RESULTS)
+	for m in $(MANIFESTS); do
+		tomlq -r '.src, .demosrc' $$m | read src demosrc
+		echo cp {} static
+	done
 
 .PHONY: public
 public: zola
