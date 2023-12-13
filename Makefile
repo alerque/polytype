@@ -6,17 +6,17 @@ SHELL = zsh
 .SECONDEXPANSION:
 .DELETE_ON_ERROR:
 
-GIT = git
-MAGICK = magick
-NPM = npm
-NPX = npx
-SILE = sile
-TERA = tera
-TOMLQ = tomlq
-TYPST = typst
-XELATEX = xelatex
-XQ = xq
-ZOLA = zola
+GIT ?= git
+MAGICK ?= magick
+NPM ?= npm
+NPX ?= npx
+SILE ?= sile
+TERA ?= tera
+TOMLQ ?= tomlq
+TYPST ?= typst
+XELATEX ?= xelatex
+XQ ?= xq
+ZOLA ?= zola
 
 TYPESETTERS = xelatex typst sile
 BASE_URL = /
