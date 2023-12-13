@@ -1,6 +1,7 @@
 \begin[papersize=a7]{document}
 \nofolios
 \use[module=packages.math]
+\set[parameter=math.font.size,value=30]
 
 \set[parameter=math.font.family,value=STIX Two Math]
 \begin[mode=display]{math}

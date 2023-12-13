@@ -1,4 +1,5 @@
 #set page("a7")
+#set text(size: 30pt)
 
 #[
     #show math.equation: set text(font: "STIX Two Math")
