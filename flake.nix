@@ -12,7 +12,7 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
-    teracli.url = "github:alerque/teracli/nix-flake";
+    teracli.url = "github:chevdor/tera-cli";
   };
 
   outputs = { self, nixpkgs, flake-utils, flake-compat, gitignore, teracli }:
