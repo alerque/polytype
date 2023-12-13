@@ -1,0 +1,20 @@
+\begin[papersize=a7]{document}
+\use[module=packages.math]
+
+\set[parameter=math.font.family,value=STIX Two Math]
+\begin[mode=display]{math}
+	\table[columnalign=right left]{
+		f(x) &= x^2 + 1 \\
+		f\prime(x) &= 2x
+	}
+\end{math}
+
+\set[parameter=math.font.family,value=Libertinus Math]
+\begin[mode=display]{math}
+	\table[columnalign=right left]{
+		f(x) &= x^2 + 1 \\
+		f\prime(x) &= 2x
+	}
+\end{math}
+
+\end{document}
