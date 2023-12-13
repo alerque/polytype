@@ -22,7 +22,11 @@
           inherit system;
         };
         fontsConf = pkgs.makeFontsConf {
-          fontDirectories = [ pkgs.libertinus ];
+          fontDirectories = [
+            pkgs.gentium
+            pkgs.libertinus
+            pkgs.stix-two
+          ];
         };
         inherit (gitignore.lib) gitignoreSource;
         polytype = rec {
@@ -34,6 +38,7 @@
           buildInputs = [
             git
             gnumake
+            gentium
             imagemagick
             libertinus
             nodejs
@@ -41,6 +46,7 @@
             texlive.combined.scheme-full
             typst
             sile
+            stix-two
             yq
             zola
             zsh
