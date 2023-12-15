@@ -51,7 +51,7 @@ endef
 all: $(PDFS)
 
 node_modules:
-	$(NPM) install
+	$(NPM) ci
 
 %-xelatex.pdf %-xelatex.toml: %/xelatex.tex
 	$(call make_manifest,$(XELATEX) $(XELATEX_ARGS))
