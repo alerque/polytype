@@ -36,6 +36,7 @@
       {
         devShells.default = mkShell {
           buildInputs = [
+            cacert
             gentium
             ghostscript
             git
