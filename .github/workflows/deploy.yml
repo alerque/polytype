@@ -31,10 +31,10 @@ jobs:
         run: |
           nix-shell --pure --run 'make public BASE_URL="/${{ github.event.repository.name }}/"'
 
-      # - name: Inject CNAME
-      #   if: ${{ github.repository == 'alerque/polytype' }}
-      #   run: |
-      #     nix-shell --pure --run 'make public/CNAME'
+      - name: Inject CNAME
+        if: ${{ github.repository == 'alerque/polytype' }}
+        run: |
+          nix-shell --pure --run 'make public/CNAME'
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
