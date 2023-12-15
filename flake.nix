@@ -36,17 +36,18 @@
       {
         devShells.default = mkShell {
           buildInputs = [
+            gentium
+            ghostscript
             git
             gnumake
-            gentium
             imagemagick
             libertinus
             nodejs
+            sile
+            stix-two
             teracli.defaultPackage.${system}
             texlive.combined.scheme-full
             typst
-            sile
-            stix-two
             yq
             zola
             zsh
