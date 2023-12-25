@@ -6,3 +6,9 @@ $sepia: #ffeacb;
 $body-background-color: $sepia;
 
 @import "../node_modules/bulma/bulma";
+
+h2 {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin: 1em 0 .2em 0;
+}
