@@ -10,16 +10,20 @@ GIT ?= git
 MAGICK ?= magick
 NPM ?= npm
 NPX ?= npx
+SED ?= sed
 SILE ?= sile
 TERA ?= tera
 TOMLQ ?= tomlq
 TYPST ?= typst
+WEASYPRINT ?= weasyprint
 XELATEX ?= xelatex
 XQ ?= xq
 ZOLA ?= zola
 
-TYPESETTERS = xelatex typst sile
+TYPESETTERS = sile typst weasyprint xelatex
 BASE_URL = /
+
+WEASYPRINT_ARGS = $< $@
 
 XELATEX_ARGS  = -interaction=batchmode -halt-on-error
 XELATEX_ARGS += -jobname $*-xelatex $<
@@ -31,9 +35,11 @@ SILE_ARGS = -o $@ $<
 .PHONY: default
 default: public
 
+get_typesetters = $(shell $(SED) '0,/^\+\+\+$$/d;/^\+\+\+$$/,$$d' $1 | $(TOMLQ) -r '.extra.typesetters[]' | xargs)
+
 SAMPLES := $(notdir $(shell echo data/*(/)))
-MANIFESTS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).toml))
-PDFS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).pdf))
+MANIFESTS := $(foreach S,$(SAMPLES),$(foreach T,$(call get_typesetters,content/$(S).md),data/$(S)-$(T).toml))
+PDFS := $(addsuffix .pdf,$(basename $(MANIFESTS)))
 PREVIEWS := $(addsuffix .avif,$(basename $(PDFS)))
 
 define make_manifest ?=
@@ -53,24 +59,27 @@ all: $(PDFS)
 node_modules:
 	$(NPM) ci
 
-%-xelatex.pdf %-xelatex.toml: %/xelatex.tex
-	$(call make_manifest,$(XELATEX) $(XELATEX_ARGS))
-
-%-typst.pdf %-typst.toml: %/typst.typ
-	$(call make_manifest,$(TYPST) $(TYPST_ARGS))
-
 %-sile.pdf %-sile.toml: %/sile.sil
 	$(call make_manifest,$(SILE) $(SILE_ARGS))
 
 %-sile.pdf %-sile.toml: %/sile.xml
 	$(call make_manifest,$(SILE) $(SILE_ARGS))
 
-%.avif: %.pdf
-	$(MAGICK) convert $< $@
+%-typst.pdf %-typst.toml: %/typst.typ
+	$(call make_manifest,$(TYPST) $(TYPST_ARGS))
+
+%-weasyprint.pdf %-weasyprint.html: %/weasyprint.html
+	$(call make_manifest,$(WEASYPRINT) $(WEASYPRINT_ARGS))
+
+%-xelatex.pdf %-xelatex.toml: %/xelatex.tex
+	$(call make_manifest,$(XELATEX) $(XELATEX_ARGS))
 
 static/%.css: sass/%.scss | node_modules
 	$(NPX) sass --no-source-map $<:$@
 	$(NPX) postcss -u autoprefixer --no-map $@ -o $@
+
+%.avif: %.pdf
+	$(MAGICK) convert $< $@
 
 .PHONY: static
 static: $(PDFS) $(PREVIEWS) static/main.css
