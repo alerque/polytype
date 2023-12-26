@@ -10,6 +10,7 @@ GIT ?= git
 MAGICK ?= magick
 NPM ?= npm
 NPX ?= npx
+SED ?= sed
 SILE ?= sile
 TERA ?= tera
 TOMLQ ?= tomlq
@@ -34,9 +35,11 @@ SILE_ARGS = -o $@ $<
 .PHONY: default
 default: public
 
+get_typesetters = $(shell $(SED) '0,/^\+\+\+$$/d;/^\+\+\+$$/,$$d' $1 | $(TOMLQ) -r '.extra.typesetters[]' | xargs)
+
 SAMPLES := $(notdir $(shell echo data/*(/)))
-MANIFESTS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).toml))
-PDFS := $(foreach S,$(SAMPLES),$(foreach T,$(TYPESETTERS),data/$(S)-$(T).pdf))
+MANIFESTS := $(foreach S,$(SAMPLES),$(foreach T,$(call get_typesetters,content/$(S).md),data/$(S)-$(T).toml))
+PDFS := $(addsuffix .pdf,$(basename $(MANIFESTS)))
 PREVIEWS := $(addsuffix .avif,$(basename $(PDFS)))
 
 define make_manifest ?=
