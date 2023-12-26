@@ -11,6 +11,12 @@ p, pre {
 	margin-bottom: 1em;
 }
 
+// Drop this hack when Zola 0.18 lands in Nix and we restore the regex that
+// removes this from source...
+section h1 {
+	display: none;
+}
+
 h2 {
 	font-size: 1.2em;
 	font-weight: bold;
