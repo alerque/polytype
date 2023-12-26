@@ -1,7 +1,7 @@
 +++
 title = "Hello World!"
 description = "Your most basic greeting."
-extra.typesetters = [ "typst", "sile", "xelatex" ]
+extra.typesetters = [ "sile", "typst", "weasyprint", "xelatex" ]
 +++
 
 Just the simplest way to get a phrase onto a numbered page.
