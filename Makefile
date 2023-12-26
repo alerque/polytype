@@ -21,7 +21,6 @@ XELATEX ?= xelatex
 XQ ?= xq
 ZOLA ?= zola
 
-TYPESETTERS = pagedjs sile typst weasyprint xelatex
 BASE_URL = /
 
 PAGEDJS_ARGS = -i $< -o $@
