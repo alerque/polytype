@@ -83,6 +83,10 @@ static: $(PDFS) $(PREVIEWS) static/main.css
 .PHONY: public
 public: zola
 
+.PHONY: serve
+serve: public
+	zola serve
+
 .PHONY: zola
 zola: static
 	$(ZOLA) build -u $(BASE_URL)

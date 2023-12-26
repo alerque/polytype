@@ -34,11 +34,15 @@ Once you have a working `nix` executable, building the examples can be done with
 $ nix-shell --pure --run 'make all'
 ```
 
-Generating the static website sources can be done with:
+To generate the static version of the website and serve it locally for testing, try:
 
 ```console
-$ nix-shell --pure --run 'make public'
+$ nix-shell --pure --run 'make serve'
 ```
+
+This will print out a localhost address for you to browse to and stay running serving the current version of the site.
+Some resources will automatically update and refresh while the sever is running.
+For the rendered examples running `make all` in another terminal should update the images and the site will refresh.
 
   [gh]: https://github.com/alerque/polytype
   [rosettacode]: https://rosettacode.org/wiki/Rosetta_Code
