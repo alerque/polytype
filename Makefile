@@ -10,6 +10,7 @@ GIT ?= git
 MAGICK ?= magick
 NPM ?= npm
 NPX ?= npx
+PAGEDJS ?= $(NPX) pagedjs-cli
 SED ?= sed
 SILE ?= sile
 TERA ?= tera
@@ -20,17 +21,19 @@ XELATEX ?= xelatex
 XQ ?= xq
 ZOLA ?= zola
 
-TYPESETTERS = sile typst weasyprint xelatex
+TYPESETTERS = pagedjs sile typst weasyprint xelatex
 BASE_URL = /
+
+PAGEDJS_ARGS = -i $< -o $@
+
+SILE_ARGS = -o $@ $<
+
+TYPST_ARGS = compile $< $@
 
 WEASYPRINT_ARGS = $< $@
 
 XELATEX_ARGS  = -interaction=batchmode -halt-on-error
 XELATEX_ARGS += -jobname $*-xelatex $<
-
-TYPST_ARGS += compile $< $@
-
-SILE_ARGS = -o $@ $<
 
 .PHONY: default
 default: public
@@ -48,7 +51,7 @@ define make_manifest ?=
 		demosrc = "$(notdir $(basename $@)$(suffix $<))"
 		demoout = "$(notdir $@)"
 		preview = "$(notdir $(basename $@)).avif"
-		cmd = "$(subst $<,$(notdir $(basename $@)$(suffix $<)),$(subst $@,$(notdir $@),$1))"
+		cmd = "$(subst $(NPX) ,,$(subst $<,$(notdir $(basename $@)$(suffix $<)),$(subst $@,$(notdir $@),$1)))"
 	EOF
 	exec $1
 endef
@@ -58,6 +61,9 @@ all: $(PDFS)
 
 node_modules:
 	$(NPM) ci
+
+%-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
+	$(call make_manifest,$(PAGEDJS) $(PAGEDJS_ARGS))
 
 %-sile.pdf %-sile.toml: %/sile.sil
 	$(call make_manifest,$(SILE) $(SILE_ARGS))
