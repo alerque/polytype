@@ -7,6 +7,7 @@ SHELL = zsh
 .DELETE_ON_ERROR:
 
 GIT ?= git
+GROFF ?= groff
 MAGICK ?= magick
 NPM ?= npm
 NPX ?= npx
@@ -23,6 +24,7 @@ ZOLA ?= zola
 
 BASE_URL = /
 
+GROFF_ARGS = -ms -T pdf $< > $@
 PAGEDJS_ARGS = -i $< -o $@
 
 SILE_ARGS = -o $@ $<
@@ -60,6 +62,9 @@ all: $(PDFS)
 
 node_modules:
 	$(NPM) ci
+
+%-groff.pdf %-groff.toml: %/groff.ms
+	$(call make_manifest,$(GROFF) $(GROFF_ARGS))
 
 %-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
 	$(call make_manifest,$(PAGEDJS) $(PAGEDJS_ARGS))

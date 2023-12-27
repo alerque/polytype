@@ -41,6 +41,7 @@
             ghostscript
             git
             gnumake
+            groff
             imagemagick
             libertinus
             nodejs
