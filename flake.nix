@@ -44,6 +44,7 @@
             imagemagick
             libertinus
             nodejs
+            satysfi
             sile
             stix-two
             teracli.defaultPackage.${system}

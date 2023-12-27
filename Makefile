@@ -11,6 +11,7 @@ MAGICK ?= magick
 NPM ?= npm
 NPX ?= npx
 PAGEDJS ?= $(NPX) pagedjs-cli
+SATYSFI ?= satysfi
 SED ?= sed
 SILE ?= sile
 TERA ?= tera
@@ -24,6 +25,8 @@ ZOLA ?= zola
 BASE_URL = /
 
 PAGEDJS_ARGS = -i $< -o $@
+
+SATYSFI_ARGS = $< -o $@
 
 SILE_ARGS = -o $@ $<
 
@@ -63,6 +66,9 @@ node_modules:
 
 %-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
 	$(call make_manifest,$(PAGEDJS) $(PAGEDJS_ARGS))
+
+%-satysfi.pdf %-saty.toml: %/satysfi.saty
+	$(call make_manifest,$(SATYSFI) $(SATYSFI_ARGS))
 
 %-sile.pdf %-sile.toml: %/sile.sil
 	$(call make_manifest,$(SILE) $(SILE_ARGS))
