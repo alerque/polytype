@@ -40,6 +40,7 @@ XELATEX_ARGS += -jobname $*-xelatex $<
 default: public
 
 get_typesetters = $(shell $(SED) '0,/^\+\+\+$$/d;/^\+\+\+$$/,$$d' $1 | $(TOMLQ) -r '.extra.typesetters[]' | xargs)
+get_typesetter_args = $(shell $(SED) '0,/^\+\+\+$$/d;/^\+\+\+$$/,$$d' $1 | $(TOMLQ) -r '.extra.typesetter_args.$2 // empty')
 
 SAMPLES := $(notdir $(shell echo data/*(/)))
 MANIFESTS := $(foreach S,$(SAMPLES),$(foreach T,$(call get_typesetters,content/$(S).md),data/$(S)-$(T).toml))
@@ -63,26 +64,33 @@ all: $(PDFS)
 node_modules:
 	$(NPM) ci
 
+%-groff.pdf %-groff.toml: TYPESETTER_ARGS = $(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))
 %-groff.pdf %-groff.toml: %/groff.ms
-	$(call make_manifest,$(GROFF) $(GROFF_ARGS))
+	$(call make_manifest,$(GROFF) $(TYPESETTER_ARGS) $(GROFF_ARGS))
 
 %-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
-	$(call make_manifest,$(PAGEDJS) $(PAGEDJS_ARGS))
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	$(call make_manifest,$(PAGEDJS) $(TYPESETTER_ARGS)  $(PAGEDJS_ARGS))
 
 %-sile.pdf %-sile.toml: %/sile.sil
-	$(call make_manifest,$(SILE) $(SILE_ARGS))
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	$(call make_manifest,$(SILE) $(TYPESETTER_ARGS) $(SILE_ARGS))
 
 %-sile.pdf %-sile.toml: %/sile.xml
-	$(call make_manifest,$(SILE) $(SILE_ARGS))
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	$(call make_manifest,$(SILE) $(TYPESETTER_ARGS) $(SILE_ARGS))
 
 %-typst.pdf %-typst.toml: %/typst.typ
-	$(call make_manifest,$(TYPST) $(TYPST_ARGS))
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	$(call make_manifest,$(TYPST) $(TYPESETTER_ARGS) $(TYPST_ARGS))
 
 %-weasyprint.pdf %-weasyprint.html: %/weasyprint.html
-	$(call make_manifest,$(WEASYPRINT) $(WEASYPRINT_ARGS))
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	$(call make_manifest,$(WEASYPRINT) $(TYPESETTER_ARGS) $(WEASYPRINT_ARGS))
 
 %-xelatex.pdf %-xelatex.toml: %/xelatex.tex
-	$(call make_manifest,$(XELATEX) $(XELATEX_ARGS))
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	$(call make_manifest,$(XELATEX) $(TYPESETTER_ARGS) $(XELATEX_ARGS))
 
 static/%.css: sass/%.scss | node_modules
 	$(NPX) sass --no-source-map $<:$@
