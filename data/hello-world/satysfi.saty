@@ -1,0 +1,10 @@
+@require: stdja
+
+document(|
+  title = {};
+  author = {};
+  show-title = false;
+  show-toc = false;
+|) '<
+  +p{Hello World}
+>
