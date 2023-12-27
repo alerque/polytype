@@ -13,6 +13,7 @@ NPX ?= npx
 PAGEDJS ?= $(NPX) pagedjs-cli
 SED ?= sed
 SILE ?= sile
+SPEEDATA ?= sp
 TERA ?= tera
 TOMLQ ?= tomlq
 TYPST ?= typst
@@ -26,6 +27,8 @@ BASE_URL = /
 PAGEDJS_ARGS = -i $< -o $@
 
 SILE_ARGS = -o $@ $<
+
+SPEEDATA_ARGS = --dummy --layout $< --jobname $*-speedata
 
 TYPST_ARGS = compile $< $@
 
@@ -69,6 +72,9 @@ node_modules:
 
 %-sile.pdf %-sile.toml: %/sile.xml
 	$(call make_manifest,$(SILE) $(SILE_ARGS))
+
+%-speedata.pdf %-speedata.toml: %/speedata.xml
+	$(call make_manifest,$(SPEEDATA) $(SPEEDATA_ARGS))
 
 %-typst.pdf %-typst.toml: %/typst.typ
 	$(call make_manifest,$(TYPST) $(TYPST_ARGS))
