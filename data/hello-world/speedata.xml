@@ -2,6 +2,22 @@
   xmlns="urn:speedata.de:2009/publisher/en"
   xmlns:sd="urn:speedata:2009/publisher/functions/en">
 
+  <Pagetype name="page" test="true()">
+    <AtPageShipout>
+      <PlaceObject column="1" row="{sd:number-of-rows() - 1}">
+        <Table stretch="max">
+          <Tr>
+            <Td align="center">
+              <Paragraph>
+                <Value select="sd:current-page()"/>
+              </Paragraph>
+            </Td>
+          </Tr>
+        </Table>
+      </PlaceObject>
+    </AtPageShipout>
+  </Pagetype>
+
   <Record element="data">
     <PlaceObject>
       <Textblock>
