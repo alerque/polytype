@@ -27,7 +27,7 @@
     </p>
 
     <h4 class="title is-4">Input document</h4>
-    {% set source = load_data(path=manifest.src) %}
+    {% set source = load_data(path=manifest.src, format="plain") %}
     <pre>{{ source }}</pre>
 
     <h4 class="title is-4">Render command</h4>
