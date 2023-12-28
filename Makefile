@@ -1,6 +1,8 @@
 SHELL = zsh
 .SHELLFLAGS += -e
 
+MAKEFLAGS += --jobs=$(shell nproc)
+
 .ONESHELL:
 .SECONDARY:
 .SECONDEXPANSION:
