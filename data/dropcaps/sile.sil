@@ -1,18 +1,16 @@
 \begin[papersize=a6]{document}
 \nofolios
-\script[src=packages/dropcaps]
-\set[parameter=document.parskip,value=4ex]
+\use[module=packages.dropcaps]
+\set[parameter=document.parskip,value=2bs]
 
 \dropcap[lines=2]{T}his paragraph has a pretty plain initial or drop cap.
 It uses the default document font.
 You didn’t really expect more detail with such a generic font choice, right?
 This may be exactly what you want, especially with modern typesetting styles which tend towards the minimalist.
 
-But sometimes life throws you lemons.
-
 \dropcap[lines=2,join=true]{\kern[width=-0.8en]“N}\font[features=+smcp]{ever say never,}” the saying goes.
-But someday your dropcap may include leading punctuation \em{and} a hanging indent.
+Someday your dropcap may include leading punctuation \em{and} a hanging indent.
 No worries.
-Insert a negative width kern as part of the initial content.
-This does double duty: the measured width of the initial will be smaller and we'll back up by that value at the outset.
+All you have to do is guess and fudge.
+
 \end{document}
