@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage[paperheight=148.5mm,paperwidth=105mm]{geometry}
+\pagenumbering{gobble}
+\usepackage{type1cm}
+\usepackage{lettrine}
+\begin{document}
+\lettrine{T}his paragraph has a pretty plain initial or drop cap.
+It uses the default document font.
+You didn’t really expect more detail with such a generic font choice, right?
+This may be exactly what you want, especially with modern typesetting styles which tend towards the minimalist.
+
+“Never say never,” the saying goes.
+But someday your dropcap may include leading punctuation {and} a hanging indent.
+No worries.
+Insert a negative width kern as part of the initial content.
+This does double duty: the measured width of the initial will be smaller and we'll back up by that value at the outset.
+\end{document}
