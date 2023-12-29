@@ -2,6 +2,8 @@
 \nofolios
 \use[module=packages.dropcaps]
 \set[parameter=document.parskip,value=2bs]
+\set[parameter=document.lskip,value=5en]
+\set[parameter=document.rskip,value=5en]
 
 \dropcap[lines=2]{T}his paragraph has a pretty plain initial or drop cap.
 It uses the default document font.
