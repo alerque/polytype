@@ -24,7 +24,7 @@ ZOLA ?= zola
 
 BASE_URL = /
 
-GROFF_ARGS = -ms -T pdf $< > $@
+GROFF_ARGS = -T pdf $< > $@
 PAGEDJS_ARGS = -i $< -o $@
 
 SILE_ARGS = -o $@ $<
@@ -65,8 +65,15 @@ node_modules:
 	$(NPM) ci
 
 %-groff.pdf %-groff.toml: TYPESETTER_ARGS = $(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))
-%-groff.pdf %-groff.toml: %/groff.ms
+
+%-groff.pdf %-groff.toml: %/groff.groff
 	$(call make_manifest,$(GROFF) $(TYPESETTER_ARGS) $(GROFF_ARGS))
+
+%-groff.pdf %-groff.toml: %/groff.ms
+	$(call make_manifest,$(GROFF) -ms $(TYPESETTER_ARGS) $(GROFF_ARGS))
+
+%-groff.pdf %-groff.toml: %/groff.mom
+	$(call make_manifest,$(GROFF) -mom $(TYPESETTER_ARGS) $(GROFF_ARGS))
 
 %-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
 	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
