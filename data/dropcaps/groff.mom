@@ -1,19 +1,30 @@
-.nr HM 1cm
-.nr PO 1cm
-.nr LL 5.4cm
-.nr PI 1cm
-.PP
-This paragraph has a pretty plain initial or drop cap.
+.PRINTSTYLE TYPESET
+.PAGEWIDTH 297.675p
+.PAGELENGTH 419.58p
+.L_MARGIN 0.5i
+.R_MARGIN 0.5i
+.DROPCAP T 2
+his paragraph has a pretty plain initial or drop cap.
 It uses the default document font.
-You didn’t really expect more detail with such a generic font choice, right?
+You didn't really expect more detail with such a generic font choice, right?
 This may be exactly what you want, especially with modern typesetting styles which tend towards the minimalist.
 
-“Never say never,” the saying goes.
-Someday your dropcap may include leading punctuation \em{and} a hanging indent.
+.DROPCAP \*[FWD -16p]``N 2
+.SMALLCAPS
+ever say never\c
+.SMALLCAPS OFF
+,'' the saying goes.
+Someday your dropcap may include leading punctuation
+.FT I
+and
+.FT R
+a hanging indent.
 No worries.
 All you have to do is guess and fudge.
 
-Another paragraph shows off a different line count.
+.DROPCAP_GUTTER 10p
+.DROPCAP A 3
+\*[FWD -10p]nother paragraph shows off a different line count.
 Also it uses a stand-off effect in lines following the opening.
 This helps highlight the fact that the initial letter belongs to the first word.
 The first line of text will be flush against the drop cap.
