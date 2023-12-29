@@ -41,6 +41,8 @@
             ghostscript
             git
             gnumake
+            groff
+            groff.perl
             imagemagick
             libertinus
             nodejs
