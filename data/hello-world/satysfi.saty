@@ -1,10 +1,8 @@
-@require: stdja
+@require: stdjareport
 
 document(|
-  title = {};
-  author = {};
-  show-title = false;
-  show-toc = false;
+	title = {};
+	author = {};
 |) '<
-  +p{Hello World}
+	+p{Hello World}
 >
