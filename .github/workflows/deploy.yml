@@ -16,16 +16,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v9
+      - name: Cache Nix downloads
+        uses: actions/cache@v3
+        with:
+          path: /nix/store
 
-      - name: Cache Nix dependencies
-        uses: DeterminateSystems/magic-nix-cache-action@v2
-
-      - name: Cache Nodejs dependencies
+      - name: Cache Nodejs downloads
         uses: actions/cache@v3
         with:
           path: node_modules
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v9
+
+      - name: Cache Nix builds
+        uses: DeterminateSystems/magic-nix-cache-action@v2
 
       - name: Install Nix package dependencies
         run: |
