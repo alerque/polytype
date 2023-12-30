@@ -17,14 +17,13 @@
   This may be exactly what you want, especially with modern typesetting styles which tend towards the minimalist.
 ]
 
+// Unable to complete per https://github.com/EpicEricEE/typst-plugins/issues/2
 #dropcap(
   justify: true,
   hanging-indent: 0pt,
 )[
-  N#smallcaps[ever say never]," the saying goes.
-  Someday your dropcap may include leading punctuation _and_ a hanging indent.
-  No worries.
-  All you have to do is guess and fudge.
+  N#smallcaps[ope says the typesetter]," dropcaps must be characters.
+  See upstream issue.
 ]
 
 #dropcap(
