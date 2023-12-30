@@ -36,6 +36,12 @@ jobs:
           path: node_modules
           key: node-modules-${{ hashFiles('package.json', 'package-lock.json') }}
 
+      - name: Cache Typst packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/typst
+          key: typst-packages-${{ hashFiles('~/.cache/typst/**/typst.toml') }}
+
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
 
