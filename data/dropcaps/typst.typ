@@ -1,0 +1,39 @@
+#set page(
+  paper: "a6",
+)
+#set par(
+  justify: true,
+)
+
+#import "@preview/droplet:0.1.0": dropcap
+
+#dropcap(
+  justify: true,
+  hanging-indent: 0pt,
+)[
+  This paragraph has a pretty plain initial or drop cap.
+  It uses the default document font.
+  You didn't really expect more detail with such a generic font choice, right?
+  This may be exactly what you want, especially with modern typesetting styles which tend towards the minimalist.
+]
+
+// Unable to complete per https://github.com/EpicEricEE/typst-plugins/issues/2
+#dropcap(
+  justify: true,
+  hanging-indent: 0pt,
+)[
+  N#smallcaps[ope says the typesetter]," dropcaps must be characters.
+  See upstream issue.
+]
+
+#dropcap(
+  height: 3,
+  justify: true,
+  hanging-indent: 10pt,
+)[
+  Another paragraph shows off a different line count.
+  Also it uses a stand-off effect in lines following the opening.
+  This helps highlight the fact that the initial letter belongs to the first word.
+  The first line of text will be flush against the drop cap.
+  Each additional line spanned with be indented with an extra space.
+]
