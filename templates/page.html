@@ -9,6 +9,8 @@
 {% for typesetter in page.extra.typesetters %}
 {% set manifest = load_data(path="/data/" ~ page.slug ~ "-" ~ typesetter ~ ".toml") %}
 
+<a id="{{ typesetter }}" /></a>
+
 <h3 class="title is-3">{{ typesetter }}</h3>
 
 <div class="columns">
