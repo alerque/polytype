@@ -76,5 +76,5 @@ jobs:
       - name: Copy Nix store to cachable location
         if: steps.nix-store-cache.outputs.cache-hit != 'true'
         run: |
+          sudo rm -rf /nix/var/nix/{{gc,daemon}-socket/socket,userpool,gc.lock,db/{big-lock,reserved}}
           cp -r --preserve=timestamps /nix /tmp/nix-cache
-          rm -rf /tmp/nix-cache/var/nix/{daemon-socket/socket,userpool,gc.lock,db/big-lock,db/reserved}
