@@ -27,10 +27,14 @@ jobs:
         with:
           path: node_modules
 
-      - name: Install project dependencies
+      - name: Install Nix package dependencies
         run: |
           nix-channel --update
           nix-shell --run true
+
+      - name: Install Node module dependencies
+        run: |
+          nix-shell --run 'npm ci'
 
       - name: Generate static site pages
         run: |
