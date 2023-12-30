@@ -32,7 +32,7 @@
 #dropcap(
   height: 3,
   justify: true,
-  hanging-indent: 10pt,
+  hanging-indent: 1em,
 )[
   Another paragraph shows off a different line count.
   Also it uses a stand-off effect in lines following the opening.

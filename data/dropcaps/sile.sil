@@ -10,7 +10,7 @@ It uses the default document font.
 You didn’t really expect more detail with such a generic font choice, right?
 This may be exactly what you want, especially with modern typesetting styles which tend towards the minimalist.
 
-\dropcap[lines=2,join=true]{\kern[width=-0.8en]“N}\font[features=+smcp]{ever say never,}” the saying goes.
+\dropcap[lines=2,join=true]{\kern[width=-0.9en]“N}\font[features=+smcp]{ever say never,}” the saying goes.
 Someday your dropcap may include leading punctuation \em{and} a hanging indent.
 No worries.
 All you have to do is guess and fudge.
