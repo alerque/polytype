@@ -22,6 +22,11 @@ jobs:
       - name: Cache Nix dependencies
         uses: DeterminateSystems/magic-nix-cache-action@v2
 
+      - name: Cache Nodejs dependencies
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+
       - name: Install project dependencies
         run: |
           nix-channel --update
