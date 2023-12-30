@@ -14,6 +14,7 @@ MAGICK ?= magick
 NPM ?= npm
 NPX ?= npx
 PAGEDJS ?= $(NPX) pagedjs-cli
+SATYSFI ?= satysfi
 SED ?= sed
 SILE ?= sile
 TERA ?= tera
@@ -28,6 +29,8 @@ BASE_URL = /
 
 GROFF_ARGS = -T pdf $< > $@
 PAGEDJS_ARGS = -i $< -o $@
+
+SATYSFI_ARGS = $< -o $@
 
 SILE_ARGS = -o $@ $<
 
@@ -80,6 +83,9 @@ node_modules:
 %-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
 	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(PAGEDJS) $(TYPESETTER_ARGS)  $(PAGEDJS_ARGS))
+
+%-satysfi.pdf %-saty.toml: %/satysfi.saty
+	$(call make_manifest,$(SATYSFI) $(SATYSFI_ARGS))
 
 %-sile.pdf %-sile.toml: %/sile.sil
 	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
