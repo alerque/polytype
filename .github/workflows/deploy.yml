@@ -20,11 +20,13 @@ jobs:
         uses: actions/cache@v3
         with:
           path: /nix/store
+          key: nix-store-${{ hashFiles('flake.nix flake.lock shell.nix') }}
 
       - name: Cache Nodejs downloads
         uses: actions/cache@v3
         with:
           path: node_modules
+          key: node-modules-${{ hashFiles('package.json package-lock.json') }}
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
