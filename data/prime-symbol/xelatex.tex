@@ -1,22 +1,35 @@
 \documentclass{article}
-\usepackage{unicode-math}
-\usepackage[paperheight=105mm,paperwidth=74mm,margin=2mm]{geometry}
+\usepackage[paperheight=105mm,paperwidth=74mm,margin=4mm]{geometry}
 \pagenumbering{gobble}
+\setlength{\parindent}{0pt}
+\usepackage{libertinus}
 \usepackage{fontspec}
+\usepackage{relsize}
+\usepackage{unicode-math}
 \begin{document}
-\fontsize{30}{40}
+\fontsize{12}{16}
 \selectfont
 
+Math mode manners:
 \setmathfont{STIX Two Math}
-\[\begin{aligned}
+\[\mathlarger{\begin{aligned}
 	f(x) & = x^{2} + 1 \\
 	f\prime(x) & = 2x
-\end{aligned}\]
+\end{aligned}}\]
 
 \setmathfont{Libertinus Math}
-\[\begin{aligned}
+\[\mathlarger{\begin{aligned}
 	f(x) & = x^{2} + 1 \\
 	f\prime(x) & = 2x
-\end{aligned}\]
+\end{aligned}}\]
+
+Prose poses problems:
+\smallskip
+
+\raggedright{
+	60*10'16"N 24*55'52"E (plain)\break
+	60°10′16″N 24°55′52″E (unicode)\break
+	60\textdegree{}10\ensuremath{\prime}16\ensuremath{\dprime}N 24\textdegree{}55\ensuremath{\prime}52\ensuremath{\dprime}E (native)
+}
 
 \end{document}

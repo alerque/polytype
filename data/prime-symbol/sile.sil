@@ -1,7 +1,11 @@
 \begin[papersize=a7]{document}
 \nofolios
+\neverindent
+\font[family=Libertinus Serif,size=12pt]
 \use[module=packages.math]
-\set[parameter=math.font.size,value=30]
+\set[parameter=math.font.size,value=16]
+
+Math mode manners:
 
 \set[parameter=math.font.family,value=STIX Two Math]
 \begin[mode=display]{math}
@@ -18,5 +22,14 @@
 		f\prime(x) &= 2x
 	}
 \end{math}
+
+Prose poses problems:
+\medskip
+
+\begin{raggedright}
+	60*10'16"N 24*55'52"E (plain)\break
+	60°10′16″N 24°55′52″E (unicode)\break
+	60°10′16″N 24°55′52″E (native)
+\end{raggedright}
 
 \end{document}
