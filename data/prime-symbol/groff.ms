@@ -11,7 +11,7 @@ Math mode manners:
 .LG
 .LG
 .EQ C
-f(x) mark = z' + b'' + c'''
+f(x) mark = a' + b'' + c'''
 .EN
 .LG
 .LG
