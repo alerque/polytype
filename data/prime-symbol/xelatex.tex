@@ -6,6 +6,7 @@
 \usepackage{fontspec}
 \usepackage{relsize}
 \usepackage{unicode-math}
+\usepackage{siunitx}
 \begin{document}
 \fontsize{12}{16}
 \selectfont
@@ -29,7 +30,7 @@ Prose poses problems:
 \raggedright{
 	60*10'16"N 24*55'52"E (plain)\break
 	60°10′16″N 24°55′52″E (unicode)\break
-	60\textdegree{}10\ensuremath{\prime}16\ensuremath{\dprime}N 24\textdegree{}55\ensuremath{\prime}52\ensuremath{\dprime}E (native)
+	\ang{60;10;16}N \ang{24;55;52}E (native)
 }
 
 \end{document}
