@@ -32,4 +32,4 @@ Prose poses problems:
 
 60*10'16"N 24*55'52"E (plain)\
 60°10′16″N 24°55′52″E (unicode)\
-60#[#sym.degree]10#[#sym.prime]16#[#sym.prime.double]N 24#[#sym.degree]55#[#sym.prime]52#[#sym.prime.double]E (native)\
+60#[#sym.degree]10#[#sym.prime]16#[#sym.prime.double]N 24#[#sym.degree]55#[#sym.prime]52#[#sym.prime.double]E (idiomatic)\
