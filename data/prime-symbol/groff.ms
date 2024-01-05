@@ -11,12 +11,12 @@ Math mode manners:
 .LG
 .LG
 .EQ C
-f(x) mark = x sup 2 + 1
+f(x) mark = z' + b'' + c'''
 .EN
 .LG
 .LG
 .EQ C
-f'(x) lineup = 2x
+f'(x) lineup = x sup 2 + 1
 .EN
 \# TODO complete prime input test with two fonts
 .LP

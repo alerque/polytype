@@ -10,16 +10,16 @@ Math mode manners:
 \set[parameter=math.font.family,value=STIX Two Math]
 \begin[mode=display]{math}
 	\table[columnalign=right left]{
-		f(x) &= x^2 + 1 \\
-		f\prime(x) &= 2x
+		f(x) &= a\prime  + b\dprime + c\trprime \\
+		f\prime(x) &= x^2 + 1
 	}
 \end{math}
 
 \set[parameter=math.font.family,value=Libertinus Math]
 \begin[mode=display]{math}
 	\table[columnalign=right left]{
-		f(x) &= x^2 + 1 \\
-		f\prime(x) &= 2x
+		f(x) &= a\prime  + b\dprime + c\trprime \\
+		f\prime(x) &= x^2 + 1
 	}
 \end{math}
 

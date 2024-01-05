@@ -15,16 +15,16 @@ Math mode manners:
 #[
     #show math.equation: set text(font: "STIX Two Math", size: 16pt)
     $
-        f(x) &= x^2 + 1 \
-        f'(x) &= 2 x
+        f(x) &= a' + b'' + c''' \
+        f'(x) &= x^2 + 1
     $
 ]
 
 #[
     #show math.equation: set text(font: "Libertinus Math", size: 16pt)
     $
-        f(x) &= x^2 + 1 \
-        f'(x) &= 2 x
+        f(x) &= a' + b'' + c''' \
+        f'(x) &= x^2 + 1
     $
 ]
 
