@@ -4,30 +4,39 @@
 \use[module=packages.ptable]
 \use[module=packages.url]
 \begin{lua}
-local class = SILE.documentState.documentClass
-class:registerCommand("test", function (options, content)
---      SILE.call("row", {}, function ()
---         SILE.call("cell", {}, function ()
-            SILE.call("url", { }, { options.family })
---         end)
---         SILE.call("cell", {}, function ()
-            SILE.call("font", { family = options.family }, { "𓌃𓂧𓐰𓏏𓐱𓏯𓀁𓏪𓆎𓅓𓊖" })
---         end)
---         SILE.call("cell", {}, function ()
-            SILE.call("font", { family = options.family }, { "𓄤𓆑𓐰𓂋" })
---         end)
---         SILE.call("cell", {}, function ()
-            SILE.call("font", { family = options.family }, { "𓆣𓐰𓂋𓇋𓁛" })
---         end)
---      end)
-SILE.call("par")
+local tests = {
+   { family = "Egyptian Text",
+      ehfc = true, },
+   { family = "NewGardiner",
+      ehfc = true, },
+   { family = "Untitled1",
+      ehfc = true, },
+   { family = "https://files.qenherkhopeshef.org/jsesh/JSeshFont.ttf",
+      ehfc = true, },
+   { family = "Noto Sans EgyptHiero",
+      ehfc = true, },
+}
+SILE.call("ptable", { cols = "20%lw 20%lw 20%lw 20%lw" }, function ()
+   for _, test in ipairs(tests) do
+      SILE.call("row", {}, function ()
+         -- SILE.call("cell", {}, function ()
+         --    SILE.call("url", { }, { options.family })
+         --    end)
+         -- SILE.call("cell", {}, function ()
+         --    SILE.call("font", { family = options.family }, { "𓌃𓂧𓐰𓏏𓐱𓏯𓀁𓏪𓆎𓅓𓊖" })
+         --    end)
+         -- SILE.call("cell", {}, function ()
+         --    SILE.call("font", { family = options.family }, { "𓄤𓆑𓐰𓂋" })
+         --    end)
+         -- SILE.call("cell", {}, function ()
+         --    SILE.call("font", { family = options.family }, { "𓆣𓐰𓂋𓇋𓁛" })
+         --    end)
+         -- SILE.call("cell", {}, function ()
+         --    SILE.call("font", { family = "Symbola" }, { "✅" })
+         --    end)
+         -- end)
+      end)
+   end
 end)
 \end{lua}
-%\begin[cols=20%lw 20%lw 20%lw 20%lw]{ptable}
-\test[family=Egyptian Text]
-\test[family=NewGardiner]
-\test[family=Untitled1]
-\test[family=JSesh font]
-\test[family=Noto Sans EgyptHiero]
-%\end{ptable}
 \end{document}
