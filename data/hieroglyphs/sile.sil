@@ -1,0 +1,33 @@
+\begin[papersize=a6,landscape=true]{document}
+\nofolios
+\font[family=Libertinus Serif]
+\use[module=packages.ptable]
+\use[module=packages.url]
+\begin{lua}
+local class = SILE.documentState.documentClass
+class:registerCommand("test", function (options, content)
+--      SILE.call("row", {}, function ()
+--         SILE.call("cell", {}, function ()
+            SILE.call("url", { }, { options.family })
+--         end)
+--         SILE.call("cell", {}, function ()
+            SILE.call("font", { family = options.family }, { "𓌃𓂧𓐰𓏏𓐱𓏯𓀁𓏪𓆎𓅓𓊖" })
+--         end)
+--         SILE.call("cell", {}, function ()
+            SILE.call("font", { family = options.family }, { "𓄤𓆑𓐰𓂋" })
+--         end)
+--         SILE.call("cell", {}, function ()
+            SILE.call("font", { family = options.family }, { "𓆣𓐰𓂋𓇋𓁛" })
+--         end)
+--      end)
+SILE.call("par")
+end)
+\end{lua}
+%\begin[cols=20%lw 20%lw 20%lw 20%lw]{ptable}
+\test[family=Egyptian Text]
+\test[family=NewGardiner]
+\test[family=Untitled1]
+\test[family=JSesh font]
+\test[family=Noto Sans EgyptHiero]
+%\end{ptable}
+\end{document}
