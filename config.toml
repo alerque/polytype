@@ -1,7 +1,7 @@
 base_url = "/"
 
 title = "Polytype"
-subtitel = "a Rosetta stone for modern typesetting engines"
+description = "a Rosetta stone for typesetting engines"
 
 compile_sass = false
 build_search_index = false
