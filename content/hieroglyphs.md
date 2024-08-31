@@ -1,7 +1,7 @@
 +++
-title = "Dropcaps"
-description = "For that bold leading character"
+title = "Hieroglyphs"
+description = "Language of the Pharaohs"
 extra.typesetters = [ "typst" ]
 +++
 
-In ancient times, pictographs ruled the world.
+In ancient times pictographs –wielded in the hands of the Pharaohs– ruled the world .
