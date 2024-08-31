@@ -26,6 +26,7 @@
             pkgs.gentium
             pkgs.libertinus
             pkgs.stix-two
+            ".fonts"
           ];
         };
         inherit (gitignore.lib) gitignoreSource;
@@ -37,6 +38,7 @@
         devShells.default = mkShell {
           buildInputs = [
             cacert
+            curl
             gentium
             ghostscript
             git
@@ -59,6 +61,7 @@
           ];
           FONTCONFIG_FILE = fontsConf;
           shellHook = ''
+            make fonts
             '';
         };
       }
