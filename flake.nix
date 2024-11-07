@@ -15,8 +15,17 @@
     teracli.url = "github:chevdor/tera-cli";
   };
 
-  outputs = { self, nixpkgs, flake-utils, flake-compat, gitignore, teracli }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      flake-compat,
+      gitignore,
+      teracli,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -30,8 +39,9 @@
           ];
         };
         inherit (gitignore.lib) gitignoreSource;
-        polytype = rec {
-        };
+        polytype =
+          rec {
+          };
       in
       with pkgs;
       {
@@ -62,7 +72,7 @@
           FONTCONFIG_FILE = fontsConf;
           shellHook = ''
             make fonts
-            '';
+          '';
         };
       }
     );
