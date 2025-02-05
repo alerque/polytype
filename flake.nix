@@ -15,8 +15,17 @@
     teracli.url = "github:chevdor/tera-cli";
   };
 
-  outputs = { self, nixpkgs, flake-utils, flake-compat, gitignore, teracli }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      flake-compat,
+      gitignore,
+      teracli,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -26,17 +35,20 @@
             pkgs.gentium
             pkgs.libertinus
             pkgs.stix-two
+            ".fonts"
           ];
         };
         inherit (gitignore.lib) gitignoreSource;
-        polytype = rec {
-        };
+        polytype =
+          rec {
+          };
       in
       with pkgs;
       {
         devShells.default = mkShell {
           buildInputs = [
             cacert
+            curl
             gentium
             ghostscript
             git
@@ -59,7 +71,8 @@
           ];
           FONTCONFIG_FILE = fontsConf;
           shellHook = ''
-            '';
+            make fonts
+          '';
         };
       }
     );

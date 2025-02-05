@@ -5,7 +5,7 @@
   justify: true,
 )
 
-#import "@preview/droplet:0.1.0": dropcap
+#import "@preview/droplet:0.2.0": dropcap
 
 #dropcap(
   justify: true,
@@ -17,13 +17,14 @@
   This may be exactly what you want, especially with modern typesetting styles which tend towards the minimalist.
 ]
 
-// Letter workaround per https://github.com/EpicEricEE/typst-plugins/issues/2
 #dropcap(
   justify: true,
   hanging-indent: 0pt,
-  transform: letter => [#place(dx: -0.4em, sym.quote.l)#letter]
+  top-edge: "cap-height",
 )[
-  N#smallcaps[ever say never]," the saying goes.
+  #place(dx: -0.4em, sym.quote.l)N
+][
+  #smallcaps[ever say never,]#sym.quote.r the saying goes.
   Someday your dropcap may include leading punctuation _and_ a hanging indent.
   No worries.
   All you have to do is guess and fudge.

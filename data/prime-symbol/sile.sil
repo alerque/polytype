@@ -29,7 +29,7 @@ Prose poses problems:
 \begin{raggedright}
 	60*10'16"N 24*55'52"E (plain)\break
 	60°10′16″N 24°55′52″E (unicode)\break
-	60°10′16″N 24°55′52″E (native)
+	60°10′16″N 24°55′52″E (idiomatic)
 \end{raggedright}
 
 \end{document}

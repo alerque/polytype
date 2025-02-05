@@ -8,6 +8,9 @@ MAKEFLAGS += --jobs=$(shell nproc)
 .SECONDEXPANSION:
 .DELETE_ON_ERROR:
 
+.PRECIOUS: .fonts/%
+
+CURL ?= curl
 GIT ?= git
 GROFF ?= groff
 MAGICK ?= magick
@@ -68,6 +71,16 @@ all: $(PDFS)
 
 node_modules:
 	$(NPM) ci
+
+.PHONY: fonts
+fonts: .fonts/EgyptianOpenType.ttf
+
+.fonts:
+	mkdir -p $@
+
+.fonts/EgyptianOpenType.ttf: | .fonts
+	$(CURL) -fsSL https://github.com/microsoft/font-tools/raw/main/EgyptianOpenType/font/eot.ttf -o $@
+	touch $@
 
 %-groff.pdf %-groff.toml: TYPESETTER_ARGS = $(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))
 

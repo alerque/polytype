@@ -26,4 +26,4 @@ Prose poses problems:
 .br
 60°10′16″N 24°55′52″E (unicode)
 .br
-60\[de]10\[fm]16\[sd]N 24\[de]55\[fm]52\[sd]E (native)
+60\[de]10\[fm]16\[sd]N 24\[de]55\[fm]52\[sd]E (idiomatic)
