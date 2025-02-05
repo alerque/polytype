@@ -46,7 +46,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v9
 
       - name: Cache Nix builds
-        uses: DeterminateSystems/magic-nix-cache-action@v2
+        uses: DeterminateSystems/magic-nix-cache-action@v3
 
       - name: Install Nix package dependencies
         run: |
