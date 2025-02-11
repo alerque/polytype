@@ -1,0 +1,34 @@
+\documentclass[12pt]{article}
+\usepackage[paperheight=105mm,paperwidth=74mm,margin=4mm]{geometry}
+\pagenumbering{gobble}
+\setlength{\parindent}{0pt}
+\usepackage{fontspec}
+\usepackage{moresize}
+\usepackage{libertinus}
+\begin{document}
+
+{\LARGE ther} (not superscript)
+
+{\HUGE Xᵗʰᵉʳ} (unicode superscript)
+
+{\HUGE X\textsuperscript{ther}} (super)
+
+20ᵗʰ \texsc{xx}ᵉ /
+20\textsuperscript{th} \texsc{xx}\textsuperscript{e}
+
+\textit{%
+20ᵗʰ \texsc{xx}ᵉ /
+20\textsuperscript{th} \texsc{xx}\textsuperscript{e}
+}
+
+\textsf{%
+20ᵗʰ \texsc{xx}ᵉ /
+20\textsuperscript{th} \texsc{xx}\textsuperscript{e}
+}
+
+\textsf{\textit{%
+20ᵗʰ \texsc{xx}ᵉ /
+20\textsuperscript{th} \texsc{xx}\textsuperscript{e}
+}}
+
+\end{document}
