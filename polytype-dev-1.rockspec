@@ -19,7 +19,7 @@ description = {
 
 dependencies = {
    "lua >= 5.1",
-   "dummy.lua",
+   "textsubsuper.sile == 1.2.0-1",
 }
 
 build = {
