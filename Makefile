@@ -10,9 +10,12 @@ MAKEFLAGS += --jobs=$(shell nproc)
 
 .PRECIOUS: .fonts/%
 
+AWK ?= awk
+CMP ?= cmp
 CURL ?= curl
 GIT ?= git
 GROFF ?= groff
+LUAROCKS ?= luarocks
 MAGICK ?= magick
 NPM ?= npm
 NPX ?= npx
@@ -44,6 +47,8 @@ WEASYPRINT_ARGS = $< $@
 XELATEX_ARGS  = -interaction=batchmode -halt-on-error
 XELATEX_ARGS += -jobname $*-xelatex $<
 
+LUAROCKSARGS ?=
+
 .PHONY: default
 default: public
 
@@ -72,6 +77,25 @@ all: $(PDFS)
 node_modules:
 	$(NPM) ci
 
+LUAMODSPEC := polytype-dev-1.rockspec
+LUAMODLOCK := polytype-dev-1.rockslock
+
+LOCALLUAROCKS := $(LUAROCKS) --tree lua_modules --lua-version 5.1
+genrockslock := $(LOCALLUAROCKS) $(LUAROCKSARGS) list --porcelain | $(AWK) '{print $$1 " " $$2}'
+rocksmatch := ( T=$$(mktemp); trap 'rm -f "$$T"' EXIT HUP TERM; $(genrockslock) > "$$T"; $(CMP) -s $(LUAMODLOCK) "$$T" )
+
+LUAROCKSMANIFEST := lua_modules/lib/luarocks/rocks-5.1/manifest
+
+.PHONY: installrocks
+installrocks: $(LUAMODLOCK) $(shell $(rocksmatch) || echo $(LUAROCKSMANIFEST))
+
+$(LUAROCKSMANIFEST): $(LUAMODSPEC) $(shell $(rocksmatch) || echo force)
+	$(LOCALLUAROCKS) $(LUAROCKSARGS) install --only-deps $<
+	touch $@
+
+$(LUAMODLOCK): $(LUAROCKSMANIFEST) $(LUAMODSPEC)
+	$(genrockslock) > $@
+
 .PHONY: fonts
 fonts: .fonts/EgyptianOpenType.ttf
 
@@ -94,30 +118,30 @@ fonts: .fonts/EgyptianOpenType.ttf
 	$(call make_manifest,$(GROFF) -mom $(TYPESETTER_ARGS) $(GROFF_ARGS))
 
 %-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(PAGEDJS) $(TYPESETTER_ARGS)  $(PAGEDJS_ARGS))
 
 %-satysfi.pdf %-saty.toml: %/satysfi.saty
 	$(call make_manifest,$(SATYSFI) $(SATYSFI_ARGS))
 
-%-sile.pdf %-sile.toml: %/sile.sil
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+%-sile.pdf %-sile.toml: %/sile.sil | installrocks
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(SILE) $(TYPESETTER_ARGS) $(SILE_ARGS))
 
-%-sile.pdf %-sile.toml: %/sile.xml
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+%-sile.pdf %-sile.toml: %/sile.xml | installrocks
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(SILE) $(TYPESETTER_ARGS) $(SILE_ARGS))
 
 %-typst.pdf %-typst.toml: %/typst.typ
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(TYPST) $(TYPESETTER_ARGS) $(TYPST_ARGS))
 
 %-weasyprint.pdf %-weasyprint.html: %/weasyprint.html
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(WEASYPRINT) $(TYPESETTER_ARGS) $(WEASYPRINT_ARGS))
 
 %-xelatex.pdf %-xelatex.toml: %/xelatex.tex
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(XELATEX) $(TYPESETTER_ARGS) $(XELATEX_ARGS))
 
 static/%.css: sass/%.scss | node_modules
@@ -148,3 +172,6 @@ zola: static
 
 public/CNAME:
 	echo polytype.dev > $@
+
+.PHONY: force
+force: ;

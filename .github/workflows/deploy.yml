@@ -36,6 +36,12 @@ jobs:
           path: node_modules
           key: node-modules-${{ hashFiles('package.json', 'package-lock.json') }}
 
+      - name: Cache LuaRocks modules
+        uses: actions/cache@v3
+        with:
+          path: lua_modules
+          key: lua-modules-${{ hashFiles('polytype-dev-1.rockspec', 'polytype-dev-1.rockslock') }}
+
       - name: Cache Typst packages
         uses: actions/cache@v3
         with:
