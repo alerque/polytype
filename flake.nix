@@ -57,6 +57,7 @@
             groff.perl
             imagemagick
             libertinus
+            luajitPackages.luarocks
             nodejs
             satysfi
             sile
