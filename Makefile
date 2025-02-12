@@ -118,30 +118,30 @@ fonts: .fonts/EgyptianOpenType.ttf
 	$(call make_manifest,$(GROFF) -mom $(TYPESETTER_ARGS) $(GROFF_ARGS))
 
 %-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(PAGEDJS) $(TYPESETTER_ARGS)  $(PAGEDJS_ARGS))
 
 %-satysfi.pdf %-saty.toml: %/satysfi.saty
 	$(call make_manifest,$(SATYSFI) $(SATYSFI_ARGS))
 
 %-sile.pdf %-sile.toml: %/sile.sil | installrocks
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(SILE) $(TYPESETTER_ARGS) $(SILE_ARGS))
 
 %-sile.pdf %-sile.toml: %/sile.xml | installrocks
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(SILE) $(TYPESETTER_ARGS) $(SILE_ARGS))
 
 %-typst.pdf %-typst.toml: %/typst.typ
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(TYPST) $(TYPESETTER_ARGS) $(TYPST_ARGS))
 
 %-weasyprint.pdf %-weasyprint.html: %/weasyprint.html
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(WEASYPRINT) $(TYPESETTER_ARGS) $(WEASYPRINT_ARGS))
 
 %-xelatex.pdf %-xelatex.toml: %/xelatex.tex
-	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(XELATEX) $(TYPESETTER_ARGS) $(XELATEX_ARGS))
 
 static/%.css: sass/%.scss | node_modules
