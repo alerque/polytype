@@ -22,13 +22,16 @@ h2 {
 
 .navbar {
 	background: none;
-	padding: 2em 2em 0 2em;
+	padding: 1em 2em 0 2em;
 	font-style: italic;
 	font-family: serif;
 
 	a {
+		font-size: 4rem;
 		color: #000;
+		font-variant: small-caps;
 		text-shadow: .05em .05em .1em #aaa;
+		filter: drop-shadow(-0.02em -0.02em 0 #fff) drop-shadow(-0.02em -0.02em 0 #006);
 	}
 
 }
