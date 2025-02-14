@@ -68,3 +68,14 @@ a {
 	}
 
 }
+
+.card {
+	background-color: transparent;
+	box-shadow: none;
+
+	img {
+		border-radius: 0 !important;
+		background: #fff;
+		box-shadow: 0.15em 0.15em 0.3em #888;
+	}
+}
