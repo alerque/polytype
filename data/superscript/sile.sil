@@ -2,10 +2,7 @@
 \nofolios
 \neverindent
 \use[module=packages.textsubsuper]
-\font[
-  family="Libertinus Serif",
-  size=12pt
-]
+\font[family=Libertinus Serif,size=12pt]
 
 \font[size=16pt]{ther} (not superscript)
 
@@ -17,44 +14,19 @@
 
 \font[size=26pt]{X\textsuperscript[fake=true]{ther}} (fake super)
 
-\font[
-  family="Libertinus Serif",
-  style=normal
-]{%
+\begin[command=sample]{define}
 20ᵗʰ \font[features=+smcp]{xx}ᵉ /
 20\font[features=+sups]{th} \font[features=+smcp]{xx}\font[features=+sups]{e} /
 20\textsuperscript[fake=false]{th} \font[features=+smcp]{xx}\textsuperscript[fake=false]{e} /
 20\textsuperscript[fake=true]{th} \font[features=+smcp]{xx}\textsuperscript[fake=true]{e}
-}
+\end{define}
 
-\font[
-  family="Libertinus Serif",
-  style=italic
-]{%
-20ᵗʰ \font[features=+smcp]{xx}ᵉ /
-20\font[features=+sups]{th} \font[features=+smcp]{xx}\font[features=+sups]{e} /
-20\textsuperscript[fake=false]{th} \font[features=+smcp]{xx}\textsuperscript[fake=false]{e} /
-20\textsuperscript[fake=true]{th} \font[features=+smcp]{xx}\textsuperscript[fake=true]{e}
-}
+\font[family=Libertinus Serif,style=normal]{\sample}
 
-\font[
-  family="Libertinus Sans",
-  style=normal
-]{%
-20ᵗʰ \font[features=+smcp]{xx}ᵉ /
-20\font[features=+sups]{th} \font[features=+smcp]{xx}\font[features=+sups]{e} /
-20\textsuperscript[fake=false]{th} \font[features=+smcp]{xx}\textsuperscript[fake=false]{e} /
-20\textsuperscript[fake=true]{th} \font[features=+smcp]{xx}\textsuperscript[fake=true]{e}
-}
+\font[family=Libertinus Serif,style=italic]{\sample}
 
-\font[
-  family="Libertinus Sans",
-  style=italic
-]{%
-20ᵗʰ \font[features=+smcp]{xx}ᵉ /
-20\font[features=+sups]{th} \font[features=+smcp]{xx}\font[features=+sups]{e} /
-20\textsuperscript[fake=false]{th} \font[features=+smcp]{xx}\textsuperscript[fake=false]{e} /
-20\textsuperscript[fake=true]{th} \font[features=+smcp]{xx}\textsuperscript[fake=true]{e}
-}
+\font[family=Libertinus Sans,style=normal]{\sample}
+
+\font[family=Libertinus Sans,style=italic]{\sample}
 
 \end{document}
