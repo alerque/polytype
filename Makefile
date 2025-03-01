@@ -149,7 +149,7 @@ static/%.css: sass/%.scss | node_modules
 	$(NPX) postcss -u autoprefixer --no-map $@ -o $@
 
 %.avif: %.pdf
-	$(MAGICK) convert -density 150 $< $@
+	$(MAGICK) -density 150 $< $@
 
 .PHONY: static
 static: $(PDFS) $(PREVIEWS) static/main.css
