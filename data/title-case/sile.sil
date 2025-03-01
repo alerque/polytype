@@ -1,0 +1,32 @@
+\begin[papersize=a6]{document}
+\font[family=Libertinus Serif]
+\nofolios
+\neverindent
+\use[module=packages.decasify]
+\begin{lua}
+
+local examples = {
+   { "first impulse", lang = "en" },
+   { "FIRST IMPULSE", lang = "en" },
+   { "ilk ışıltı", lang = "tr" },
+   { "İLK IŞILTI", lang = "tr" },
+}
+
+for _, case in ipairs({ "title", "lower", "upper", "sentence" }) do
+   SILE.call("bigskip")
+   SILE.call("font", { size = "18pt", weight = 800 }, function ()
+      SILE.call("decasify", { case = "title" }, { case .. "case" })
+   end)
+   SILE.call("par")
+   for _, s in ipairs(examples) do
+      SILE.typesetter:typeset(("[%s] "):format(s.lang))
+      SILE.call("font", { language = s.lang }, function (_, _)
+         SILE.typesetter:typeset(("%s → "):format(s[1]))
+         SILE.call("decasify", { case = case }, s)
+      end)
+      SILE.call("par")
+   end
+end
+
+\end{lua}
+\end{document}
