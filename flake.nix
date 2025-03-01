@@ -48,6 +48,8 @@
         devShells.default = mkShell {
           buildInputs = [
             cacert
+            cargo
+            clang
             curl
             gentium
             ghostscript
@@ -58,7 +60,9 @@
             imagemagick
             libertinus
             luajitPackages.luarocks
+            mold
             nodejs
+            rustc
             satysfi
             sile
             stix-two
