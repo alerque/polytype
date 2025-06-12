@@ -1,4 +1,4 @@
-#import "@preview/decasify:0.9.0": *
+#import "@preview/decasify:0.10.1": *
 
 #set page(paper: "a6")
 

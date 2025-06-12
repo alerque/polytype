@@ -5,7 +5,7 @@
   justify: true,
 )
 
-#import "@preview/droplet:0.2.0": dropcap
+#import "@preview/droplet:0.3.1": dropcap
 
 #dropcap(
   justify: true,
