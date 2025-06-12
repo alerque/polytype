@@ -12,6 +12,7 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
+    quarkdown.url = "github:iamgio/quarkdown";
     teracli.url = "github:chevdor/tera-cli";
   };
 
@@ -22,6 +23,7 @@
       flake-utils,
       flake-compat,
       gitignore,
+      quarkdown,
       teracli,
     }:
     flake-utils.lib.eachDefaultSystem (
@@ -62,6 +64,7 @@
             luajitPackages.luarocks
             mold
             nodejs
+            quarkdown.defaultPackage.${system}
             rustc
             satysfi
             sile
