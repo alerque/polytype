@@ -20,6 +20,7 @@ MAGICK ?= magick
 NPM ?= npm
 NPX ?= npx
 PAGEDJS ?= $(NPX) pagedjs-cli
+QUARKDOWN ?= quarkdown
 SATYSFI ?= satysfi
 SED ?= sed
 SILE ?= sile
@@ -34,8 +35,12 @@ ZOLA ?= zola
 BASE_URL = /
 
 GROFF_ARGS = -T pdf $< > $@
+
+QUARKDOWN_ARGS = c --pdf --out . $<
+
 PAGEDJS_ARGS = -i $< -o $@
 
+QUARKDOWN_ARGS = c --pdf --out $(@D) $<
 SATYSFI_ARGS = $< -o $@
 
 SILE_ARGS = -o $@ $<
@@ -66,7 +71,7 @@ define make_manifest ?=
 		demosrc = "$(notdir $(basename $@)$(suffix $<))"
 		demoout = "$(notdir $@)"
 		preview = "$(notdir $(basename $@)).avif"
-		cmd = "$(subst $(NPX) ,,$(subst $<,$(notdir $(basename $@)$(suffix $<)),$(subst $@,$(notdir $@),$1)))"
+		cmd = "$(subst --out $(@D),,$(subst $(NPX) ,,$(subst $<,$(notdir $(basename $@)$(suffix $<)),$(subst $@,$(notdir $@),$1))))"
 	EOF
 	exec $1
 endef
@@ -120,6 +125,10 @@ fonts: .fonts/EgyptianOpenType.ttf
 %-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
 	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
 	$(call make_manifest,$(PAGEDJS) $(TYPESETTER_ARGS)  $(PAGEDJS_ARGS))
+
+%-quarkdown.pdf %-quarkdown.toml: %/quarkdown.qd
+	local args="$(call get_typesetter_args,content/$(notdir $(basename $@)).md,$(notdir $(basename $<)))"
+	$(call make_manifest,$(QUARKDOWN) $(TYPESETTER_ARGS) $(QUARKDOWN_ARGS))
 
 %-satysfi.pdf %-saty.toml: %/satysfi.saty
 	$(call make_manifest,$(SATYSFI) $(SATYSFI_ARGS))
