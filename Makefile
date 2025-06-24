@@ -119,7 +119,7 @@ fonts: .fonts/EgyptianOpenType.ttf
 
 %-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
 	local args="$(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))"
-	$(call make_manifest,$(PAGEDJS) $(TYPESETTER_ARGS)  $(PAGEDJS_ARGS))
+	$(call make_manifest,$(PAGEDJS) $(TYPESETTER_ARGS) $(PAGEDJS_ARGS))
 
 %-satysfi.pdf %-saty.toml: %/satysfi.saty
 	$(call make_manifest,$(SATYSFI) $(SATYSFI_ARGS))
