@@ -69,7 +69,7 @@
             teracli.defaultPackage.${system}
             texlive.combined.scheme-full
             typst
-            python311Packages.weasyprint
+            python313Packages.weasyprint
             yq
             zola
             zsh
