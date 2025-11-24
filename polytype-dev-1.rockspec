@@ -19,7 +19,7 @@ description = {
 
 dependencies = {
    "lua >= 5.1",
-   "decasify.sile == 0.10.1-1",
+   "decasify.sile == 0.11.2-1",
    "textsubsuper.sile == 2.1.0-1",
 }
 
