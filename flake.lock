@@ -137,16 +137,17 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1739190854,
-        "narHash": "sha256-rDQwrf/bhN+7+IecrlyATK2O1sTYazQ2QrCUtbA8mwk=",
+        "lastModified": 1739032679,
+        "narHash": "sha256-08XRbG/OoFF2e3Mm/eiGMAXMy8wqBnMn1+jU5qgILe0=",
         "owner": "chevdor",
         "repo": "tera-cli",
-        "rev": "4aad84073438b89a494cd7ec3861311a8768fdf8",
+        "rev": "1cc2cdfb5f3a773926ef20a99a694253e2920e82",
         "type": "github"
       },
       "original": {
         "owner": "chevdor",
         "repo": "tera-cli",
+        "rev": "1cc2cdfb5f3a773926ef20a99a694253e2920e82",
         "type": "github"
       }
     }

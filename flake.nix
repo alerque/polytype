@@ -12,7 +12,7 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
-    teracli.url = "github:chevdor/tera-cli";
+    teracli.url = "github:chevdor/tera-cli/1cc2cdfb5f3a773926ef20a99a694253e2920e82";
   };
 
   outputs =
