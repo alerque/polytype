@@ -90,6 +90,7 @@ LUAROCKSMANIFEST := lua_modules/lib/luarocks/rocks-5.1/manifest
 installrocks: $(LUAMODLOCK) $(shell $(rocksmatch) || echo $(LUAROCKSMANIFEST))
 
 $(LUAROCKSMANIFEST): $(LUAMODSPEC) $(shell $(rocksmatch) || echo force)
+	eval $$($(LOCALLUAROCKS) path)
 	$(LOCALLUAROCKS) $(LUAROCKSARGS) install --only-deps $<
 	touch $@
 
