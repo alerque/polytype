@@ -33,5 +33,29 @@ end_statement_with_semicolon = same_line
 [*rockspec]
 max_line_length = 190
 
+[*.sil]
+indent_style = space
+indent_size = 2
+
+[*.typ]
+indent_style = space
+indent_size = 2
+
+[*.tex]
+indent_style = space
+indent_size = 2
+
+[*.saty]
+indent_style = space
+indent_size = 2
+
+[*.html]
+indent_style = space
+indent_size = 4
+
+[*.css]
+indent_style = space
+indent_size = 2
+
 [*.rs]
 indent_size = 4
