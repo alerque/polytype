@@ -1,5 +1,17 @@
 {
   "name": "polytype",
+  "dependencies": {
+    "@codemirror/view": "^6.38.8",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/lang-javascript": "^6.2.4",
+    "@codemirror/lang-html": "^6.4.11",
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-xml": "^6.1.0",
+    "@codemirror/basic-setup": "^0.20.0"
+  },
+  "overrides": {
+    "@codemirror/state": "^6.5.2"
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
     "bulma": "^0.9.3",

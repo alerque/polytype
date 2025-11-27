@@ -30,7 +30,7 @@
 
     <h4 class="title is-4">Input document</h4>
     {% set source = load_data(path=manifest.src) | safe %}
-    <pre>{{ source }}</pre>
+    <div class="codemirror-container" data-language="{{ typesetter }}">{{ source }}</div>
 
     <h4 class="title is-4">Render command</h4>
     <code>{{ manifest.cmd }}</code>

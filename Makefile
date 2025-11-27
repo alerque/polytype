@@ -152,8 +152,11 @@ static/%.css: sass/%.scss | node_modules
 %.avif: %.pdf
 	$(MAGICK) -density 150 $< $@
 
+static/codemirror.js: src/codemirror-bundle.js | node_modules
+	$(NPX) esbuild $< --bundle --outfile=$@ --format=iife --conditions=import
+
 .PHONY: static
-static: $(PDFS) $(PREVIEWS) static/main.css
+static: $(PDFS) $(PREVIEWS) static/main.css static/codemirror.js
 	install -Dm0644 -t static $(filter-out static/%,$^)
 	for m in $(MANIFESTS); do
 		tomlq -r '[.src, .demosrc] | @tsv' $$m | read src demosrc
