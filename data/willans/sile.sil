@@ -4,9 +4,7 @@
 \use[module=packages.math]
 
 \begin[mode=display]{math}
-	\def{floor}{\lfloor #1 \rfloor}
-	p_n = 1 + \sum_{i=1}^{2^n} \floor{(\frac{n}{\sum_{j=1}^i \floor{\cos^2(\pi \frac{(j-1)! + 1}{j})}})^{\frac{1}{n}}}
+  \def{floor}{\lfloor #1 \rfloor}
+  p_n = 1 + \sum_{i=1}^{2^n} \floor{(\frac{n}{\sum_{j=1}^i \floor{\cos^2(\pi \frac{(j-1)! + 1}{j})}})^{\frac{1}{n}}}
 \end{math}
-
 \end{document}
-

@@ -1,8 +1,8 @@
 @require: stdjareport
 
 document(|
-	title = {};
-	author = {};
+  title = {};
+  author = {};
 |) '<
-	+p{Hello World}
+  +p{Hello World}
 >

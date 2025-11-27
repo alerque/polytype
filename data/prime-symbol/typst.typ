@@ -3,8 +3,8 @@
   margin: 4mm,
 )
 #set text(
-    font: "Libertinus Serif",
-    size: 12pt,
+  font: "Libertinus Serif",
+  size: 12pt,
 )
 #show par: set block(spacing: 1em)
 #show math.equation: set block(spacing: .8em)
@@ -13,19 +13,19 @@
 Math mode manners:
 
 #[
-    #show math.equation: set text(font: "STIX Two Math", size: 16pt)
-    $
-        f(x) &= a' + b'' + c''' \
-        f'(x) &= x^2 + 1
-    $
+  #show math.equation: set text(font: "STIX Two Math", size: 16pt)
+  $
+    f(x) &= a' + b'' + c''' \
+    f'(x) &= x^2 + 1
+  $
 ]
 
 #[
-    #show math.equation: set text(font: "Libertinus Math", size: 16pt)
-    $
-        f(x) &= a' + b'' + c''' \
-        f'(x) &= x^2 + 1
-    $
+  #show math.equation: set text(font: "Libertinus Math", size: 16pt)
+  $
+    f(x) &= a' + b'' + c''' \
+    f'(x) &= x^2 + 1
+  $
 ]
 
 Prose poses problems:

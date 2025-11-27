@@ -5,7 +5,6 @@
 \set[parameter="document.parskip",value="1bs"]
 \font[family=Libertinus Serif,size=16pt]
 \begin{lua}
-
 local package = pl.class(SILE.packages.base)
 package._name = "hieroglyphics"
 
@@ -21,8 +20,8 @@ function package:registerCommands ()
 end
 
 return package
-
 \end{lua}
+
 \begin{raggedright}
 \egyp-sample{{mdw.t-km.t}{Egyptian language}{𓌃𓂧𓐰𓏏𓐱𓏯𓀁𓏪𓆎𓅓𓊖}}
 

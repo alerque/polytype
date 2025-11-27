@@ -8,7 +8,7 @@
 #let varlim(arrow) = context {
   let lim = "lim"
   let lim-width = measure(lim).width
-  let arrow-height = measure(arrow).height  
+  let arrow-height = measure(arrow).height
   let varlimop = box(
     width: lim-width,
     baseline: arrow-height,
@@ -46,8 +46,8 @@
   margin: 4mm,
 )
 #set text(
-    font: "Libertinus Serif",
-    size: 12pt,
+  font: "Libertinus Serif",
+  size: 12pt,
 )
 
 $ projlim_(i in I) A_i = varprojlim_(i in I) A_i $

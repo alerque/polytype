@@ -29,5 +29,4 @@ Inline: \math{\limsup_{n \to \infty} a_n = \varlimsup_{n \to \infty} a_n}
 \end{math}
 
 Inline: \math{\liminf_{n \to \infty} a_n = \varliminf_{n \to \infty} a_n}
-
 \end{document}

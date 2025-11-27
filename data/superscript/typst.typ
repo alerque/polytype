@@ -24,44 +24,44 @@
   font: "Libertinus Serif",
   style: "normal"
 )[
-20ᵗʰ #smallcaps[xx]ᵉ /
-20#text(features: (sups:1))[th]
-#smallcaps[xx]#text(features: (sups:1))[e] /
-20#super(typographic: false)[th]
-#smallcaps[xx]#super(typographic: false)[e] /
-20#super(typographic: true)[th]
-#smallcaps[xx]#super(typographic: true)[e]
+  20ᵗʰ #smallcaps[xx]ᵉ /
+  20#text(features: (sups:1))[th]
+  #smallcaps[xx]#text(features: (sups:1))[e] /
+  20#super(typographic: false)[th]
+  #smallcaps[xx]#super(typographic: false)[e] /
+  20#super(typographic: true)[th]
+  #smallcaps[xx]#super(typographic: true)[e]
 ]
 
 #text(
   font: "Libertinus Serif",
   style: "italic"
 )[
-20ᵗʰ #smallcaps[xx]ᵉ /
-20#text(features: (sups:1))[th]
-#smallcaps[xx]#text(features: (sups:1))[e] /
-20#super(typographic: false)[th]
-#smallcaps[xx]#super(typographic: false)[e] /
-20#super(typographic: true)[th]
-#smallcaps[xx]#super(typographic: true)[e]
+  20ᵗʰ #smallcaps[xx]ᵉ /
+  20#text(features: (sups:1))[th]
+  #smallcaps[xx]#text(features: (sups:1))[e] /
+  20#super(typographic: false)[th]
+  #smallcaps[xx]#super(typographic: false)[e] /
+  20#super(typographic: true)[th]
+  #smallcaps[xx]#super(typographic: true)[e]
 ]
 
 #text(
   font: "Libertinus Sans",
   style: "normal"
 )[
-20ᵗʰ #smallcaps[xx]ᵉ /
-20#text(features: (sups:1))[th] #smallcaps[xx]#text(features: (sups:1))[e] /
-20#super(typographic: false)[th] #smallcaps[xx]#super(typographic: false)[e] /
-20#super(typographic: true)[th] #smallcaps[xx]#super(typographic: true)[e]
+  20ᵗʰ #smallcaps[xx]ᵉ /
+  20#text(features: (sups:1))[th] #smallcaps[xx]#text(features: (sups:1))[e] /
+  20#super(typographic: false)[th] #smallcaps[xx]#super(typographic: false)[e] /
+  20#super(typographic: true)[th] #smallcaps[xx]#super(typographic: true)[e]
 ]
 
 #text(
   font: "Libertinus Sans",
   style: "italic"
 )[
-20ᵗʰ #smallcaps[xx]ᵉ /
-20#text(features: (sups:1))[th] #smallcaps[xx]#text(features: (sups:1))[e] /
-20#super(typographic: false)[th] #smallcaps[xx]#super(typographic: false)[e] /
-20#super(typographic: true)[th] #smallcaps[xx]#super(typographic: true)[e]
+  20ᵗʰ #smallcaps[xx]ᵉ /
+  20#text(features: (sups:1))[th] #smallcaps[xx]#text(features: (sups:1))[e] /
+  20#super(typographic: false)[th] #smallcaps[xx]#super(typographic: false)[e] /
+  20#super(typographic: true)[th] #smallcaps[xx]#super(typographic: true)[e]
 ]

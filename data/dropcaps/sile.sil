@@ -20,5 +20,4 @@ Also it uses a stand-off effect in lines following the opening.
 This helps highlight the fact that the initial letter belongs to the first word.
 The first line of text will be flush against the drop cap.
 Each additional line spanned with be indented with an extra space.
-
 \end{document}

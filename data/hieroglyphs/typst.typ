@@ -6,16 +6,16 @@
   justify: false,
 )
 #set text(
-    font: "Libertinus Serif",
-    size: 16pt,
+  font: "Libertinus Serif",
+  size: 16pt,
 )
 
 #let egyp-sample(phonetics, translation, str)= {([
-    _#(phonetics)_ ‘#translation’
-    #v(-0.5em)
-    #line(length: 100%)
-    #v(-0.5em)
-    #set text(font: "Egyptian Text", size: 1.5em, fallback:false);#str
+  _#(phonetics)_ ‘#translation’
+  #v(-0.5em)
+  #line(length: 100%)
+  #v(-0.5em)
+  #set text(font: "Egyptian Text", size: 1.5em, fallback:false);#str
 ])}
 
 #egyp-sample("mdw.t-km.t", "Egyptian language", "𓌃𓂧𓐰𓏏𓐱𓏯𓀁𓏪𓆎𓅓𓊖")

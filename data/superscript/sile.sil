@@ -28,5 +28,4 @@
 \font[family=Libertinus Sans,style=normal]{\sample}
 
 \font[family=Libertinus Sans,style=italic]{\sample}
-
 \end{document}

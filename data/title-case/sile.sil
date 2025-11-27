@@ -4,7 +4,6 @@
 \neverindent
 \use[module=packages.decasify]
 \begin{lua}
-
 local examples = {
    { "first impulse", lang = "en" },
    { "FIRST IMPULSE", lang = "en" },
@@ -27,6 +26,5 @@ for _, case in ipairs({ "title", "lower", "upper", "sentence" }) do
       SILE.call("par")
    end
 end
-
 \end{lua}
 \end{document}
