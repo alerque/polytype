@@ -1,5 +1,6 @@
 {
   "name": "polytype",
+  "type": "module",
   "dependencies": {
     "@codemirror/lang-css": "^6.3.1",
     "@codemirror/lang-html": "^6.4.11",
@@ -16,6 +17,8 @@
   "devDependencies": {
     "autoprefixer": "^10.4.7",
     "bulma": "^0.9.3",
+    "esbuild": "^0.27.0",
+    "esbuild-plugin-wasm": "^1.1.0",
     "pagedjs": "^0.4.3",
     "pagedjs-cli": "^0.4.3",
     "postcss-cli": "^10.1.0",

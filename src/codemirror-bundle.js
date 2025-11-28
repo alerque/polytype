@@ -1,6 +1,9 @@
 import { EditorView, lineNumbers } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
-import { syntaxHighlighting, defaultHighlightStyle } from "@codemirror/language";
+import {
+	syntaxHighlighting,
+	defaultHighlightStyle,
+} from "@codemirror/language";
 import { css } from "@codemirror/lang-css";
 import { html } from "@codemirror/lang-html";
 import { javascript } from "@codemirror/lang-javascript";
@@ -12,23 +15,23 @@ import { typst } from "codemirror-lang-typst";
 
 const languageMap = {
 	// Official CodeMirror languages
-	css: css(),
-	html: html(),
-	javascript: javascript(),
-	markdown: markdown(),
-	xml: xml(),
-	yaml: yaml(),
+	css,
+	html,
+	javascript,
+	markdown,
+	xml,
+	yaml,
 	// Unofficial 3rd party languages
-	latex: latex(),
-	typst: typst(),
+	latex,
+	typst,
 	// Aliases to near-matches
-	pagedjs: html(),
-	sile: latex(),
-	weasyprint: html(),
-	xelatex: latex(),
+	pagedjs: html,
+	sile: latex,
+	weasyprint: html,
+	xelatex: latex,
 };
 
-window.initCodeMirror = function (element, content, language) {
+export async function initCodeMirror(element, content, language) {
 	let polyTheme = EditorView.baseTheme({
 		"&light": {
 			backgroundColor: "#fff",
@@ -43,7 +46,7 @@ window.initCodeMirror = function (element, content, language) {
 		polyTheme,
 		lineNumbers(),
 		syntaxHighlighting(defaultHighlightStyle),
-		languageMap[language] || [],
+		languageMap[language] ? languageMap[language]() : [],
 	];
 
 	let div = document.createElement("div");
