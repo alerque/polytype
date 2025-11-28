@@ -9,7 +9,7 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path=config.feed_filenames[0]) }}">
     {% endblock %}
     <link rel="stylesheet" href="{{ get_url(path="main.css") }}">
-    <script src="{{ get_url(path="codemirror.js") }}"></script>
+    <script type="module" src="{{ get_url(path="codemirror.js") }}"></script>
   </head>
   <body>
     <!--
@@ -27,12 +27,12 @@
         {%- endblock %}
       </div>
     </section>
-    <script>
+    <script type="module">
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('pre.sample').forEach(function(container) {
+            document.querySelectorAll('pre.sample').forEach(async function(container) {
                 const content = container.textContent;
                 const language = container.dataset.language;
-                window.initCodeMirror(container, content, language);
+                await window.initCodeMirror(container, content, language);
             });
         });
     </script>
