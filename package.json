@@ -19,6 +19,8 @@
     "pagedjs": "^0.4.3",
     "pagedjs-cli": "^0.4.3",
     "postcss-cli": "^10.1.0",
-    "sass": "^1.51.0"
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "rollup": "^4.53.3"
   }
 }

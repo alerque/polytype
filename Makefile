@@ -152,8 +152,8 @@ static/%.css: sass/%.scss | node_modules
 %.avif: %.pdf
 	$(MAGICK) -density 150 $< $@
 
-static/codemirror.js: src/codemirror-bundle.js | node_modules
-	$(NPX) esbuild $< --bundle --outfile=$@ --format=iife --conditions=import
+static/codemirror.js: src/codemirror-bundle.js rollup.config.js | node_modules
+	$(NPX) rollup -c
 
 .PHONY: static
 static: $(PDFS) $(PREVIEWS) static/main.css static/codemirror.js
