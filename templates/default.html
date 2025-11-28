@@ -29,11 +29,9 @@
     </section>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.codemirror-container').forEach(function(container) {
-                console.log("Doing foo on", container);
+            document.querySelectorAll('pre.sample').forEach(function(container) {
                 const content = container.textContent;
                 const language = container.dataset.language;
-                container.innerHTML = '';
                 window.initCodeMirror(container, content, language);
             });
         });

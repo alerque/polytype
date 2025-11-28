@@ -1,16 +1,17 @@
 {
   "name": "polytype",
   "dependencies": {
-    "@codemirror/view": "^6.38.8",
-    "@codemirror/state": "^6.5.2",
-    "@codemirror/lang-javascript": "^6.2.4",
-    "@codemirror/lang-html": "^6.4.11",
     "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-html": "^6.4.11",
+    "@codemirror/lang-javascript": "^6.2.4",
+    "@codemirror/lang-markdown": "^6.2.1",
     "@codemirror/lang-xml": "^6.1.0",
-    "@codemirror/basic-setup": "^0.20.0"
-  },
-  "overrides": {
-    "@codemirror/state": "^6.5.2"
+    "@codemirror/lang-yaml": "^6.1.2",
+    "@codemirror/language": "^6.11.3",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.38.8",
+    "codemirror-lang-latex": "^0.2.0",
+    "codemirror-lang-typst": "^0.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
