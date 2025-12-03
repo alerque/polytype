@@ -10,11 +10,11 @@ $body-background-color: $sepia;
 html {
 }
 
-p, pre {
+p, pre.sample, div.sample {
 	margin-bottom: 1em;
 }
 
-pre {
+pre.sample {
 	tab-size: 2;
 }
 
