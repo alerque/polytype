@@ -152,7 +152,7 @@ static/%.css: sass/%.scss | node_modules
 %.avif: %.pdf
 	$(MAGICK) -density 150 $< $@
 
-static/codemirror.js: src/codemirror-bundle.js build.js | node_modules
+static/codemirror.js: src/codemirror.js build.js | node_modules
 	$(NPX) node build.js
 
 .PHONY: static

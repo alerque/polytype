@@ -2,7 +2,7 @@ import { build } from "esbuild";
 import { wasmLoader } from 'esbuild-plugin-wasm'
 
 await build({
-  entryPoints: ["src/codemirror-bundle.js"],
+  entryPoints: ["src/codemirror.js"],
   bundle: true,
   format: "esm",
   target: ["es2020"],
