@@ -53,9 +53,11 @@ export async function initCodeMirror(element, content, language) {
 	div.className = element.className;
 	element.replaceWith(div);
 
+	const trimmedContent = content.replace(/\n+$/, '');
+
 	new EditorView({
 		state: EditorState.create({
-			doc: content,
+			doc: trimmedContent,
 			extensions,
 		}),
 		parent: div,
