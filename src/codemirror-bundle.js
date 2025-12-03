@@ -11,6 +11,7 @@ import { markdown } from "@codemirror/lang-markdown";
 import { xml } from "@codemirror/lang-xml";
 import { yaml } from "@codemirror/lang-yaml";
 import { latex } from "codemirror-lang-latex";
+import { typst } from "codemirror-lang-typst";
 
 const languageMap = {
 	// Official CodeMirror languages
@@ -22,6 +23,7 @@ const languageMap = {
 	yaml,
 	// Unofficial 3rd party languages
 	latex,
+	typst,
 	// Aliases to near-matches
 	pagedjs: html,
 	sile: latex,
@@ -29,7 +31,7 @@ const languageMap = {
 	xelatex: latex,
 };
 
-window.initCodeMirror = async function (element, content, language) {
+export async function initCodeMirror(element, content, language) {
 	let polyTheme = EditorView.baseTheme({
 		"&light": {
 			backgroundColor: "#fff",
@@ -39,27 +41,12 @@ window.initCodeMirror = async function (element, content, language) {
 		},
 	});
 
-	let languageExtension = [];
-	const spec = languageMap[language];
-	if (spec) {
-		const ext = spec();
-		languageExtension = ext instanceof Promise ? await ext : ext;
-	} else if (language === "typst") {
-		console.log("Loading Typst language support");
-		try {
-			const { typst } = await import("codemirror-lang-typst");
-			languageExtension = typst();
-		} catch (e) {
-			console.warn("Failed to load Typst language support:", e);
-		}
-	}
-
 	const extensions = [
 		EditorState.readOnly.of(true),
 		polyTheme,
 		lineNumbers(),
 		syntaxHighlighting(defaultHighlightStyle),
-		languageExtension,
+		languageMap[language] ? languageMap[language]() : [],
 	];
 
 	let div = document.createElement("div");

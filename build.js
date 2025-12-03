@@ -1,4 +1,5 @@
 import { build } from "esbuild";
+import { wasmLoader } from 'esbuild-plugin-wasm'
 
 await build({
   entryPoints: ["src/codemirror-bundle.js"],
@@ -11,5 +12,9 @@ await build({
   outbase: "src",
   assetNames: "[name]",
   entryNames: "codemirror",
+  plugins: [wasmLoader()],
   publicPath: "/",
+  supported: {
+    'top-level-await': true,
+  },
 });

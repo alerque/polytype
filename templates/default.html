@@ -9,7 +9,21 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path=config.feed_filenames[0]) }}">
     {% endblock %}
     <link rel="stylesheet" href="{{ get_url(path="main.css") }}">
-    <script type="module" src="{{ get_url(path="codemirror.js") }}"></script>
+    <script type="module">
+        import { initCodeMirror } from '{{ get_url(path="codemirror.js") }}'
+        function setupCodeMirror() {
+          document.querySelectorAll('pre.sample').forEach(async function(container) {
+              const content = container.textContent;
+              const language = container.dataset.language;
+              await initCodeMirror(container, content, language);
+          });
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener('DOMContentLoaded', setupCodeMirror);
+        } else {
+          setupCodeMirror();
+        }
+    </script>
   </head>
   <body>
     <!--
@@ -27,14 +41,5 @@
         {%- endblock %}
       </div>
     </section>
-    <script type="module">
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('pre.sample').forEach(async function(container) {
-                const content = container.textContent;
-                const language = container.dataset.language;
-                await window.initCodeMirror(container, content, language);
-            });
-        });
-    </script>
   </body>
 </html>
