@@ -8,7 +8,6 @@
     {% block rss %}
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path=config.feed_filenames[0]) }}">
     {% endblock %}
-    <link rel="stylesheet" href="{{ get_url(path="main.css") }}">
     <script type="module">
         import { initCodeMirror } from '{{ get_url(path="codemirror.js") }}'
         function setupCodeMirror() {
