@@ -1,19 +1,41 @@
 @charset "utf-8";
 
-$sepia: #ffeacb;
-$burnt: #ff6600;
-$bluish: #000088;
+$sepia: hsl(36, 100%, 90%);
+$burnt: hsl(24, 100%, 50%);
+$bluish: hsl(240, 100%, 20%);
 
 @use "../node_modules/bulma/sass" with (
 	$link: $bluish,
 	$primary: $burnt,
-	$body-background-color: $sepia,
+	$info: $sepia,
 	$size-1: 4rem,
 	$size-2: 1.3rem,
 	$size-3: 1.15rem,
 	$size-4: 1.05rem,
 	$size-5: 1.025rem,
 );
+
+:root {
+	background-color: var(--bulma-info);
+	--link-color: var(--bulma-link-15);
+	--link-hover: var(--bulma-primary-15);
+	--shady-one: var(--bulma-white);
+	--shady-two: var(--bulma-black);
+	--shady-tri: var(--bulma-info-80);
+	--paper-matt: var(--bulma-white);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		background-color: var(--bulma-info-50-invert);
+		--link-color: var(--bulma-link-15-invert);
+		--link-hover: var(--bulma-primary-15-invert);
+		--shady-one: var(--bulma-white-invert);
+		--shady-two: var(--bulma-black-invert);
+		--shady-tri: var(--bulma-info-50-invert);
+		--paper-matt: var(--bulma-info);
+	}
+}
 
 p, pre.sample, div.sample {
 	margin-bottom: 1.2rem;
@@ -33,17 +55,17 @@ h2:not(.title) {
 
 	a {
 		font-variant: small-caps;
-		text-shadow: .05em .05em .1em #aaa;
-		filter: drop-shadow(-0.02em -0.02em 0 #fff) drop-shadow(-0.02em -0.02em 0 #006);
+		text-shadow: .05em .05em .1em var(--shady-tri);
+		filter: drop-shadow(-0.02em -0.02em 0 var(--shady-one)) drop-shadow(-0.02em -0.02em 0 var(--shady-two));
 	}
 }
 
 .menu-list a,
 a {
-	color: var(--bulma-link-text);
+	color: var(--link-color);
 
 	&:hover {
-		color: var(--bulma-primary-30);
+		color: var(--link-hover);
 	}
 }
 
@@ -58,10 +80,11 @@ a {
 			width: .6em;
 			height: .6em;
 			margin-left: .4em;
-			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z'/%3E%3Cpath fill-rule='evenodd' d='M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z'/%3E%3C/svg%3E");
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: contain;
+			background-color: var(--link-color);
+			mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z'/%3E%3Cpath fill-rule='evenodd' d='M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z'/%3E%3C/svg%3E");
+			mask-position: center;
+			mask-repeat: no-repeat;
+			mask-size: contain;
 			display: inline-block;
 		}
 	}
@@ -73,7 +96,7 @@ a {
 
 	img {
 		border-radius: 0 !important;
-		background: #fff;
-		box-shadow: 0.15em 0.15em 0.3em #888;
+		background: var(--paper-matt);
+		box-shadow: 0.15em 0.15em 0.3em var(--shady-two);
 	}
 }
