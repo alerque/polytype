@@ -16,20 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      # - name: Cache Nix downloads
-      #   id: nix-store-cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: /tmp/nix-cache
-      #     key: nix-store-${{ hashFiles('flake.nix', 'flake.lock', 'shell.nix') }}
-
-      # - name: Restore Nix downloads cache
-      #   if: steps.nix-store-cache.outputs.cache-hit == 'true'
-      #   run: |
-      #     sudo rm -rf /nix
-      #     sudo mv /tmp/nix-cache /nix
-      #     sudo chown -R root /nix
-
       - name: Cache Nodejs downloads
         uses: actions/cache@v4
         with:
@@ -78,9 +64,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force_orphan: true
-
-      # - name: Copy Nix store to cachable location
-      #   if: steps.nix-store-cache.outputs.cache-hit != 'true'
-      #   run: |
-      #     sudo rm -rf /nix/var/nix/{{gc,daemon}-socket/socket,userpool,gc.lock,db/{big-lock,reserved}} ||:
-      #     cp -r --preserve=timestamps /nix /tmp/nix-cache ||:
