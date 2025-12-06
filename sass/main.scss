@@ -100,3 +100,16 @@ a {
 		box-shadow: 0.15em 0.15em 0.3em var(--shady-two);
 	}
 }
+
+pre.terminal {
+  background: var(--bulma-black);
+  color: var(--bulma-white);
+  border-radius: 8px;
+  border: 1px solid var(--bulma-grey-darker);
+  // box-shadow: 0 4px 12px var(--bulma-grey-darker);
+
+  .symbol {
+    color: var(--bulma-warning);
+    user-select: none;
+  }
+}
