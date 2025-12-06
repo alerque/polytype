@@ -1,5 +1,6 @@
 import { EditorView, lineNumbers } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
+import { oneDark } from "@codemirror/theme-one-dark";
 import {
 	syntaxHighlighting,
 	defaultHighlightStyle,
@@ -31,6 +32,8 @@ const languageMap = {
 	xelatex: latex,
 };
 
+const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
 export async function initCodeMirror(element, content, language) {
 	let polyTheme = EditorView.baseTheme({
 		"&light": {
@@ -44,6 +47,7 @@ export async function initCodeMirror(element, content, language) {
 	const extensions = [
 		EditorState.readOnly.of(true),
 		polyTheme,
+		isDarkMode ? oneDark : [],
 		lineNumbers(),
 		syntaxHighlighting(defaultHighlightStyle),
 		languageMap[language] ? languageMap[language]() : [],
