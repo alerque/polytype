@@ -61,6 +61,7 @@
             libertinus
             luajitPackages.luarocks
             mold
+            netcat
             nodejs
             rustc
             satysfi
@@ -70,6 +71,7 @@
             texlive.combined.scheme-full
             typst
             python313Packages.weasyprint
+            xdg-utils
             yq
             zola
             zsh
