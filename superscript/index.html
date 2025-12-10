@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Polytype – Superscript</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/main.css">
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    
+    <script type="module">
+        import { initCodeMirror } from '/codemirror.js'
+        function setupCodeMirror() {
+          document.querySelectorAll('pre.sample').forEach(async function(container) {
+              const content = container.textContent;
+              const language = container.dataset.language;
+              await initCodeMirror(container, content, language);
+          });
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener('DOMContentLoaded', setupCodeMirror);
+        } else {
+          setupCodeMirror();
+        }
+    </script>
+  </head>
+  <body>
+    <!--
+    <pre>{
+  "config": {
+    "base_url": "/",
+    "mode": "build",
+    "title": "Polytype",
+    "description": "a Rosetta stone for typesetting engines",
+    "languages": {},
+    "default_language": "en",
+    "generate_feed": true,
+    "generate_feeds": true,
+    "feed_filenames": [
+      "atom.xml"
+    ],
+    "taxonomies": [],
+    "author": null,
+    "build_search_index": false,
+    "extra": {},
+    "markdown": {
+      "highlight_code": true,
+      "error_on_missing_highlight": false,
+      "highlight_theme": "base16-ocean-dark",
+      "highlight_themes_css": [],
+      "render_emoji": false,
+      "external_links_class": null,
+      "external_links_target_blank": false,
+      "external_links_no_follow": false,
+      "external_links_no_referrer": false,
+      "smart_punctuation": false,
+      "definition_list": false,
+      "bottom_footnotes": false,
+      "extra_syntaxes_and_themes": [],
+      "lazy_async_image": false,
+      "insert_anchor_links": "none",
+      "github_alerts": false
+    },
+    "search": {
+      "index_format": "elasticlunr_javascript"
+    },
+    "generate_sitemap": true,
+    "generate_robots_txt": true,
+    "exclude_paginated_pages_in_sitemap": "none"
+  },
+  "current_path": "/superscript/",
+  "current_url": "/superscript/",
+  "lang": "en",
+  "page": {
+    "relative_path": "superscript.md",
+    "colocated_path": null,
+    "content": "<p>Superscripts are sometimes needed for numbers (e.g., in footnote calls), but also for letters (e.g., in French, for centuries, issue numbers; likewise in English —depending on authors— for centuries, etc.)</p>\n<p>Many fonts include set of superscript characters.\nTheoretically, assuming the font designers did their job well, and crafted them with the best of their art, with appropriate weight and shape, such “real” characters ought to look much better than, say, merely scaled and raised characters.\nThe Brill font, for example, is commendable in this respect, with fairly well-designed superscript characters.</p>\n<p>When available, how are these superior characters to be used?\nWhile direct Unicode input is sometimes possible, it is not practical.\nMoreover, all characters are not always available via Unicode...</p>\n<p>Modern OpenType fonts often can include superscript characters, under the <code>sups</code> feature.\nWhen supported by the font, this could be the preferred way to access them, and the most reliable one for an extensive set of characters.</p>\n<p>However, in his <em>Elements of Typographic Style</em> (3rd edition, §4.3.2), Robert Bringhurst writes: “Many fonts include sets of superscript numbers, but these are not always of satisfactory size and design.\nText numerals set at a reduced size and elevated baseline are sometimes the best or only choice.”</p>\n<p>Quite rightly, many fonts do not have perfect superscript characters.\nBut raising and scaling standard characters is a compromise, and it is not without its own issues.\nThe weight of such reduced characters may end up being too thin.</p>\n<p>Indeed, Bringhurst goes on: “In many faces, smaller numbers in semibold look better than larger numbers of regular weight.”</p>\n<p>Linear scaling may not be the best choice.\nLook at well designed fonts: Smaller numbers are usually scaled <em>vertically</em> to a proportion of the full height they would take at regular size.\nThis is also often the case for letters, albeit to a smaller amount.</p>\n<p>Finally, would the text be set in italic, a correction may be needed to improve the superscript placement.</p>\n<p>In conclusion, such a simple feature (in appearance) is an interesting challenge for digital typesetting systems thriving for quality.</p>\n<p>They have various options at their disposal, but the best choice will depend on the font, the characters, and the context:</p>\n<ul>\n<li>Using native superscript characters from the font?</li>\n<li>Raising and scaling standard characters?\n<ul>\n<li>Linear scaling or assymetric scaling?</li>\n<li>Weight of the raised and scaled characters?</li>\n<li>Correction for italic text?</li>\n</ul>\n</li>\n</ul>\n<p>But do all typesetting systems offer the same capabilities in this respect?\nAnd do they all use the same strategies?</p>\n<p>(This discussion would also apply to subscripts, which are used in chemical formulas, for example, although mathematical notation may also be used in that case, and is of a different nature.)</p>\n",
+    "permalink": "/superscript/",
+    "slug": "superscript",
+    "ancestors": [
+      "_index.md"
+    ],
+    "title": "Superscript",
+    "description": "Those superior characters are not as simple as they seem",
+    "updated": null,
+    "date": null,
+    "year": null,
+    "month": null,
+    "day": null,
+    "taxonomies": {},
+    "authors": [],
+    "extra": {
+      "typesetters": [
+        "sile",
+        "xelatex",
+        "typst"
+      ]
+    },
+    "path": "/superscript/",
+    "components": [
+      "superscript"
+    ],
+    "summary": null,
+    "toc": [],
+    "word_count": 445,
+    "reading_time": 3,
+    "assets": [],
+    "draft": false,
+    "lang": "en",
+    "lower": null,
+    "higher": null,
+    "translations": [],
+    "backlinks": []
+  },
+  "zola_version": "0.21.0"
+}</pre>
+    -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <h1 class="title is-1 navbar-brand"><a href="&#x2F;">Polytype</a></h1>
+    </nav>
+    <section class="section columns">
+      <aside class="menu column is-narrow">
+        
+
+
+<aside class="menu">
+  <p class="menu-label"> Sample Gallery </p>
+  <ul class="menu-list">
+    
+    
+    <li>
+      <a href="/integral-alignment">Alignment of Integrals</a>
+    </li>
+    
+    <li>
+      <a href="/varlimits">Variant limits</a>
+    </li>
+    
+    <li>
+      <a href="/hieroglyphs">Hieroglyphs</a>
+    </li>
+    
+    <li>
+      <a href="/title-case">Title Case</a>
+    </li>
+    
+    <li>
+      <a href="/dropcaps">Dropcaps</a>
+    </li>
+    
+    <li class="is-active">
+      <a href="/superscript">Superscript</a>
+    </li>
+    
+    <li>
+      <a href="/prime-symbol">The Prime Symbol</a>
+    </li>
+    
+    <li>
+      <a href="/willans">Willan’s Formula</a>
+    </li>
+    
+    <li>
+      <a href="/page-geometry">Page Geometry 101</a>
+    </li>
+    
+    <li>
+      <a href="/italic-correction">Automated Italic Correction</a>
+    </li>
+    
+    <li>
+      <a href="/hello-world">Hello World!</a>
+    </li>
+    
+  </ul>
+  <p class="menu-label">About</p>
+  <ul class="menu-list">
+    <li><a href="/">Project Goals</a></li>
+    <li><a href="https://github.com/alerque/polytype">Sources on GitHub</a></li>
+  </ul>
+  <p class="menu-label">Typesetting Engines</p>
+  <ul class="menu-list">
+    <li><a href="https://sile-typesetter.org">SILE</a></li>
+    <li><a href="https://typst.app">Typst</a></li>
+    <li><a href="https://www.latex-project.org">LaTeX</a></li>
+    <li><a href="https://pagedjs.org">paged.js</a></li>
+    <li><a href="https://weasyprint.org">WeasyPrint</a></li>
+    <li><a href="https://www.speedata.de">Speedata</a></li>
+    <li><a href="https://www.gnu.org/software/groff/groff.html">groff</a></li>
+    <li><a href="https://patoline.github.io/">Patoline</a></li>
+    <li><a href="https://github.com/gfngfn/SATySFi">SATySFi</a></li>
+  </ul>
+</aside>
+
+      </aside>
+      <div class="container column">
+        
+
+<h2 class="title is-2">Superscript</h2>
+
+<p>Superscripts are sometimes needed for numbers (e.g., in footnote calls), but also for letters (e.g., in French, for centuries, issue numbers; likewise in English —depending on authors— for centuries, etc.)</p>
+<p>Many fonts include set of superscript characters.
+Theoretically, assuming the font designers did their job well, and crafted them with the best of their art, with appropriate weight and shape, such “real” characters ought to look much better than, say, merely scaled and raised characters.
+The Brill font, for example, is commendable in this respect, with fairly well-designed superscript characters.</p>
+<p>When available, how are these superior characters to be used?
+While direct Unicode input is sometimes possible, it is not practical.
+Moreover, all characters are not always available via Unicode...</p>
+<p>Modern OpenType fonts often can include superscript characters, under the <code>sups</code> feature.
+When supported by the font, this could be the preferred way to access them, and the most reliable one for an extensive set of characters.</p>
+<p>However, in his <em>Elements of Typographic Style</em> (3rd edition, §4.3.2), Robert Bringhurst writes: “Many fonts include sets of superscript numbers, but these are not always of satisfactory size and design.
+Text numerals set at a reduced size and elevated baseline are sometimes the best or only choice.”</p>
+<p>Quite rightly, many fonts do not have perfect superscript characters.
+But raising and scaling standard characters is a compromise, and it is not without its own issues.
+The weight of such reduced characters may end up being too thin.</p>
+<p>Indeed, Bringhurst goes on: “In many faces, smaller numbers in semibold look better than larger numbers of regular weight.”</p>
+<p>Linear scaling may not be the best choice.
+Look at well designed fonts: Smaller numbers are usually scaled <em>vertically</em> to a proportion of the full height they would take at regular size.
+This is also often the case for letters, albeit to a smaller amount.</p>
+<p>Finally, would the text be set in italic, a correction may be needed to improve the superscript placement.</p>
+<p>In conclusion, such a simple feature (in appearance) is an interesting challenge for digital typesetting systems thriving for quality.</p>
+<p>They have various options at their disposal, but the best choice will depend on the font, the characters, and the context:</p>
+<ul>
+<li>Using native superscript characters from the font?</li>
+<li>Raising and scaling standard characters?
+<ul>
+<li>Linear scaling or assymetric scaling?</li>
+<li>Weight of the raised and scaled characters?</li>
+<li>Correction for italic text?</li>
+</ul>
+</li>
+</ul>
+<p>But do all typesetting systems offer the same capabilities in this respect?
+And do they all use the same strategies?</p>
+<p>(This discussion would also apply to subscripts, which are used in chemical formulas, for example, although mathematical notation may also be used in that case, and is of a different nature.)</p>
+
+
+
+
+
+<a id="sile" /></a>
+
+<h3 class="title is-3">sile</h3>
+
+<div class="columns">
+  <div class="card column is-one-third">
+    <div class="card-image">
+      <img src="/superscript-sile.avif" />
+    </div>
+  </div>
+  <div class="column">
+
+    <p>
+      Download:
+      ( <a download href="/superscript-sile.sil">source</a>
+      | <a download href="/superscript-sile.pdf">pdf</a>
+      )
+    </p>
+
+    <h4 class="title is-4">Input document</h4>
+    
+    <pre class="sample" data-language="sile">\begin[papersize=a7]{document}
+\nofolios
+\neverindent
+\use[module=packages.textsubsuper]
+\font[family=Libertinus Serif,size=12pt]
+
+\font[size=16pt]{ther} (not superscript)
+
+\font[size=26pt]{Xᵗʰᵉʳ} (unicode superscript)
+
+\font[size=26pt]{X\font[features=+sups]{ther}} (font feature)
+
+\font[size=26pt]{X\textsuperscript[fake=false]{ther}} (native super)
+
+\font[size=26pt]{X\textsuperscript[fake=true]{ther}} (fake super)
+
+\begin[command=sample]{define}
+20ᵗʰ \font[features=+smcp]{xx}ᵉ &#x2F;
+20\font[features=+sups]{th} \font[features=+smcp]{xx}\font[features=+sups]{e} &#x2F;
+20\textsuperscript[fake=false]{th} \font[features=+smcp]{xx}\textsuperscript[fake=false]{e} &#x2F;
+20\textsuperscript[fake=true]{th} \font[features=+smcp]{xx}\textsuperscript[fake=true]{e}
+\end{define}
+
+\font[family=Libertinus Serif,style=normal]{\sample}
+
+\font[family=Libertinus Serif,style=italic]{\sample}
+
+\font[family=Libertinus Sans,style=normal]{\sample}
+
+\font[family=Libertinus Sans,style=italic]{\sample}
+\end{document}
+</pre>
+
+    <h4 class="title is-4">Render command</h4>
+    <pre class="terminal"><code><span class="symbol">$ </span>sile  -o superscript-sile.pdf superscript-sile.sil</code></pre>
+  </div>
+</div>
+
+
+
+
+<a id="xelatex" /></a>
+
+<h3 class="title is-3">xelatex</h3>
+
+<div class="columns">
+  <div class="card column is-one-third">
+    <div class="card-image">
+      <img src="/superscript-xelatex.avif" />
+    </div>
+  </div>
+  <div class="column">
+
+    <p>
+      Download:
+      ( <a download href="/superscript-xelatex.tex">source</a>
+      | <a download href="/superscript-xelatex.pdf">pdf</a>
+      )
+    </p>
+
+    <h4 class="title is-4">Input document</h4>
+    
+    <pre class="sample" data-language="xelatex">\documentclass[12pt]{article}
+\usepackage[paperheight=105mm,paperwidth=74mm,margin=4mm]{geometry}
+\pagenumbering{gobble}
+\setlength{\parindent}{0pt}
+\usepackage{fontspec}
+\usepackage{moresize}
+\usepackage{libertinus}
+\begin{document}
+
+{\LARGE ther} (not superscript)
+
+{\HUGE Xᵗʰᵉʳ} (unicode superscript)
+
+{\HUGE X\textsuperscript{ther}} (super)
+
+20ᵗʰ \textsc{xx}ᵉ &#x2F;
+20\textsuperscript{th} \textsc{xx}\textsuperscript{e}
+
+\textit{%
+20ᵗʰ \textsc{xx}ᵉ &#x2F;
+20\textsuperscript{th} \textsc{xx}\textsuperscript{e}
+}
+
+\textsf{%
+20ᵗʰ \textsc{xx}ᵉ &#x2F;
+20\textsuperscript{th} \textsc{xx}\textsuperscript{e}
+}
+
+\textsf{\textit{%
+20ᵗʰ \textsc{xx}ᵉ &#x2F;
+20\textsuperscript{th} \textsc{xx}\textsuperscript{e}
+}}
+\end{document}
+</pre>
+
+    <h4 class="title is-4">Render command</h4>
+    <pre class="terminal"><code><span class="symbol">$ </span>xelatex  -interaction=batchmode -halt-on-error -jobname data&#x2F;superscript-xelatex superscript-xelatex.tex</code></pre>
+  </div>
+</div>
+
+
+
+
+<a id="typst" /></a>
+
+<h3 class="title is-3">typst</h3>
+
+<div class="columns">
+  <div class="card column is-one-third">
+    <div class="card-image">
+      <img src="/superscript-typst.avif" />
+    </div>
+  </div>
+  <div class="column">
+
+    <p>
+      Download:
+      ( <a download href="/superscript-typst.typ">source</a>
+      | <a download href="/superscript-typst.pdf">pdf</a>
+      )
+    </p>
+
+    <h4 class="title is-4">Input document</h4>
+    
+    <pre class="sample" data-language="typst">#set page(
+  paper: &quot;a7&quot;,
+  margin: 4mm,
+)
+
+#set text(
+  font: &quot;Libertinus Serif&quot;,
+  size: 12pt,
+)
+
+#text(size:16pt)[ther] (not superscript)
+
+#text(size:26pt)[Xᵗʰᵉʳ] (unicode superscript)
+
+#text(size:26pt)[X#text(features: (sups: 1))[ther]] (font feature)
+
+&#x2F;&#x2F; Not yet supported at the time of writing,
+&#x2F;&#x2F; See https:&#x2F;&#x2F;github.com&#x2F;typst&#x2F;typst&#x2F;pull&#x2F;5777
+#text(size:26pt)[X#super(typographic: true)[ther]] (typographic super)
+
+#text(size:26pt)[X#super(typographic: false)[ther]] (non typographic super)
+
+#text(
+  font: &quot;Libertinus Serif&quot;,
+  style: &quot;normal&quot;
+)[
+  20ᵗʰ #smallcaps[xx]ᵉ &#x2F;
+  20#text(features: (sups:1))[th]
+  #smallcaps[xx]#text(features: (sups:1))[e] &#x2F;
+  20#super(typographic: false)[th]
+  #smallcaps[xx]#super(typographic: false)[e] &#x2F;
+  20#super(typographic: true)[th]
+  #smallcaps[xx]#super(typographic: true)[e]
+]
+
+#text(
+  font: &quot;Libertinus Serif&quot;,
+  style: &quot;italic&quot;
+)[
+  20ᵗʰ #smallcaps[xx]ᵉ &#x2F;
+  20#text(features: (sups:1))[th]
+  #smallcaps[xx]#text(features: (sups:1))[e] &#x2F;
+  20#super(typographic: false)[th]
+  #smallcaps[xx]#super(typographic: false)[e] &#x2F;
+  20#super(typographic: true)[th]
+  #smallcaps[xx]#super(typographic: true)[e]
+]
+
+#text(
+  font: &quot;Libertinus Sans&quot;,
+  style: &quot;normal&quot;
+)[
+  20ᵗʰ #smallcaps[xx]ᵉ &#x2F;
+  20#text(features: (sups:1))[th] #smallcaps[xx]#text(features: (sups:1))[e] &#x2F;
+  20#super(typographic: false)[th] #smallcaps[xx]#super(typographic: false)[e] &#x2F;
+  20#super(typographic: true)[th] #smallcaps[xx]#super(typographic: true)[e]
+]
+
+#text(
+  font: &quot;Libertinus Sans&quot;,
+  style: &quot;italic&quot;
+)[
+  20ᵗʰ #smallcaps[xx]ᵉ &#x2F;
+  20#text(features: (sups:1))[th] #smallcaps[xx]#text(features: (sups:1))[e] &#x2F;
+  20#super(typographic: false)[th] #smallcaps[xx]#super(typographic: false)[e] &#x2F;
+  20#super(typographic: true)[th] #smallcaps[xx]#super(typographic: true)[e]
+]
+</pre>
+
+    <h4 class="title is-4">Render command</h4>
+    <pre class="terminal"><code><span class="symbol">$ </span>typst  compile superscript-typst.typ superscript-typst.pdf</code></pre>
+  </div>
+</div>
+
+
+
+
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+\begin[papersize=a7]{document}
+\nofolios
+\neverindent
+\use[module=packages.textsubsuper]
+\font[family=Libertinus Serif,size=14pt]
+
+No italic correction (default):
+
+\begin{center}
+(\em{fluff})
+
+¡\em{fanciful proof}!
+
+[\em{fluff}]
+
+\em{fluff}\textsuperscript{n}
+\end{center}
+
+Correction heuristic enabled:
+
+\set[parameter=typesetter.italicCorrection,value=true]
+
+\begin{center}
+(\em{fluff})
+
+¡\em{fanciful proof}!
+
+[\em{fluff}]
+
+\em{fluff}\textsuperscript{n}
+\end{center}
+\end{document}

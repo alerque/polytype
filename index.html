@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Polytype – Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/main.css">
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    
+    <script type="module">
+        import { initCodeMirror } from '/codemirror.js'
+        function setupCodeMirror() {
+          document.querySelectorAll('pre.sample').forEach(async function(container) {
+              const content = container.textContent;
+              const language = container.dataset.language;
+              await initCodeMirror(container, content, language);
+          });
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener('DOMContentLoaded', setupCodeMirror);
+        } else {
+          setupCodeMirror();
+        }
+    </script>
+  </head>
+  <body>
+    <!--
+    <pre>{
+  "config": {
+    "base_url": "/",
+    "mode": "build",
+    "title": "Polytype",
+    "description": "a Rosetta stone for typesetting engines",
+    "languages": {},
+    "default_language": "en",
+    "generate_feed": true,
+    "generate_feeds": true,
+    "feed_filenames": [
+      "atom.xml"
+    ],
+    "taxonomies": [],
+    "author": null,
+    "build_search_index": false,
+    "extra": {},
+    "markdown": {
+      "highlight_code": true,
+      "error_on_missing_highlight": false,
+      "highlight_theme": "base16-ocean-dark",
+      "highlight_themes_css": [],
+      "render_emoji": false,
+      "external_links_class": null,
+      "external_links_target_blank": false,
+      "external_links_no_follow": false,
+      "external_links_no_referrer": false,
+      "smart_punctuation": false,
+      "definition_list": false,
+      "bottom_footnotes": false,
+      "extra_syntaxes_and_themes": [],
+      "lazy_async_image": false,
+      "insert_anchor_links": "none",
+      "github_alerts": false
+    },
+    "search": {
+      "index_format": "elasticlunr_javascript"
+    },
+    "generate_sitemap": true,
+    "generate_robots_txt": true,
+    "exclude_paginated_pages_in_sitemap": "none"
+  },
+  "current_path": "/",
+  "current_url": "/",
+  "lang": "en",
+  "section": {
+    "relative_path": "_index.md",
+    "colocated_path": null,
+    "content": "",
+    "permalink": "/",
+    "draft": false,
+    "ancestors": [],
+    "title": null,
+    "description": null,
+    "extra": {},
+    "path": "/",
+    "components": [],
+    "toc": [],
+    "word_count": 0,
+    "reading_time": 0,
+    "lang": "en",
+    "assets": [],
+    "pages": [
+      {
+        "relative_path": "integral-alignment.md",
+        "colocated_path": null,
+        "content": "<p>Compare the baseline alignment of integrals.</p>\n<p>aka. What's up must come down.</p>\n",
+        "permalink": "/integral-alignment/",
+        "slug": "integral-alignment",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "Alignment of Integrals",
+        "description": "Compare the baseline alignment of integrals.",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "typst",
+            "sile",
+            "xelatex"
+          ]
+        },
+        "path": "/integral-alignment/",
+        "components": [
+          "integral-alignment"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 12,
+        "reading_time": 1,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      },
+      {
+        "relative_path": "varlimits.md",
+        "colocated_path": null,
+        "content": "<p>Variants for superior, inferior, projective, and injective limits are an interesting challenge for typesetting engines with mathematical capabilities.</p>\n<p>They have both a subscript expression and a stretchy symbol (an arrow or a bar) that indicates the direction and nature of the limit.</p>\n<p>The symbol is stacked below or above the limit.</p>\n<p>In display mode, the expression is below the limit.</p>\n<p>In inline mode, the expression is on the right of the limit, but the symbol remains above or below the limit.\nSo the symbol is not <em>moveable,</em> while the expression is, depending on the context.</p>\n",
+        "permalink": "/varlimits/",
+        "slug": "varlimits",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "Variant limits",
+        "description": "Those limits with a little extra flair",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "sile",
+            "xelatex",
+            "typst"
+          ]
+        },
+        "path": "/varlimits/",
+        "components": [
+          "varlimits"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 95,
+        "reading_time": 1,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      },
+      {
+        "relative_path": "hieroglyphs.md",
+        "colocated_path": null,
+        "content": "<p>In ancient times pictographs –wielded in the hands of the Pharaohs– ruled the world .</p>\n",
+        "permalink": "/hieroglyphs/",
+        "slug": "hieroglyphs",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "Hieroglyphs",
+        "description": "Language of the Pharaohs",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "sile",
+            "typst"
+          ]
+        },
+        "path": "/hieroglyphs/",
+        "components": [
+          "hieroglyphs"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 14,
+        "reading_time": 1,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      },
+      {
+        "relative_path": "title-case.md",
+        "colocated_path": null,
+        "content": "<p>Coders have it easy.\nWhen they want to cast a variable name between cases there are a myriad of libraries for the purpose.\nWriters have it harder.\nEach language comes with its own challenges, and most have more than one style guide.\nIn the case of English, even the style guides can leave much up to interpretation.</p>\n<p>This demo is interesting not because different typesetting engines handle this either the same or differently, but because one library can be used in more than one engine.\nSpecifically the <a href=\"https://github.com/alerque/decasify\">decasify</a> project implements various prose casing functions and can be used as a native package in either SILE or Typst.</p>\n",
+        "permalink": "/title-case/",
+        "slug": "title-case",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "Title Case",
+        "description": "Title casing prose is more complex than munging some glyphs.",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "sile",
+            "typst"
+          ]
+        },
+        "path": "/title-case/",
+        "components": [
+          "title-case"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 111,
+        "reading_time": 1,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      },
+      {
+        "relative_path": "dropcaps.md",
+        "colocated_path": null,
+        "content": "<p>Once upon a time in a far away land all chapters began with these.</p>\n",
+        "permalink": "/dropcaps/",
+        "slug": "dropcaps",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "Dropcaps",
+        "description": "For that bold leading character",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "sile",
+            "typst",
+            "xelatex",
+            "groff"
+          ]
+        },
+        "path": "/dropcaps/",
+        "components": [
+          "dropcaps"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 14,
+        "reading_time": 1,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      },
+      {
+        "relative_path": "superscript.md",
+        "colocated_path": null,
+        "content": "<p>Superscripts are sometimes needed for numbers (e.g., in footnote calls), but also for letters (e.g., in French, for centuries, issue numbers; likewise in English —depending on authors— for centuries, etc.)</p>\n<p>Many fonts include set of superscript characters.\nTheoretically, assuming the font designers did their job well, and crafted them with the best of their art, with appropriate weight and shape, such “real” characters ought to look much better than, say, merely scaled and raised characters.\nThe Brill font, for example, is commendable in this respect, with fairly well-designed superscript characters.</p>\n<p>When available, how are these superior characters to be used?\nWhile direct Unicode input is sometimes possible, it is not practical.\nMoreover, all characters are not always available via Unicode...</p>\n<p>Modern OpenType fonts often can include superscript characters, under the <code>sups</code> feature.\nWhen supported by the font, this could be the preferred way to access them, and the most reliable one for an extensive set of characters.</p>\n<p>However, in his <em>Elements of Typographic Style</em> (3rd edition, §4.3.2), Robert Bringhurst writes: “Many fonts include sets of superscript numbers, but these are not always of satisfactory size and design.\nText numerals set at a reduced size and elevated baseline are sometimes the best or only choice.”</p>\n<p>Quite rightly, many fonts do not have perfect superscript characters.\nBut raising and scaling standard characters is a compromise, and it is not without its own issues.\nThe weight of such reduced characters may end up being too thin.</p>\n<p>Indeed, Bringhurst goes on: “In many faces, smaller numbers in semibold look better than larger numbers of regular weight.”</p>\n<p>Linear scaling may not be the best choice.\nLook at well designed fonts: Smaller numbers are usually scaled <em>vertically</em> to a proportion of the full height they would take at regular size.\nThis is also often the case for letters, albeit to a smaller amount.</p>\n<p>Finally, would the text be set in italic, a correction may be needed to improve the superscript placement.</p>\n<p>In conclusion, such a simple feature (in appearance) is an interesting challenge for digital typesetting systems thriving for quality.</p>\n<p>They have various options at their disposal, but the best choice will depend on the font, the characters, and the context:</p>\n<ul>\n<li>Using native superscript characters from the font?</li>\n<li>Raising and scaling standard characters?\n<ul>\n<li>Linear scaling or assymetric scaling?</li>\n<li>Weight of the raised and scaled characters?</li>\n<li>Correction for italic text?</li>\n</ul>\n</li>\n</ul>\n<p>But do all typesetting systems offer the same capabilities in this respect?\nAnd do they all use the same strategies?</p>\n<p>(This discussion would also apply to subscripts, which are used in chemical formulas, for example, although mathematical notation may also be used in that case, and is of a different nature.)</p>\n",
+        "permalink": "/superscript/",
+        "slug": "superscript",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "Superscript",
+        "description": "Those superior characters are not as simple as they seem",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "sile",
+            "xelatex",
+            "typst"
+          ]
+        },
+        "path": "/superscript/",
+        "components": [
+          "superscript"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 445,
+        "reading_time": 3,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      },
+      {
+        "relative_path": "prime-symbol.md",
+        "colocated_path": null,
+        "content": "<p>Assorted ways of entering and rendering the troublesome prime symbol.</p>\n<p>One issue is in math mode.\nA typesetter has to account for how different fonts position their prime symbols.</p>\n<p>Another problem crops up in text where quotes marks get used for things like feet and inch units in lengths or minute and second units in latitude and longitude coordinates.\nIt should be possible to <em>not</em> trigger smart quotes in these cases.</p>\n",
+        "permalink": "/prime-symbol/",
+        "slug": "prime-symbol",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "The Prime Symbol",
+        "description": "In math mode, prime-time is always a good time.",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "typst",
+            "sile",
+            "xelatex",
+            "groff"
+          ],
+          "typesetter_args": {
+            "groff": "-e -P-pA7"
+          }
+        },
+        "path": "/prime-symbol/",
+        "components": [
+          "prime-symbol"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 71,
+        "reading_time": 1,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      },
+      {
+        "relative_path": "willans.md",
+        "colocated_path": null,
+        "content": "<p>Willan's formula for the nth prime circa 1964; a.k.a. an exact prime formula which is quite insane and fairly useless but a nice typesetting stress test.</p>\n",
+        "permalink": "/willans/",
+        "slug": "willans",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "Willan’s Formula",
+        "description": "An exact prime formula which is however quite insane and fairly useless.",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "typst",
+            "sile",
+            "xelatex"
+          ]
+        },
+        "path": "/willans/",
+        "components": [
+          "willans"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 26,
+        "reading_time": 1,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      },
+      {
+        "relative_path": "page-geometry.md",
+        "colocated_path": null,
+        "content": "<p>An A7 page with 1cm margins and 1cm paragraph indentation.</p>\n",
+        "permalink": "/page-geometry/",
+        "slug": "page-geometry",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "Page Geometry 101",
+        "description": "Pick a paper and some margins",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "sile",
+            "typst",
+            "xelatex",
+            "groff",
+            "pagedjs"
+          ],
+          "typesetter_args": {
+            "groff": "-P-pA7"
+          }
+        },
+        "path": "/page-geometry/",
+        "components": [
+          "page-geometry"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 10,
+        "reading_time": 1,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      },
+      {
+        "relative_path": "italic-correction.md",
+        "colocated_path": null,
+        "content": "<p>When an italicized word is followed or preceded by non-italicized text, the spacing may need to be adjusted, or “corrected”, so that the characters do not overlap.</p>\n<p>You might thus want to insert some additional space between italicized words and non-italicized ones.\nBut inserting the necessary spaces manually is quite tedious, not to say impractical... And which type of space should you use?</p>\n<p>An automated solution would be needed.\nHowever, the concept of italic correction does not exist in OpenType fonts, and they do not provide the metrics that would allow a typesetting system to implement it easily. (This would apply to Graphite fonts too. More generally, there is no known font format supporting kerning across font style changes. Well, some TeX fonts have such a possibility, but it does not really help here with OpenType <em>in general.</em>)</p>\n<p>So eventually, it boils down to the typesetting system to implement a heuristic solution...</p>\n<p>A possible heuristic approach is to use the difference between a glyph’s bounding box and its advance width (when switching from italics to roman) or its bearing width (the other way round, often less critical, but still adequate).\nAssuming italics is slanted forward (in left-to-right writing direction) and that italicized glyphs usually reach their maximum extent to the right towards their top (and towards their bottom, on their left side), then it is possible to approximate a fairly decent correction.</p>\n<p>Nevertheless, this solution cannot be made perfect, even assuming a reasonable choice of fonts.\nPathological cases may still occur, even in latin scripts, for which there is no solution but using manual kerning.</p>\n<p>Different typesetting systems may implement this heuristic in different ways, and your mileage may vary.</p>\n",
+        "permalink": "/italic-correction/",
+        "slug": "italic-correction",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "Automated Italic Correction",
+        "description": "Switching between italic and roman, and reciprocally",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "sile",
+            "xelatex",
+            "typst"
+          ]
+        },
+        "path": "/italic-correction/",
+        "components": [
+          "italic-correction"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 284,
+        "reading_time": 2,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      },
+      {
+        "relative_path": "hello-world.md",
+        "colocated_path": null,
+        "content": "<p>Just the simplest way to get a phrase onto a numbered page.</p>\n<p>The page size, font face, margins, and everything else should be the defaults.\nThe only non-default addition to the minimal way to get text on a page is adding a folio in the simplest way possible.\nThe position of the folio may vary depending on defaults, but if an explicit position is required use bottom center.</p>\n",
+        "permalink": "/hello-world/",
+        "slug": "hello-world",
+        "ancestors": [
+          "_index.md"
+        ],
+        "title": "Hello World!",
+        "description": "Your most basic greeting.",
+        "updated": null,
+        "date": null,
+        "year": null,
+        "month": null,
+        "day": null,
+        "taxonomies": {},
+        "authors": [],
+        "extra": {
+          "typesetters": [
+            "sile",
+            "typst",
+            "xelatex",
+            "groff",
+            "satysfi",
+            "pagedjs",
+            "weasyprint"
+          ]
+        },
+        "path": "/hello-world/",
+        "components": [
+          "hello-world"
+        ],
+        "summary": null,
+        "toc": [],
+        "word_count": 69,
+        "reading_time": 1,
+        "assets": [],
+        "draft": false,
+        "lang": "en",
+        "lower": null,
+        "higher": null,
+        "translations": [],
+        "backlinks": []
+      }
+    ],
+    "subsections": [],
+    "translations": [],
+    "backlinks": [],
+    "generate_feeds": false,
+    "transparent": false,
+    "paginate_by": null,
+    "paginate_reversed": false
+  }
+}</pre>
+    -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <h1 class="title is-1 navbar-brand"><a href="&#x2F;">Polytype</a></h1>
+    </nav>
+    <section class="section columns">
+      <aside class="menu column is-narrow">
+        
+
+
+<aside class="menu">
+  <p class="menu-label"> Sample Gallery </p>
+  <ul class="menu-list">
+    
+    
+    <li>
+      <a href="/integral-alignment">Alignment of Integrals</a>
+    </li>
+    
+    <li>
+      <a href="/varlimits">Variant limits</a>
+    </li>
+    
+    <li>
+      <a href="/hieroglyphs">Hieroglyphs</a>
+    </li>
+    
+    <li>
+      <a href="/title-case">Title Case</a>
+    </li>
+    
+    <li>
+      <a href="/dropcaps">Dropcaps</a>
+    </li>
+    
+    <li>
+      <a href="/superscript">Superscript</a>
+    </li>
+    
+    <li>
+      <a href="/prime-symbol">The Prime Symbol</a>
+    </li>
+    
+    <li>
+      <a href="/willans">Willan’s Formula</a>
+    </li>
+    
+    <li>
+      <a href="/page-geometry">Page Geometry 101</a>
+    </li>
+    
+    <li>
+      <a href="/italic-correction">Automated Italic Correction</a>
+    </li>
+    
+    <li>
+      <a href="/hello-world">Hello World!</a>
+    </li>
+    
+  </ul>
+  <p class="menu-label">About</p>
+  <ul class="menu-list">
+    <li><a href="/">Project Goals</a></li>
+    <li><a href="https://github.com/alerque/polytype">Sources on GitHub</a></li>
+  </ul>
+  <p class="menu-label">Typesetting Engines</p>
+  <ul class="menu-list">
+    <li><a href="https://sile-typesetter.org">SILE</a></li>
+    <li><a href="https://typst.app">Typst</a></li>
+    <li><a href="https://www.latex-project.org">LaTeX</a></li>
+    <li><a href="https://pagedjs.org">paged.js</a></li>
+    <li><a href="https://weasyprint.org">WeasyPrint</a></li>
+    <li><a href="https://www.speedata.de">Speedata</a></li>
+    <li><a href="https://www.gnu.org/software/groff/groff.html">groff</a></li>
+    <li><a href="https://patoline.github.io/">Patoline</a></li>
+    <li><a href="https://github.com/gfngfn/SATySFi">SATySFi</a></li>
+  </ul>
+</aside>
+
+      </aside>
+      <div class="container column">
+        
+
+
+
+<p>A Rosetta stone for typesetting engines.</p>
+<p>This project's goal is to provide a chrestomathy for typesetting similar to what <a href="https://rosettacode.org/wiki/Rosetta_Code">Rosetta Code</a> does for programming languages.
+The samples here are designed to compare and/or contrast the approaches taken to various typesetting situations by different typesetting engines.</p>
+<p>The emphasis is less on document markup languages, programming languages, or actual content and more on the way layout and orthographic features are achieved.
+Sometimes similar input will produce very different outputs.
+Sometimes similar output is achieved with very different inputs.
+Some engines are more suited to tackling specific problems that others.</p>
+<h2 id="Contributions">Contributions</h2>
+<p>New samples are always welcome, including for any single engine.
+Adding support for current samples in additional engines is also welcome.
+Improvements to the current samples may be considered if they are more idiomatic or useful as examples.
+Alternative samples from the current engines may also be considered if they demonstrate some contrast or similarity with a different engine.</p>
+<p>Contributions may be submitted as as pull requests to the <a href="https://github.com/alerque/polytype">GitHub project</a>.</p>
+<h2 id="Local_development">Local development</h2>
+<p>All input samples are rendered remotely in CI and used to create the static site.
+Contributions may be made just by editing or adding input samples.</p>
+<p>If you do want to test render them locally you can build the site just like it is done in CI.</p>
+<p>The only thing required to build the samples in this repository locally is a working <code>nix</code> installation (not the OS, just the package manager).
+Once you have a working <code>nix</code> executable, building the examples can be done with:</p>
+<pre data-lang="console" style="background-color:#2b303b;color:#c0c5ce;" class="language-console "><code class="language-console" data-lang="console"><span>$ nix-shell --pure --run &#39;make all&#39;
+</span></code></pre>
+<p>To generate the static version of the website and serve it locally for testing, try:</p>
+<pre data-lang="console" style="background-color:#2b303b;color:#c0c5ce;" class="language-console "><code class="language-console" data-lang="console"><span>$ nix-shell --pure --run &#39;make serve&#39;
+</span></code></pre>
+<p>This will print out a localhost address for you to browse to and stay running serving the current version of the site.
+Some resources will automatically update and refresh while the sever is running.
+For the rendered examples running <code>make all</code> in another terminal should update the images and the site will refresh.</p>
+
+
+
+      </div>
+    </section>
+  </body>
+</html>
