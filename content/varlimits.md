@@ -1,7 +1,7 @@
 +++
 title = "Variant limits"
 description = "Those limits with a little extra flair"
-extra.typesetters = [ "sile", "xelatex", "typst" ]
+extra.typesetters = [ "sile", "xelatex", "typst", "glu" ]
 +++
 
 Variants for superior, inferior, projective, and injective limits are an interesting challenge for typesetting engines with mathematical capabilities.
