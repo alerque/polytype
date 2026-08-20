@@ -1,0 +1,34 @@
+<html>
+<head>
+<style>
+@page { size: A7; margin: 4mm; }
+@font-face {
+  font-family: "Libertinus Serif";
+  src: url("../../.fonts/LibertinusSerif-Regular.otf");
+}
+@font-face {
+  font-family: "Libertinus Serif";
+  src: url("../../.fonts/LibertinusSerif-Italic.otf");
+  font-style: italic;
+}
+body { font-family: "Libertinus Serif"; font-size: 14pt; }
+p { text-align: center; margin: 0.4em 0; }
+.corr { -bag-italic-correction: auto; }
+.label { text-align: left; font-size: 10pt; margin-top: 0.8em; }
+</style>
+</head>
+<body>
+
+<p class="label">No italic correction:</p>
+<p>(<i>fluff</i>)</p>
+<p>¡<i>fanciful proof</i>!</p>
+<p>[<i>fluff</i>]</p>
+
+<p class="label">With <code>-bag-italic-correction: auto</code>, a
+heuristic kern from the boundary glyph's ink overhang:</p>
+<p class="corr">(<i>fluff</i>)</p>
+<p class="corr">¡<i>fanciful proof</i>!</p>
+<p class="corr">[<i>fluff</i>]</p>
+
+</body>
+</html>
