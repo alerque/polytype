@@ -15,6 +15,7 @@ BSDTAR ?= bsdtar
 CMP ?= cmp
 CURL ?= curl
 GIT ?= git
+GLU ?= glu
 GROFF ?= groff
 LUAROCKS ?= luarocks
 MAGICK ?= magick
@@ -33,6 +34,8 @@ XQ ?= xq
 ZOLA ?= zola
 
 BASE_URL = /
+
+GLU_ARGS = -o $@ $<
 
 GROFF_ARGS = -T pdf $< > $@
 PAGEDJS_ARGS = -i $< -o $@
@@ -125,6 +128,15 @@ fonts: .fonts/LibertinusMath-Regular.otf .fonts/LibertinusSerif-Regular.otf .fon
 	touch $@
 
 %.pdf %.toml: TYPESETTER_ARGS = $(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))
+
+%-glu.pdf %-glu.toml: %/glu.md
+	$(call make_manifest,$(GLU) $(TYPESETTER_ARGS) $(GLU_ARGS))
+
+%-glu.pdf %-glu.toml: %/glu.html
+	$(call make_manifest,$(GLU) $(TYPESETTER_ARGS) $(GLU_ARGS))
+
+%-glu.pdf %-glu.toml: %/glu.lua
+	$(call make_manifest,$(GLU) $(TYPESETTER_ARGS) $(GLU_ARGS))
 
 %-groff.pdf %-groff.toml: %/groff.groff
 	$(call make_manifest,$(GROFF) $(TYPESETTER_ARGS) $(GROFF_ARGS))

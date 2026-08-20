@@ -6,6 +6,7 @@ data/*.toml
 data/*.aux
 data/*/*-aux
 data/*.log
+data/*-aux.json
 .fonts
 static
 public
