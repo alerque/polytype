@@ -58,6 +58,7 @@
             chromium
             clang
             curl
+            decasify
             gentium
             ghostscript
             git
