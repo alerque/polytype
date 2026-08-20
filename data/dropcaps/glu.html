@@ -1,0 +1,34 @@
+<html>
+<head>
+<style>
+@page { size: A6; }
+p { text-align: justify; margin: 0 0 2em 0; }
+.two { initial-letter: 2; }
+.three { initial-letter: 3; }
+.smallcaps { font-feature-settings: "smcp" 1; }
+/* glu's default font does not support small caps */
+.smallcaps { font-family: "Libertinus Serif"; }
+</style>
+</head>
+<body>
+
+<p class="two">
+This paragraph has a pretty plain initial or drop cap.
+It uses the default document font.
+You didn't really expect more detail with such a generic font choice, right?
+This may be exactly what you want, especially with modern typesetting styles which tend towards the minimalist.
+</p>
+
+<p class="two">
+“N<span class="smallcaps">ever say never,”</span> the saying goes.
+Someday your dropcap may include leading punctuation.
+The quotation mark joins the initial automatically, but a hanging indent to pull it into the margin is not supported yet.
+</p>
+
+<p class="three">
+Another paragraph shows off a different line count.
+Note that Glu does not yet support a stand-off feature that would indent subsequent lines more than the first one.
+</p>
+
+</body>
+</html>
