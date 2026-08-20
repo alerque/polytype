@@ -1,7 +1,7 @@
 +++
 title = "The Prime Symbol"
 description = "In math mode, prime-time is always a good time."
-extra.typesetters = [ "typst", "sile", "xelatex", "groff" ]
+extra.typesetters = [ "typst", "sile", "xelatex", "groff", "glu" ]
 extra.typesetter_args = { groff = "-e -P-pA7" }
 +++
 
