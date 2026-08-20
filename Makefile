@@ -11,6 +11,7 @@ MAKEFLAGS += --jobs=$(shell nproc)
 .PRECIOUS: .fonts/%
 
 AWK ?= awk
+BSDTAR ?= bsdtar
 CMP ?= cmp
 CURL ?= curl
 GIT ?= git
@@ -101,12 +102,26 @@ $(LUAMODLOCK): $(LUAROCKSMANIFEST) $(LUAMODSPEC)
 
 .PHONY: fonts
 fonts: .fonts/EgyptianOpenType.ttf
+fonts: .fonts/LibertinusMath-Regular.otf .fonts/LibertinusSerif-Regular.otf .fonts/LibertinusSerif-Italic.otf .fonts/LibertinusSerif-Bold.otf
+
+# Don't let make delete intermediate dependencies we had to download
+.PRECIOUS: .fonts/% .sources/%
+
+.sources:
+	[ -h .sources ] || mkdir -p $@
 
 .fonts:
-	mkdir -p $@
+	[ -h .fonts ] || mkdir -p $@
+
+.sources/Libertinus-%.tar.zst: | .sources
+	$(CURL) -fsSL https://github.com/alerque/libertinus/releases/download/v$*/$(notdir $@) -o $@
 
 .fonts/EgyptianOpenType.ttf: | .fonts
 	$(CURL) -fsSL https://github.com/microsoft/font-tools/raw/main/EgyptianOpenType/font/eot.ttf -o $@
+	touch $@
+
+.fonts/Libertinus%: .sources/Libertinus-7.051.tar.zst | .fonts
+	$(BSDTAR) -x -f $< -C $(dir $@) --strip-components 3 $(basename $(basename $(<F)))/static/OTF/$(notdir $@) && \
 	touch $@
 
 %.pdf %.toml: TYPESETTER_ARGS = $(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))
