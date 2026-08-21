@@ -4,18 +4,14 @@ zsh := require('zsh')
 
 set script-interpreter := ['nix', 'develop', '--command', 'zsh', '+o', 'nomatch', '-eu']
 set shell := ['zsh', '+o', 'nomatch', '-ecu']
-set unstable := true
 
-[default]
-[private]
-@list:
-    {{ just }} --list --unsorted
+set default-list
+set default-script
+set unstable
 
-[script]
 build:
     make public
 
-[script]
 preview:
     (
         while ! nc -z localhost 1111; do sleep 1; done
