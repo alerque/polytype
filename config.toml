@@ -15,6 +15,6 @@ taxonomies = "safe"
 anchors = "safe"
 
 [markdown]
-highlight_code = true
+# highlight_code = true
 
 [extra]
