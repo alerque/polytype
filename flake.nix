@@ -49,6 +49,7 @@
           buildInputs = [
             cacert
             cargo
+            chromium
             clang
             curl
             gentium
@@ -77,8 +78,11 @@
             zsh
           ];
           FONTCONFIG_FILE = fontsConf;
+          PUPPETEER_SKIP_DOWNLOAD = "1";
           shellHook = ''
             make fonts
+            export PUPPETEER_EXECUTABLE_PATH=${pkgs.chromium}/bin/chromium
+            export PUPPETEER_ARGS="--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage"
           '';
         };
       }
