@@ -59,6 +59,7 @@
             clang
             curl
             decasify
+            fontconfig
             gentium
             ghostscript
             git
@@ -67,7 +68,6 @@
             groff
             groff.perl
             imagemagick
-            libarchive
             libertinus
             luajitPackages.luarocks
             mold

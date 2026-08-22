@@ -1,9 +1,5 @@
 <style>
 @page { size: A7; margin: 4mm; }
-@font-face {
-  font-family: "Libertinus Serif";
-  src: url("../../.fonts/LibertinusSerif-Regular.otf");
-}
 body { font-family: "Libertinus Serif"; font-size: 12pt; }
 .sups { font-feature-settings: "sups" 1; }
 .fake { vertical-align: super; font-size: 58%; }

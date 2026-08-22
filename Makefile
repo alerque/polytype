@@ -11,9 +11,9 @@ MAKEFLAGS += --jobs=$(shell nproc)
 .PRECIOUS: .fonts/%
 
 AWK ?= awk
-BSDTAR ?= bsdtar
 CMP ?= cmp
 CURL ?= curl
+FCLIST ?= fc-list
 GIT ?= git
 GLU ?= glu
 GROFF ?= groff
@@ -35,7 +35,7 @@ ZOLA ?= zola
 
 BASE_URL = /
 
-GLU_ARGS = -o $@ $<
+GLU_ARGS = --css all-system-fonts.css -o $@ $<
 
 GROFF_ARGS = -T pdf $< > $@
 PAGEDJS_ARGS = -i $< -o $@
@@ -105,37 +105,40 @@ $(LUAMODLOCK): $(LUAROCKSMANIFEST) $(LUAMODSPEC)
 
 .PHONY: fonts
 fonts: .fonts/EgyptianOpenType.ttf
-fonts: .fonts/LibertinusMath-Regular.otf .fonts/LibertinusSerif-Regular.otf .fonts/LibertinusSerif-Italic.otf .fonts/LibertinusSerif-Bold.otf
 
 # Don't let make delete intermediate dependencies we had to download
-.PRECIOUS: .fonts/% .sources/%
-
-.sources:
-	[ -h .sources ] || mkdir -p $@
+.PRECIOUS: .fonts/%
 
 .fonts:
 	[ -h .fonts ] || mkdir -p $@
-
-.sources/Libertinus-%.tar.zst: | .sources
-	$(CURL) -fsSL https://github.com/alerque/libertinus/releases/download/v$*/$(notdir $@) -o $@
 
 .fonts/EgyptianOpenType.ttf: | .fonts
 	$(CURL) -fsSL https://github.com/microsoft/font-tools/raw/main/EgyptianOpenType/font/eot.ttf -o $@
 	touch $@
 
-.fonts/Libertinus%: .sources/Libertinus-7.051.tar.zst | .fonts
-	$(BSDTAR) -x -f $< -C $(dir $@) --strip-components 3 $(basename $(basename $(<F)))/static/OTF/$(notdir $@) && \
-	touch $@
+# Glu has no fontconfig support and resolves font families only through
+# @font-face rules with explicit file paths. Coerce the fontconfig view
+# of the families the glu samples use into such a map and hand it to
+# every glu invocation via --css, so the samples themselves can refer
+# to fonts by family name like the other engines do.
+all-system-fonts.css: $(FONTCONFIG_FILE)
+	$(FCLIST) --format '%{file}\t%{family[0]}\t%{weight}\t%{slant}\n' |
+		sort | # this sort is a dirty hack to get OTFs listed before TTFs because Glu chokes on math tables in TTF
+		$(AWK) -F'\t' ' \
+			BEGIN { split("0 100 40 200 50 300 80 400 100 500 180 600 200 700 205 800 210 900", a, " "); for (i = 1; i in a; i += 2) w[a[i]] = a[i+1] } \
+			!($$3 in w) { next } \
+			seen[$$2 "/" $$3 "/" $$4]++ { next } \
+			{ printf "@font-face {\n  font-family: \"%s\";\n  src: url(\"%s\");\n  font-weight: %s;\n  font-style: %s;\n}\n", $$2, $$1, w[$$3], ($$4 == 0 ? "normal" : "italic") }' > $@
 
 %.pdf %.toml: TYPESETTER_ARGS = $(call get_typesetter_args,content/$(notdir $(basename $*)).md,$(notdir $(basename $<)))
 
-%-glu.pdf %-glu.toml: %/glu.md
+%-glu.pdf %-glu.toml: %/glu.md all-system-fonts.css
 	$(call make_manifest,$(GLU) $(TYPESETTER_ARGS) $(GLU_ARGS))
 
-%-glu.pdf %-glu.toml: %/glu.html
+%-glu.pdf %-glu.toml: %/glu.html all-system-fonts.css
 	$(call make_manifest,$(GLU) $(TYPESETTER_ARGS) $(GLU_ARGS))
 
-%-glu.pdf %-glu.toml: %/glu.lua
+%-glu.pdf %-glu.toml: %/glu.lua all-system-fonts.css
 	$(call make_manifest,$(GLU) $(TYPESETTER_ARGS) $(GLU_ARGS))
 
 %-groff.pdf %-groff.toml: %/groff.groff

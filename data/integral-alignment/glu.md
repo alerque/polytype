@@ -3,14 +3,6 @@ math: true
 ---
 
 <style>
-@font-face {
-  font-family: "Libertinus Serif";
-  src: url("../../.fonts/LibertinusSerif-Regular.otf");
-}
-@font-face {
-  font-family: "Libertinus Math";
-  src: url("../../.fonts/LibertinusMath-Regular.otf");
-}
 body { font-family: "Libertinus Serif"; }
 math { font-family: "Libertinus Math"; }
 </style>
