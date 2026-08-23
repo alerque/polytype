@@ -74,6 +74,8 @@ endef
 .PHONY: all
 all: $(PDFS)
 
+$(PDFS): fonts
+
 node_modules:
 	$(NPM) ci
 
