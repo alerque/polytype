@@ -69,7 +69,7 @@
             sile
             stix-two
             teracli.defaultPackage.${system}
-            texlive.combined.scheme-full
+            texliveFull
             typst
             python313Packages.weasyprint
             xdg-utils
