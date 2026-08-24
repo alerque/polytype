@@ -2,7 +2,7 @@ just := just_executable()
 nix := require('nix')
 zsh := require('zsh')
 
-set script-interpreter := ['nix', 'develop', '--command', 'zsh', '+o', 'nomatch', '-eu']
+set script-interpreter := ['nix', 'develop', '--ignore-environment', '--command', 'zsh', '+o', 'nomatch', '-eu']
 set shell := ['zsh', '+o', 'nomatch', '-ecu']
 
 set default-list
