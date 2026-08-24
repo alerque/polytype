@@ -33,11 +33,8 @@
 #dropcap(
   height: 3,
   justify: true,
-  hanging-indent: 1em,
 )[
   Another paragraph shows off a different line count.
-  Also it uses a stand-off effect in lines following the opening.
-  This helps highlight the fact that the initial letter belongs to the first word.
-  The first line of text will be flush against the drop cap.
-  Each additional line spanned with be indented with an extra space.
+  Note the droplet package supports a stand-off effect, but the feature has been broken for some time.
+  Until this is fixed upstream, there is not a good way to demonstrate an effect comprable to other engines in Typst.
 ]
