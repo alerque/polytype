@@ -10,13 +10,18 @@
   size: 16pt,
 )
 
-#let egyp-sample(phonetics, translation, str)= {([
-  _#(phonetics)_ ‘#translation’
-  #v(-0.5em)
-  #line(length: 100%)
-  #v(-0.5em)
-  #set text(font: "Egyptian Text", size: 1.5em, fallback:false);#str
-])}
+#let egyp-sample(phonetics, translation, str) = {
+  (
+    [
+      #set text(lang: "und");_#(phonetics)_
+      #set text(lang: "en");‘#translation’
+      #v(-0.5em)
+      #line(length: 100%)
+      #v(-0.5em)
+      #set text(lang: "egy", font: "Egyptian Text", size: 1.5em, fallback: false);#str
+    ]
+  )
+}
 
 #egyp-sample("mdw.t-km.t", "Egyptian language", "𓌃𓂧𓐰𓏏𓐱𓏯𓀁𓏪𓆎𓅓𓊖")
 
