@@ -1,5 +1,4 @@
 \begin[papersize=a6]{document}
-\font[family=Libertinus Serif]
 \nofolios
 \neverindent
 \use[module=packages.decasify]
