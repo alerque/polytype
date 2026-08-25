@@ -17,7 +17,7 @@
       #set text(lang: "en");‘#translation’
       #v(-0.5em)
       #line(length: 100%)
-      #v(-0.5em)
+      #v(-1em)
       #set text(lang: "egy", font: "Egyptian Text", size: 1.5em, fallback: false);#str
     ]
   )
