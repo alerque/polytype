@@ -4,7 +4,9 @@ import { oneDark } from "@codemirror/theme-one-dark";
 import {
 	syntaxHighlighting,
 	defaultHighlightStyle,
+	StreamLanguage,
 } from "@codemirror/language";
+import { lua as luaStreamParser } from "@codemirror/legacy-modes/mode/lua";
 import { css } from "@codemirror/lang-css";
 import { html } from "@codemirror/lang-html";
 import { javascript } from "@codemirror/lang-javascript";
@@ -25,6 +27,8 @@ const languageMap = {
 	// Unofficial 3rd party languages
 	latex,
 	typst,
+	// Legacy modes (wrapped for the language factory interface)
+	lua: () => StreamLanguage.define(luaStreamParser),
 	// Aliases to near-matches
 	pagedjs: html,
 	sile: latex,

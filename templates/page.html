@@ -30,7 +30,8 @@
 
     <h4 class="title is-4">Input document</h4>
     {% set source = load_data(path=manifest.src) | safe %}
-    <pre class="sample" data-language="{{ typesetter }}">{{ source }}</pre>
+    {% set ext = manifest.src | split(pat=".") | last %}
+    <pre class="sample" data-language="{% if typesetter != "glu" %}{{ typesetter }}{% elif ext == "md" %}markdown{% elif ext == "lua" %}lua{% else %}html{% endif %}">{{ source }}</pre>
 
     <h4 class="title is-4">Render command</h4>
     <pre class="terminal"><code><span class="symbol">$ </span>{{ manifest.cmd }}</code></pre>
