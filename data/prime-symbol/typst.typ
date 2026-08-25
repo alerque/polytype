@@ -6,7 +6,6 @@
   font: "Libertinus Serif",
   size: 12pt,
 )
-#show par: set block(spacing: 1em)
 #show math.equation: set block(spacing: .8em)
 #show math.equation: set par(leading: .4em)
 
