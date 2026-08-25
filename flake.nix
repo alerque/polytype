@@ -8,6 +8,10 @@
       url = "github:hercules-ci/gitignore.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
     teracli.url = "github:chevdor/tera-cli/1cc2cdfb5f3a773926ef20a99a694253e2920e82";
   };
 
@@ -16,6 +20,7 @@
       self,
       nixpkgs,
       flake-utils,
+      flake-compat,
       gitignore,
       teracli,
     }:
