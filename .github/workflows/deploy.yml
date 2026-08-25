@@ -37,10 +37,13 @@ jobs:
           key: typst-packages-${{ hashFiles('~/.cache/typst/**/typst.toml') }}
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v22
+        uses: cachix/install-nix-action@v31
 
       - name: Cache Nix builds
-        uses: DeterminateSystems/magic-nix-cache-action@v14
+        uses: cachix/cachix-action@v17
+        with:
+          name: polytype
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Install Nix package dependencies
         run: |
