@@ -14,8 +14,6 @@
 
 #text(size:26pt)[X#text(features: (sups: 1))[ther]] (font feature)
 
-// Not yet supported at the time of writing,
-// See https://github.com/typst/typst/pull/5777
 #text(size:26pt)[X#super(typographic: true)[ther]] (typographic super)
 
 #text(size:26pt)[X#super(typographic: false)[ther]] (non typographic super)
