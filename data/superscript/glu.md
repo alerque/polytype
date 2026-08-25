@@ -16,7 +16,7 @@ body { font-family: "Libertinus Serif"; font-size: 12pt; }
 
 <span class="big">X<span class="sups">ther</span></span> (font feature)
 
-<span class="big">X<span class="fake">ther</span><span> (scaled and raised)
+<span class="big">X<span class="fake">ther</span></span> (scaled and raised)
 
 20ᵗʰ <span class="smallcaps">xx</span>ᵉ /
 20<span class="sups">th</span> <span class="smallcaps">xx</span><span class="sups">e</span> /
