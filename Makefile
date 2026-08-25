@@ -64,13 +64,16 @@ MANIFESTS := $(foreach S,$(SAMPLES),$(foreach T,$(call get_typesetters,content/$
 PDFS := $(addsuffix .pdf,$(basename $(MANIFESTS)))
 PREVIEWS := $(addsuffix .avif,$(basename $(PDFS)))
 
+empty :=
+space := $(empty) $(empty)
+
 define make_manifest ?=
 	cat <<- EOF > $(basename $@).toml
 		src = "$<"
 		demosrc = "$(notdir $(basename $@)$(suffix $<))"
 		demoout = "$(notdir $@)"
 		preview = "$(notdir $(basename $@)).avif"
-		cmd = "$(subst $(NPX) ,,$(subst $<,$(notdir $(basename $@)$(suffix $<)),$(subst $@,$(notdir $@),$1)))"
+		cmd = "$(subst $(space)$(space), ,$(subst $(NPX) ,,$(subst $<,$(notdir $(basename $@)$(suffix $<)),$(subst $@,$(notdir $@),$1))))"
 	EOF
 	exec $1
 endef
