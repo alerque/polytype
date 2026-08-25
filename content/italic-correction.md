@@ -1,6 +1,7 @@
 +++
 title = "Automated Italic Correction"
 description = "Switching between italic and roman, and reciprocally"
+weight = 7
 extra.typesetters = [ "sile", "xelatex", "typst", "glu" ]
 +++
 

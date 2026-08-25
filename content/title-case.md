@@ -1,6 +1,7 @@
 +++
 title = "Title Case"
 description = "Title casing prose is more complex than munging some glyphs."
+weight = 4
 extra.typesetters = [ "sile", "typst", "glu" ]
 +++
 

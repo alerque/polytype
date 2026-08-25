@@ -1,6 +1,7 @@
 +++
 title = "Hello World!"
 description = "Your most basic greeting."
+weight = 1
 extra.typesetters = [ "sile", "typst", "xelatex", "groff", "satysfi", "pagedjs", "weasyprint", "glu" ]
 +++
 

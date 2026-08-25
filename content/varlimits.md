@@ -1,6 +1,7 @@
 +++
 title = "Variant limits"
 description = "Those limits with a little extra flair"
+weight = 10
 extra.typesetters = [ "sile", "xelatex", "typst", "glu" ]
 +++
 

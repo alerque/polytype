@@ -1,6 +1,7 @@
 +++
 title = "Hieroglyphs"
 description = "Language of the Pharaohs"
+weight = 8
 extra.typesetters = [ "sile", "typst", "glu" ]
 +++
 

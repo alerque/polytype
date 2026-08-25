@@ -1,6 +1,7 @@
 +++
 title = "Willan’s Formula"
 description = "An exact prime formula which is however quite insane and fairly useless."
+weight = 11
 extra.typesetters = [ "typst", "sile", "xelatex", "glu" ]
 +++
 

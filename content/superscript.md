@@ -1,6 +1,7 @@
 +++
 title = "Superscript"
 description = "Those superior characters are not as simple as they seem"
+weight = 5
 extra.typesetters = [ "sile", "xelatex", "typst", "glu" ]
 +++
 
