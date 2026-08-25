@@ -156,6 +156,8 @@ all-system-fonts.css: $(FONTCONFIG_FILE)
 %-pagedjs.pdf %-pagedjs.toml: %/pagedjs.html
 	$(call make_manifest,$(PAGEDJS) $(TYPESETTER_ARGS) $(PAGEDJS_ARGS))
 
+data/title-case-pagedjs.pdf: data/decasify.js
+
 %-satysfi.pdf %-saty.toml: %/satysfi.saty
 	$(call make_manifest,$(SATYSFI) $(SATYSFI_ARGS))
 
@@ -181,8 +183,11 @@ static/%.css: sass/%.scss | node_modules
 %.avif: %.pdf
 	$(MAGICK) -density 150 $< $@
 
-static/codemirror.js: src/codemirror.js build.js | node_modules
-	$(NPX) node build.js
+data/decasify.js: src/decasify-bundle.js
+static/codemirror.js: src/codemirror.js
+
+data/decasify.js static/codemirror.js: build.js | node_modules
+	$(NPX) node $<
 
 .PHONY: static
 static: $(PDFS) $(PREVIEWS) static/main.css static/codemirror.js

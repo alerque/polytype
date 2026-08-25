@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <style>
+          @page {
+            size: A6;
+            bleed: 0;
+            margin: 1cm;
+          }
+          h1 {
+            font-size: 18pt;
+            margin: 0;
+          }
+          p {
+              margin: 0;
+          }
+          p + h1 {
+              margin-top: 1em;
+          }
+        </style>
+    </head>
+    <body>
+        <script>
+            /* See caveat in src/build.js ... this inline script is some LLM generated
+             * monkey business to trigger our sample generator after an async WASM module
+             * is loaded and before Paged JS starts doing a layout pass.
+             * I'd love to see a contribution from somebody that does thiskkome saner way.
+             */
+            window.externalLibs = window.externalLibs || {};
+            window.externalLibs.decasifyReady = new Promise(function (resolve) {
+                window.externalLibs._resolveDecasifyReady = resolve;
+            });
+        </script>
+        <script>
+            window.generateSample = function (container) {
+                var decasify = externalLibs.decasify;
+                var Locale = decasify.Locale;
+                var DefaultStyle = decasify.StyleGuide.LanguageDefault;
+
+                var examples = [
+                    { text: "first impulse", lang: "en", loc: Locale.EN },
+                    { text: "FIRST IMPULSE", lang: "en", loc: Locale.EN },
+                    { text: "ilk ışıltı",    lang: "tr", loc: Locale.TR },
+                    { text: "İLK IŞILTI",    lang: "tr", loc: Locale.TR },
+                ];
+
+                var cases = [
+                    { name: "title", fn: function (text, locale) { return decasify.titlecase(text, locale, DefaultStyle); } },
+                    { name: "lower", fn: decasify.lowercase },
+                    { name: "upper", fn: decasify.uppercase },
+                    { name: "sentence", fn: decasify.sentencecase },
+                ];
+
+                for (var ci = 0; ci < cases.length; ci++) {
+                    var entry = cases[ci];
+                    var heading = document.createElement("h1");
+                    heading.textContent = decasify.titlecase(entry.name + "case", Locale.EN, DefaultStyle);
+                    container.appendChild(heading);
+
+                    for (var j = 0; j < examples.length; j++) {
+                        var example = examples[j];
+                        var p = document.createElement("p");
+                        p.textContent = "[" + example.lang + "] " + example.text + " → " + entry.fn(example.text, example.loc);
+                        container.appendChild(p);
+                    }
+                }
+            };
+        </script>
+    </body>
+</html>

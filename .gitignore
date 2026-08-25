@@ -7,6 +7,7 @@ data/*.aux
 data/*/*-aux
 data/*.log
 data/*-aux.json
+data/decasify.js
 .fonts
 static
 public
