@@ -16,31 +16,31 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Cache Nodejs downloads
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: node_modules
           key: node-modules-${{ hashFiles('package.json', 'package-lock.json') }}
 
       - name: Cache LuaRocks modules
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: lua_modules
           key: lua-modules-${{ hashFiles('polytype-dev-1.rockspec', 'polytype-dev-1.rockslock') }}
 
       - name: Cache Typst packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/typst
           key: typst-packages-${{ hashFiles('~/.cache/typst/**/typst.toml') }}
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v21
+        uses: DeterminateSystems/nix-installer-action@v22
 
       - name: Cache Nix builds
-        uses: DeterminateSystems/magic-nix-cache-action@v13
+        uses: DeterminateSystems/magic-nix-cache-action@v14
 
       - name: Install Nix package dependencies
         run: |
