@@ -3,14 +3,12 @@
 )
 #set par(
   justify: true,
+  spacing: 2em,
 )
 
 #import "@preview/droplet:0.3.1": dropcap
 
-#dropcap(
-  justify: true,
-  hanging-indent: 0pt,
-)[
+#dropcap()[
   This paragraph has a pretty plain initial or drop cap.
   It uses the default document font.
   You didn't really expect more detail with such a generic font choice, right?
@@ -18,8 +16,6 @@
 ]
 
 #dropcap(
-  justify: true,
-  hanging-indent: 0pt,
   top-edge: "cap-height",
 )[
   #place(dx: -0.4em, sym.quote.l)N
@@ -32,7 +28,7 @@
 
 #dropcap(
   height: 3,
-  justify: true,
+  hanging-indent: 1em,
 )[
   Another paragraph shows off a different line count.
   Note the droplet package supports a stand-off effect, but the feature has been broken for some time.
