@@ -15,14 +15,13 @@
     box(
       width: 0pt,
       baseline: arrow-height,
-      [#math.stretch(arrow, size: lim-width)]
+      [#math.stretch(arrow, size: lim-width)],
     )
-    +
-    box(
-      baseline: 0pt,
-      width: 0pt,
-      lim
-    )
+      + box(
+        baseline: 0pt,
+        width: 0pt,
+        lim,
+      ),
   )
   return varlimop
 }
@@ -32,11 +31,11 @@
   // so that the limit expression is a bit lower
   block(height: measure("").height, width: 0pt)
 }
-#let varprojlim = math.limits(varlim(sym.arrow.l), inline:false)
+#let varprojlim = math.limits(varlim(sym.arrow.l), inline: false)
 #let projlim = math.limits("proj\u{2009}lim", inline: false)
-#let varinjlim = math.limits(varlim(sym.arrow.r), inline:false)
+#let varinjlim = math.limits(varlim(sym.arrow.r), inline: false)
 #let injlim = math.limits("inj\u{2009}lim", inline: false)
-#let varliminf = math.limits(underline("lim"+strut), inline: false)
+#let varliminf = math.limits(underline("lim" + strut), inline: false)
 #let varlimsup = math.limits(overline("lim"), inline: false)
 
 // --- Now the intended document ---
