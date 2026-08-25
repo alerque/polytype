@@ -13,16 +13,21 @@
       flake = false;
     };
     teracli.url = "github:chevdor/tera-cli/1cc2cdfb5f3a773926ef20a99a694253e2920e82";
+    glu = {
+      url = "github:boxesandglue/glu";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    {
+    inputs@{
       self,
       nixpkgs,
       flake-utils,
       flake-compat,
       gitignore,
       teracli,
+      ...
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -39,6 +44,7 @@
           ];
         };
         inherit (gitignore.lib) gitignoreSource;
+        glu = inputs.glu.packages.${system}.default;
         polytype =
           rec {
           };
@@ -52,9 +58,12 @@
             chromium
             clang
             curl
+            decasify
+            fontconfig
             gentium
             ghostscript
             git
+            glu
             gnumake
             groff
             groff.perl

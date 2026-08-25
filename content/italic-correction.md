@@ -1,7 +1,7 @@
 +++
 title = "Automated Italic Correction"
 description = "Switching between italic and roman, and reciprocally"
-extra.typesetters = [ "sile", "xelatex", "typst" ]
+extra.typesetters = [ "sile", "xelatex", "typst", "glu" ]
 +++
 
 When an italicized word is followed or preceded by non-italicized text, the spacing may need to be adjusted, or “corrected”, so that the characters do not overlap.
