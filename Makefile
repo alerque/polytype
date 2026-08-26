@@ -1,5 +1,5 @@
 SHELL = zsh
-.SHELLFLAGS += -e
+.SHELLFLAGS += -fe
 
 MAKEFLAGS += --jobs=$(shell nproc)
 
