@@ -17,6 +17,7 @@ FCLIST ?= fc-list
 GIT ?= git
 GLU ?= glu
 GROFF ?= groff
+LUALATEX ?= lualatex
 LUAROCKS ?= luarocks
 MAGICK ?= magick
 NPM ?= npm
@@ -36,18 +37,14 @@ ZOLA ?= zola
 BASE_URL = /
 
 GLU_ARGS = --css all-system-fonts.css -o $@ $<
-
 GROFF_ARGS = -T pdf $< > $@
 PAGEDJS_ARGS = -i $< -o $@
-
+LUALATEX_ARGS = --interaction=batchmode --halt-on-error
+LUALATEX_ARGS += --jobname=$*-lualatex $<
 SATYSFI_ARGS = $< -o $@
-
 SILE_ARGS = -o $@ $<
-
 TYPST_ARGS = compile $< $@
-
 WEASYPRINT_ARGS = $< $@
-
 XELATEX_ARGS  = -interaction=batchmode -halt-on-error
 XELATEX_ARGS += -jobname $*-xelatex $<
 
@@ -175,6 +172,9 @@ data/title-case-pagedjs.pdf: data/decasify.js
 
 %-xelatex.pdf %-xelatex.toml: %/xelatex.tex
 	$(call make_manifest,$(XELATEX) $(TYPESETTER_ARGS) $(XELATEX_ARGS))
+
+%-lualatex.pdf %-lualatex.toml: %/lualatex.tex
+	$(call make_manifest,$(LUALATEX) $(TYPESETTER_ARGS) $(LUALATEX_ARGS))
 
 static/%.css: sass/%.scss | node_modules
 	$(NPX) sass --no-source-map $<:$@
