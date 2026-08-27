@@ -5,5 +5,4 @@
 \begin[mode=display]{math}
   \sum_{k=0}^\infty \int_{0}^\infty e^{-kx^2}\,\mo{d}x
 \end{math}
-
 \end{document}

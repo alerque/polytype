@@ -4,6 +4,6 @@
 {{ section.content | safe }}
 
 {% set readme = load_data(path="/README.md") %}
-{{ readme | markdown | safe }}
+{{ readme | regex_replace(pattern="^# .*", rep="") | markdown | safe }}
 
 {% endblock %}

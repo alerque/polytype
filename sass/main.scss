@@ -1,38 +1,121 @@
 @charset "utf-8";
 
-@import "../node_modules/bulma/sass/utilities/initial-variables";
+$sepia: hsl(36, 100%, 90%);
+$burnt: hsl(24, 100%, 50%);
+$bluish: hsl(240, 100%, 20%);
 
-$sepia: #ffeacb;
-$body-background-color: $sepia;
+@use "../node_modules/bulma/sass" with (
+	$link: $bluish,
+	$primary: $burnt,
+	$info: $sepia,
+	$size-1: 4rem,
+	$size-2: 1.3rem,
+	$size-3: 1.15rem,
+	$size-4: 1.05rem,
+	$size-5: 1.025rem,
+);
 
-@import "../node_modules/bulma/bulma";
-
-p, pre {
-	margin-bottom: 1em;
+:root {
+	background-color: var(--bulma-info);
+	--link-color: var(--bulma-link-15);
+	--link-hover: var(--bulma-primary-15);
+	--shady-one: var(--bulma-white);
+	--shady-two: var(--bulma-black);
+	--shady-tri: var(--bulma-info-80);
+	--paper-matt: var(--bulma-white);
 }
 
-// Drop this hack when Zola 0.18 lands in Nix and we restore the regex that
-// removes this from source...
-section h1 {
-	display: none;
+@media (prefers-color-scheme: dark) {
+	:root {
+		background-color: var(--bulma-info-50-invert);
+		--link-color: var(--bulma-link-15-invert);
+		--link-hover: var(--bulma-primary-15-invert);
+		--shady-one: var(--bulma-white-invert);
+		--shady-two: var(--bulma-black-invert);
+		--shady-tri: var(--bulma-info-50-invert);
+		--paper-matt: var(--bulma-info);
+	}
 }
 
-h2 {
-	font-size: 1.2em;
-	font-weight: bold;
-	margin: 1em 0 .2em 0;
+p, pre.sample, div.sample {
+	margin-bottom: 1.2rem;
+	tab-size: 2;
 }
 
-aside a[href^="http"]::after,
-aside a[href^="https://"]::after
-{
-  content: "";
-  width: .6em;
-  height: .6em;
-  margin-left: .4em;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z'/%3E%3Cpath fill-rule='evenodd' d='M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z'/%3E%3C/svg%3E");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: inline-block;
+h2:not(.title) {
+	font-size: var(--bulma-size-3);
+	font-weight: var(--bulma-weight-extrabold);
+}
+
+.navbar {
+	background-color: transparent;
+	padding: 1em 2em 0 2em;
+	font-style: italic;
+	font-family: serif;
+
+	a {
+		font-variant: small-caps;
+		text-shadow: .05em .05em .1em var(--shady-tri);
+		filter: drop-shadow(-0.02em -0.02em 0 var(--shady-one)) drop-shadow(-0.02em -0.02em 0 var(--shady-two));
+	}
+}
+
+.menu-list a,
+a {
+	color: var(--link-color);
+
+	&:hover {
+		color: var(--link-hover);
+	}
+}
+
+.menu-list {
+	a {
+		background-color: transparent;
+		font-weight: bold;
+
+		&[href^="http://"]::after,
+		&[href^="https://"]::after {
+			content: "";
+			width: .6em;
+			height: .6em;
+			margin-left: .4em;
+			background-color: var(--link-color);
+			mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z'/%3E%3Cpath fill-rule='evenodd' d='M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z'/%3E%3C/svg%3E");
+			mask-position: center;
+			mask-repeat: no-repeat;
+			mask-size: contain;
+			display: inline-block;
+		}
+	}
+}
+
+div.engine {
+	margin-top: 2em;
+	padding-top: 2em;
+	border-top: 1px dashed;
+}
+
+.card {
+	background-color: transparent;
+	box-shadow: none;
+
+	img {
+		border-radius: 0 !important;
+		background: var(--paper-matt);
+		box-shadow: 0.15em 0.15em 0.3em var(--shady-two);
+	}
+}
+
+pre.terminal {
+  background: var(--bulma-black);
+  color: var(--bulma-white);
+  border-radius: 8px;
+  border: 1px solid var(--bulma-grey-darker);
+  // box-shadow: 0 4px 12px var(--bulma-grey-darker);
+
+  .symbol {
+    color: var(--bulma-warning);
+    user-select: none;
+  }
 }

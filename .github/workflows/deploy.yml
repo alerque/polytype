@@ -8,24 +8,53 @@ on:
 
 jobs:
   gh-pages:
+    # Puppeteer (used by pagedjs) has issues with Ubuntu 23.04+
+    # https://github.com/puppeteer/puppeteer/issues/12818
     runs-on: ubuntu-22.04
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Cache Nodejs downloads
+        uses: actions/cache@v5
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package.json', 'package-lock.json') }}
+
+      - name: Cache LuaRocks modules
+        uses: actions/cache@v5
+        with:
+          path: lua_modules
+          key: lua-modules-${{ hashFiles('polytype-dev-1.rockspec', 'polytype-dev-1.rockslock') }}
+
+      - name: Cache Typst packages
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/typst
+          key: typst-packages-${{ hashFiles('~/.cache/typst/**/typst.toml') }}
 
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v9
+        uses: cachix/install-nix-action@v31
 
-      - name: Cache Nix dependencies
-        uses: DeterminateSystems/magic-nix-cache-action@v2
+      - name: Cache Nix builds
+        uses: cachix/cachix-action@v17
+        with:
+          name: polytype
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - name: Install project dependencies
+      - name: Install Nix package dependencies
         run: |
           nix-channel --update
           nix-shell --run true
+
+      - name: Install Node module dependencies
+        run: |
+          nix-shell --run 'npm ci'
 
       - name: Generate static site pages
         run: |
@@ -37,7 +66,7 @@ jobs:
           nix-shell --pure --run 'make public/CNAME'
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == 'refs/heads/master' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,7 +1,8 @@
 +++
 title = "Alignment of Integrals"
 description = "Compare the baseline alignment of integrals."
-extra.typesetters = [ "typst", "sile", "xelatex" ]
+weight = 9
+extra.typesetters = [ "typst", "sile", "lualatex", "glu" ]
 +++
 
 Compare the baseline alignment of integrals.

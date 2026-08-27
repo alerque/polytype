@@ -1,0 +1,15 @@
+node_modules
+lua_modules
+data/*.avif
+data/*.pdf
+data/*.toml
+data/*.aux
+data/*/*-aux
+data/*.log
+data/*-aux.json
+data/decasify.js
+.fonts
+static
+public
+*.rockslock
+all-system-fonts.css

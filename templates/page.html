@@ -9,15 +9,11 @@
 {% for typesetter in page.extra.typesetters %}
 {% set manifest = load_data(path="/data/" ~ page.slug ~ "-" ~ typesetter ~ ".toml") %}
 
-<h3 class="title is-3">{{ typesetter }}</h3>
+<div class="columns engine">
+  <a id="{{ typesetter }}" /></a>
 
-<div class="columns">
-  <div class="card column is-one-third">
-    <div class="card-image">
-      <img src="{{ get_url(path=manifest.preview) }}" />
-    </div>
-  </div>
-  <div class="column">
+  <div class="column is-three-fifths">
+    <h3 class="title is-3">{{ typesetter }}</h3>
 
     <p>
       Download:
@@ -27,11 +23,17 @@
     </p>
 
     <h4 class="title is-4">Input document</h4>
-    {% set source = load_data(path=manifest.src, format="plain") %}
-    <pre>{{ source }}</pre>
+    {% set source = load_data(path=manifest.src) | safe %}
+    {% set ext = manifest.src | split(pat=".") | last %}
+    <pre class="sample" data-language="{% if typesetter != "glu" %}{{ typesetter }}{% elif ext == "md" %}markdown{% elif ext == "lua" %}lua{% else %}html{% endif %}">{{ source }}</pre>
 
     <h4 class="title is-4">Render command</h4>
-    <code>{{ manifest.cmd }}</code>
+    <pre class="terminal"><code><span class="symbol">$ </span>{{ manifest.cmd }}</code></pre>
+  </div>
+  <div class="card column is-two-fifths">
+    <div class="card-image">
+      <img src="{{ get_url(path=manifest.preview) }}" />
+    </div>
   </div>
 </div>
 

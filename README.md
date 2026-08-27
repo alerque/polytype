@@ -1,6 +1,6 @@
 # [Polytype](https://alerque.github.io/polytype)
 
-A Rosetta stone for modern typesetting engines.
+A Rosetta stone for typesetting engines.
 
 
 This project's goal is to provide a chrestomathy for typesetting similar to what [Rosetta Code][rosettacode] does for programming languages.
