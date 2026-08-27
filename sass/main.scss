@@ -92,8 +92,121 @@ a {
 
 div.engine {
 	margin-top: 2em;
-	padding-top: 2em;
-	border-top: 1px dashed;
+	border: 1px solid var(--bulma-grey-darker);
+	border-radius: 8px;
+	overflow: hidden;
+
+	.titlebar {
+		display: flex;
+		align-items: center;
+		background: var(--bulma-black);
+		color: var(--bulma-white);
+		padding: .5em 1em;
+		font-weight: bold;
+
+		.title {
+			color: var(--bulma-white);
+		}
+	}
+}
+
+.workspace {
+	display: flex;
+	align-items: stretch;
+
+	.filetree {
+		flex: 1;
+		border-right: 1px solid var(--bulma-grey-darker);
+		background: var(--shady-tri);
+
+		.treelabel {
+			display: block;
+			padding: .5em 1em;
+			font-size: .8em;
+			text-transform: uppercase;
+			letter-spacing: .08em;
+			opacity: .8;
+		}
+
+		.file {
+			display: block;
+			padding: .3em 1em .3em 2em;
+			font-family: monospace;
+			text-decoration: none;
+		}
+	}
+
+	.editor-pane {
+		flex: 2;
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+
+		.filetab {
+			padding: .4em 1em;
+			background: var(--shady-tri);
+			border-bottom: 1px solid var(--bulma-grey-darker);
+			font-family: monospace;
+			font-size: .85em;
+		}
+
+		.sample {
+			flex: 1;
+			margin: 0;
+			overflow: auto;
+			min-width: 0;
+
+			pre {
+				margin: 0;
+			}
+
+			.cm-editor {
+				height: 100%;
+			}
+		}
+
+		.terminal-pane {
+			border-top: 1px solid var(--bulma-grey-darker);
+
+			.terminalbar {
+				padding: .3em 1em;
+				background: var(--shady-tri);
+				border-bottom: 1px solid var(--bulma-grey-darker);
+				font-size: .8em;
+				text-transform: uppercase;
+				letter-spacing: .08em;
+				opacity: .8;
+			}
+
+			pre.terminal {
+				margin: 0;
+				border: none;
+				border-radius: 0;
+				background: var(--bulma-black);
+				color: var(--bulma-white);
+
+				.symbol {
+					color: var(--bulma-warning);
+					user-select: none;
+				}
+			}
+		}
+	}
+
+	.preview-pane {
+		flex: 2;
+		display: flex;
+		align-items: flex-start;
+		background: var(--paper-matt);
+		border-left: 5px solid var(--shady-tri);
+		box-shadow: inset 2px 0 4px var(--shady-tri);
+
+		img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+	}
 }
 
 .card {
