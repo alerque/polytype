@@ -1,0 +1,7 @@
+.docname {hello-world-quarkdown}
+.doctype {paged}
+
+.pagemargin {bottomcenter}
+  .currentpage
+
+Hello World

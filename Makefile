@@ -23,6 +23,7 @@ MAGICK ?= magick
 NPM ?= npm
 NPX ?= npx
 PAGEDJS ?= $(NPX) pagedjs-cli
+QUARKDOWN ?= quarkdown
 SATYSFI ?= satysfi
 SED ?= sed
 SILE ?= sile
@@ -38,9 +39,10 @@ BASE_URL = /
 
 GLU_ARGS = --css all-system-fonts.css -o $@ $<
 GROFF_ARGS = -T pdf $< > $@
-PAGEDJS_ARGS = -i $< -o $@
-LUALATEX_ARGS = --interaction=batchmode --halt-on-error
+LUALATEX_ARGS  = --interaction=batchmode --halt-on-error
 LUALATEX_ARGS += --jobname=$*-lualatex $<
+PAGEDJS_ARGS = -i $< -o $@
+QUARKDOWN_ARGS = c --pdf --out $(@D) $<
 SATYSFI_ARGS = $< -o $@
 SILE_ARGS = -o $@ $<
 TYPST_ARGS = compile $< $@
@@ -70,7 +72,7 @@ define make_manifest ?=
 		demosrc = "$(notdir $(basename $@)$(suffix $<))"
 		demoout = "$(notdir $@)"
 		preview = "$(notdir $(basename $@)).avif"
-		cmd = "$(subst $(space)$(space), ,$(subst $(NPX) ,,$(subst $<,$(notdir $(basename $@)$(suffix $<)),$(subst $@,$(notdir $@),$1))))"
+		cmd = "$(subst $(space)$(space), ,$(subst --out $(@D),,$(subst $(NPX) ,,$(subst $<,$(notdir $(basename $@)$(suffix $<)),$(subst $@,$(notdir $@),$1)))))"
 	EOF
 	exec $1
 endef
@@ -154,6 +156,9 @@ all-system-fonts.css: $(FONTCONFIG_FILE)
 	$(call make_manifest,$(PAGEDJS) $(TYPESETTER_ARGS) $(PAGEDJS_ARGS))
 
 data/title-case-pagedjs.pdf: data/decasify.js
+
+%-quarkdown.pdf %-quarkdown.toml: %/quarkdown.qd
+	$(call make_manifest,$(QUARKDOWN) $(TYPESETTER_ARGS) $(QUARKDOWN_ARGS))
 
 %-satysfi.pdf %-saty.toml: %/satysfi.saty
 	$(call make_manifest,$(SATYSFI) $(SATYSFI_ARGS))

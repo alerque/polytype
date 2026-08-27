@@ -73,6 +73,8 @@
             mold
             netcat
             nodejs
+            puppeteer-cli
+            quarkdown
             rustc
             satysfi
             sile
@@ -92,6 +94,7 @@
             make fonts
             export PUPPETEER_EXECUTABLE_PATH=${pkgs.chromium}/bin/chromium
             export PUPPETEER_ARGS="--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage"
+            export QD_NPM_PREFIX=${pkgs.puppeteer-cli}/lib/node_modules/puppeteer-cli
           '';
         };
       }
