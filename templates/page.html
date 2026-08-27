@@ -14,12 +14,7 @@
 <h3 class="title is-3">{{ typesetter }}</h3>
 
 <div class="columns">
-  <div class="card column is-one-third">
-    <div class="card-image">
-      <img src="{{ get_url(path=manifest.preview) }}" />
-    </div>
-  </div>
-  <div class="column">
+  <div class="column is-two-thirds">
 
     <p>
       Download:
@@ -35,6 +30,11 @@
 
     <h4 class="title is-4">Render command</h4>
     <pre class="terminal"><code><span class="symbol">$ </span>{{ manifest.cmd }}</code></pre>
+  </div>
+  <div class="card column is-one-third">
+    <div class="card-image">
+      <img src="{{ get_url(path=manifest.preview) }}" />
+    </div>
   </div>
 </div>
 
