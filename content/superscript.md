@@ -2,7 +2,7 @@
 title = "Superscript"
 description = "Those superior characters are not as simple as they seem"
 weight = 5
-extra.typesetters = [ "sile", "xelatex", "typst", "glu" ]
+extra.typesetters = [ "sile", "lualatex", "typst", "glu" ]
 +++
 
 Superscripts are sometimes needed for numbers (e.g., in footnote calls), but also for letters (e.g., in French, for centuries, issue numbers; likewise in English —depending on authors— for centuries, etc.)
