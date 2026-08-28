@@ -32,6 +32,7 @@ const languageMap = {
 	// Aliases to near-matches
 	pagedjs: html,
 	sile: latex,
+	speedata: xml,
 	weasyprint: html,
 	xelatex: latex,
 };
