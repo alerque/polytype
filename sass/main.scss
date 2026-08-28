@@ -23,6 +23,14 @@ $bluish: hsl(240, 100%, 20%);
 	--shady-two: var(--bulma-black);
 	--shady-tri: var(--bulma-info-80);
 	--paper-matt: var(--bulma-white);
+	--editor-bg: var(--bulma-grey-light);
+	--editor-tab: var(--bulma-grey);
+	--editor-code: var(--bulma-white-ter)
+	--editor-pane-bg: var(--bulma-grey-darker);
+	--editor-pane-border: var(--bulma-grey-darker);
+	--terminal-bg: var(--bulma-grey-lighter);
+	--terminal-fg: var(--bulma-text-dark);
+	--terminal-prompt: var(--bulma-text-success-dark);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,12 +42,15 @@ $bluish: hsl(240, 100%, 20%);
 		--shady-two: var(--bulma-black-invert);
 		--shady-tri: var(--bulma-info-50-invert);
 		--paper-matt: var(--bulma-info);
+		--editor-bg: var(--bulma-grey-dark);
+		--editor-tab: var(--bulma-grey-darker);
+		--editor-code: var(--bulma-black-ter)
+		--editor-pane-bg: var(--bulma-grey-dark);
+		--editor-pane-border: var(--bulma-black-ter);
+		--terminal-bg: var(--bulma-black-bis);
+		--terminal-fg: var(--bulma-text-light);
+		--terminal-prompt: var(--bulma-text-success-light);
 	}
-}
-
-p, pre.sample, div.sample {
-	margin-bottom: 1.2rem;
-	tab-size: 2;
 }
 
 h2:not(.title) {
@@ -92,30 +103,153 @@ a {
 
 div.engine {
 	margin-top: 2em;
-	padding-top: 2em;
-	border-top: 1px dashed;
-}
+	border: 1px solid var(--editor-pane-border);
+	border-radius: 8px;
+	overflow: hidden;
+	background: var(--editor-bg);
 
-.card {
-	background-color: transparent;
-	box-shadow: none;
+	.titlebar {
+		display: flex;
+		align-items: center;
+		background: var(--bulma-black);
+		padding: .5em 1em;
+		font-weight: bold;
 
-	img {
-		border-radius: 0 !important;
-		background: var(--paper-matt);
-		box-shadow: 0.15em 0.15em 0.3em var(--shady-two);
+		.title {
+			color: var(--bulma-white);
+		}
 	}
 }
 
-pre.terminal {
-  background: var(--bulma-black);
-  color: var(--bulma-white);
-  border-radius: 8px;
-  border: 1px solid var(--bulma-grey-darker);
-  // box-shadow: 0 4px 12px var(--bulma-grey-darker);
+.workspace {
+	display: flex;
+	align-items: stretch;
 
-  .symbol {
-    color: var(--bulma-warning);
-    user-select: none;
-  }
+	.business-pane {
+		flex: 3;
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+
+		.top {
+			display: flex;
+			align-items: stretch;
+			flex: 1;
+			min-height: 0;
+
+			.sidebar {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
+				min-width: 0;
+				border-right: 1px solid var(--editor-pane-border);
+
+				.inputs-pane,
+				.outputs-pane {
+					flex: 1;
+					min-height: 0;
+					display: flex;
+					flex-direction: column;
+					background: var(--editor-pane-bg);
+				}
+
+				.file {
+					display: block;
+					padding: .3em 1em .3em 2em;
+					font-family: monospace;
+					text-decoration: none;
+				}
+			}
+
+			.editor-pane {
+				flex: 2;
+				display: flex;
+				flex-direction: column;
+				min-width: 0;
+
+				.sample {
+					flex: 1;
+					margin: 0;
+					overflow: auto;
+					min-width: 0;
+					tab-size: 2;
+					background-color: var(--editor-code);
+
+					pre {
+						margin: 0;
+					}
+
+					.cm-editor {
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	.tabbar {
+		border-top: 1px solid var(--editor-pane-border);
+		border-bottom: 1px solid var(--editor-pane-border);
+		display: flex;
+		align-items: flex-end;
+
+		.tab {
+			position: relative;
+			z-index: 0;
+			display: inline-block;
+			padding: .5em 1em;
+			margin-bottom: -1px;
+			background: var(--editor-tab);
+			color: var(--shady-two);
+			font-family: monospace;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: -1em;
+				background: var(--editor-tab);
+				border-right: 1px solid var(--editor-pane-border);
+				transform: skewX(25deg);
+				transform-origin: top left;
+				z-index: -1;
+			}
+		}
+	}
+
+	.terminal-pane {
+		pre.terminal {
+			font-size: 1.1em;
+			margin: 0;
+			padding: .2em .2em 1em .2em;
+			color: var(--terminal-fg);
+
+			.symbol {
+				font-weight: bold;
+				color: var(--terminal-prompt);
+				user-select: none;
+			}
+		}
+	}
+
+	.preview-pane {
+		flex: 2;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		border-left: 1px solid var(--editor-pane-border);
+
+		img {
+			// margin: 1em;
+			// width: calc(100% - 2em);
+			width: 100%;
+			height: auto;
+			display: block;
+			background: var(--paper-matt);
+			// box-shadow: 0.15em 0.15em 0.3em var(--shady-two);
+		}
+	}
 }

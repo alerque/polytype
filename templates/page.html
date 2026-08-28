@@ -9,29 +9,53 @@
 {% for typesetter in page.extra.typesetters %}
 {% set manifest = load_data(path="/data/" ~ page.slug ~ "-" ~ typesetter ~ ".toml") %}
 
-<div class="columns engine">
-  <a id="{{ typesetter }}" /></a>
+<a id="{{ typesetter }}" /></a>
 
-  <div class="column is-three-fifths">
-    <h3 class="title is-3">{{ typesetter }}</h3>
-
-    <p>
-      Download:
-      ( <a download href="{{ get_url(path=manifest.demosrc) }}">source</a>
-      | <a download href="{{ get_url(path=manifest.demoout) }}">pdf</a>
-      )
-    </p>
-
-    <h4 class="title is-4">Input document</h4>
-    {% set source = load_data(path=manifest.src, format="plain") %}
-    {% set ext = manifest.src | split(pat=".") | last %}
-    <pre class="sample" data-language="{% if typesetter != "glu" %}{{ typesetter }}{% elif ext == "md" %}markdown{% elif ext == "lua" %}lua{% else %}html{% endif %}">{{ source }}</pre>
-
-    <h4 class="title is-4">Render command</h4>
-    <pre class="terminal"><code><span class="symbol">$ </span>{{ manifest.cmd }}</code></pre>
+<div class="engine">
+  <div class="titlebar">
+    <span class="title">{{ typesetter }}</span>
   </div>
-  <div class="card column is-two-fifths">
-    <div class="card-image">
+
+  <div class="workspace">
+    <div class="business-pane">
+      <div class="top">
+        <div class="sidebar">
+          <div class="inputs-pane">
+            <div class="tabbar">
+              <span class="tab">Inputs</span>
+            </div>
+            <a class="file" download href="{{ get_url(path=manifest.demosrc) }}">{{ manifest.demosrc }}</a>
+          </div>
+          <div class="outputs-pane">
+            <div class="tabbar">
+              <span class="tab">Outputs</span>
+            </div>
+            <a class="file" download href="{{ get_url(path=manifest.demoout) }}">{{ manifest.demoout }}</a>
+          </div>
+        </div>
+
+        <div class="editor-pane">
+          <div class="tabbar">
+            <span class="tab">{{ manifest.demosrc }}</span>
+          </div>
+          {% set source = load_data(path=manifest.src, format="plain") %}
+          {% set ext = manifest.src | split(pat=".") | last %}
+          <pre class="sample" data-language="{% if typesetter != "glu" %}{{ typesetter }}{% elif ext == "md" %}markdown{% elif ext == "lua" %}lua{% else %}html{% endif %}">{{ source }}</pre>
+        </div>
+      </div>
+
+      <div class="terminal-pane">
+        <div class="tabbar">
+          <span class="tab">Command</span>
+        </div>
+        <pre class="terminal"><code><span class="symbol">$ </span>{{ manifest.cmd }}</code></pre>
+      </div>
+    </div>
+
+    <div class="preview-pane">
+      <div class="tabbar">
+        <span class="tab">Preview</span>
+      </div>
       <img src="{{ get_url(path=manifest.preview) }}" />
     </div>
   </div>
