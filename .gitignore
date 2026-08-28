@@ -1,15 +1,30 @@
 node_modules
-lua_modules
 data/*.avif
 data/*.pdf
 data/*.toml
-data/*.aux
-data/*/*-aux
-data/*.log
-data/*-aux.json
-data/decasify.js
 .fonts
 static
 public
+
+# SILE
+lua_modules
 *.rockslock
+
+# PagedJS
+data/decasify.js
+
+# LaTeX
+data/*.aux
+data/*/*-aux
+data/*.log
+
+# Glu
+data/*-aux.json
 all-system-fonts.css
+
+# Speedata
+data/*-aux.xml
+data/*-protocol.xml
+data/*.finished
+data/*.status
+data/*.vars
