@@ -17,6 +17,10 @@
       url = "github:boxesandglue/glu";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    speedata-publisher = {
+      url = "github:speedata/publisher";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -45,6 +49,7 @@
         };
         inherit (gitignore.lib) gitignoreSource;
         glu = inputs.glu.packages.${system}.default;
+        speedata-publisher = inputs.speedata-publisher.packages.${system}.default;
         polytype =
           rec {
           };
@@ -78,6 +83,7 @@
             rustc
             satysfi
             sile
+            speedata-publisher
             stix-two
             teracli.defaultPackage.${system}
             texliveFull
