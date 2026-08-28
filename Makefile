@@ -27,6 +27,7 @@ QUARKDOWN ?= quarkdown
 SATYSFI ?= satysfi
 SED ?= sed
 SILE ?= sile
+SPEEDATA ?= sp
 TERA ?= tera
 TOMLQ ?= tomlq
 TYPST ?= typst
@@ -45,6 +46,7 @@ PAGEDJS_ARGS = -i $< -o $@
 QUARKDOWN_ARGS = c --pdf --out $(@D) $<
 SATYSFI_ARGS = $< -o $@
 SILE_ARGS = -o $@ $<
+SPEEDATA_ARGS = --dummy --layout $< --jobname $*-speedata
 TYPST_ARGS = compile $< $@
 WEASYPRINT_ARGS = $< $@
 XELATEX_ARGS  = -interaction=batchmode -halt-on-error
@@ -168,6 +170,9 @@ data/title-case-pagedjs.pdf: data/decasify.js
 
 %-sile.pdf %-sile.toml: %/sile.xml | installrocks
 	$(call make_manifest,$(SILE) $(TYPESETTER_ARGS) $(SILE_ARGS))
+
+%-speedata.pdf %-speedata.toml: %/speedata.xml
+	$(call make_manifest,$(SPEEDATA) $(TYPESETTER_ARGS) $(SPEEDATA_ARGS))
 
 %-typst.pdf %-typst.toml: %/typst.typ
 	$(call make_manifest,$(TYPST) $(TYPESETTER_ARGS) $(TYPST_ARGS))
