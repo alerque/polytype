@@ -1,0 +1,36 @@
+* @alerque
+
+# SILE
+*.sil @Omikhleia
+
+# Typst
+# *.typ
+
+# boxes and glue
+glu.md @pgundlach
+
+# LaTeX
+# *.tex
+
+# Paged JS
+# pagedjs.html
+
+# WeasyPrint
+# weasyprint.xml
+
+# Speedata
+speedata.xml @pgundlach
+
+# groff
+# *.ms
+
+# Patoline
+
+# Quarkdown
+*.qd @iamgio
+
+# SATySFi
+# *.saty @gfngfn
+
+# vmprint
+# vmprint.json @cosmiciron @slothwerks-studio
