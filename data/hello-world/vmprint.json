@@ -1,0 +1,36 @@
+{
+  "documentVersion": "1.1",
+  "layout": {
+    "pageSize": "A4",
+    "margins": { "top": 48, "right": 48, "bottom": 48, "left": 48 },
+    "fontFamily": "Arimo",
+    "fontSize": 12,
+    "lineHeight": 1.4
+  },
+  "fonts": {
+    "regular": "Arimo"
+  },
+  "styles": {
+    "folio": {
+      "textAlign": "center"
+    }
+  },
+  "elements": [
+    {
+      "type": "paragraph",
+      "content": "Hello World"
+    }
+  ],
+  "footer": {
+    "default": {
+      "elements": [
+        {
+          "type": "strip",
+          "slots": [
+            { "elements": [{ "type": "folio", "content": "{pageNumber}" }] }
+          ]
+        }
+      ]
+    }
+  }
+}
