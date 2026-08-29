@@ -58,6 +58,14 @@ h2:not(.title) {
 	font-weight: var(--bulma-weight-extrabold);
 }
 
+p {
+	margin-bottom: 1em;
+}
+
+pre + p {
+	margin-top: 1em;
+}
+
 .navbar {
 	background-color: transparent;
 	padding: 1em 2em 0 2em;
