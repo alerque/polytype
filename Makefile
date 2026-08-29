@@ -31,6 +31,7 @@ SPEEDATA ?= sp
 TERA ?= tera
 TOMLQ ?= tomlq
 TYPST ?= typst
+VMPRINT ?= $(NPX) vmprint
 WEASYPRINT ?= weasyprint
 XELATEX ?= xelatex
 XQ ?= xq
@@ -48,6 +49,7 @@ SATYSFI_ARGS = $< -o $@
 SILE_ARGS = -o $@ $<
 SPEEDATA_ARGS = --dummy --layout $< --jobname $*-speedata
 TYPST_ARGS = compile $< $@
+VMPRINT_ARGS = --input $< --output $@
 WEASYPRINT_ARGS = $< $@
 XELATEX_ARGS  = -interaction=batchmode -halt-on-error
 XELATEX_ARGS += -jobname $*-xelatex $<
@@ -176,6 +178,9 @@ data/title-case-pagedjs.pdf: data/decasify.js
 
 %-typst.pdf %-typst.toml: %/typst.typ
 	$(call make_manifest,$(TYPST) $(TYPESETTER_ARGS) $(TYPST_ARGS))
+
+%-vmprint.pdf %-vmprint.toml: %/vmprint.json
+	$(call make_manifest,$(VMPRINT) $(TYPESETTER_ARGS) $(VMPRINT_ARGS))
 
 %-weasyprint.pdf %-weasyprint.html: %/weasyprint.html
 	$(call make_manifest,$(WEASYPRINT) $(TYPESETTER_ARGS) $(WEASYPRINT_ARGS))
