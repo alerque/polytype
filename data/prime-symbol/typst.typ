@@ -3,7 +3,6 @@
   margin: 4mm,
 )
 #set text(
-  font: "Libertinus Serif",
   size: 12pt,
 )
 #show math.equation: set block(spacing: .8em)

@@ -6,7 +6,6 @@
   justify: false,
 )
 #set text(
-  font: "Libertinus Serif",
   size: 16pt,
 )
 

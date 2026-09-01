@@ -3,7 +3,6 @@
   margin: 4mm,
 )
 #set text(
-  font: "Libertinus Serif",
   size: 14pt,
 )
 

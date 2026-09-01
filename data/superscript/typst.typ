@@ -2,9 +2,7 @@
   paper: "a7",
   margin: 4mm,
 )
-
 #set text(
-  font: "Libertinus Serif",
   size: 12pt,
 )
 
