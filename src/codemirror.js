@@ -7,6 +7,7 @@ import {
 	StreamLanguage,
 } from "@codemirror/language";
 import { lua as luaStreamParser } from "@codemirror/legacy-modes/mode/lua";
+import { troff as troffStreamParser } from "@codemirror/legacy-modes/mode/troff";
 import { css } from "@codemirror/lang-css";
 import { html } from "@codemirror/lang-html";
 import { javascript } from "@codemirror/lang-javascript";
@@ -30,6 +31,7 @@ const languageMap = {
 	typst,
 	// Legacy modes (wrapped for the language factory interface)
 	lua: () => StreamLanguage.define(luaStreamParser),
+	groff: () => StreamLanguage.define(troffStreamParser),
 	// Aliases to near-matches
 	pagedjs: html,
 	sile: latex,
